@@ -25,9 +25,10 @@ if (!empty($_SESSION['us_tipo'])) {
     if (!empty($usuario->loguearse($user, $pass)=="logueado")) {
         $usuario->obtenerDatosLogueo($user);
         foreach ($usuario->objetos as $objeto) {
+            
             $_SESSION['usuario'] = $objeto->id_usuario;
-            $_SESSION['us_tipo'] = $objeto->us_tipo;
-            $_SESSION['nombre_us'] = $objeto->nombre_us;
+            $_SESSION['us_tipo'] = $objeto->id_tipousuario;
+            $_SESSION['nombre_us'] = $objeto->nombre_usuario;
         }
         switch ($_SESSION['us_tipo']) {
             case 1:

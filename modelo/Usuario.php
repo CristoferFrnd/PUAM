@@ -115,9 +115,9 @@ class Usuario
     function obtenerDatosLogueo($user)
     {
         $sql = "  SELECT * 
-                    FROM Usuario
-                    JOIN Tipo_usuario on us_tipo=id_tipo_us
-                    AND n_usuario=:n_usuario";
+                    FROM usuario
+                    JOIN tipoUsuario on tipoUsuario_id_tipoUsuario=id_tipoUsuario
+                    WHERE correoIns_usuario=:n_usuario";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':n_usuario' => $user));
         $this->objetos = $query->fetchall();

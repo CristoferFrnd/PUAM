@@ -35,7 +35,7 @@ if (!empty($_SESSION['us_tipo'])) {
                             <input type="password" name="pass" class="form-control">
                         </div>
                         <div class="form-group ">
-                            <input type="submit" class="btn btn-primary" value="Iniciar">
+                            <input type="submit" class="btn btn-primary" value="Ingresar">
                         </div>
                     </form>
                 </div>

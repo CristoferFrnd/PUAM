@@ -98,14 +98,13 @@ class Usuario
     {
         $sql = "  SELECT * 
                     FROM usuario
-                    JOIN tipoUsuario on id_tipoUsuario=id_usuario
-                    AND correoIns_usuario=:n_usuario
+                    WHERE correoIns_usuario=:n_usuario
                     ";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':n_usuario' => $us));
         $objetos = $query->fetchall();
         foreach ($objetos as $objeto) {
-            $contrasena_actual = $objeto->contrasena;
+            $contrasena_actual = $objeto->contras_usuario;
         }
             if ($pass == $contrasena_actual) {
                 return "logueado";

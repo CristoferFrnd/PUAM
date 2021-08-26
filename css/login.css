@@ -1,0 +1,12 @@
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-content: center;
+}
+
+body{
+    background-image: url('../img/fondo.jpg');
+    height: 100%;
+    width: 100%;
+}

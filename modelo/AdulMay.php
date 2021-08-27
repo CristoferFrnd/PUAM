@@ -10,11 +10,11 @@ class Usuario
         $this->acceso = $db->pdo;
     }
 
-    function crear($nombre, $contrasena, $cedula, $correo, $horasN, $horasR, $curso)
+    function crear($nombre, $apellidos, $contrasena, $n_usuario, $cedula, $correo, $telefono)
     {
-        $sql = "    SELECT id_usuario
-                    FROM usuario
-                    WHERE id_usuario=:cedula
+        $sql = "    SELECT n_cedula
+                    FROM Usuario
+                    WHERE n_cedula=:cedula
                     ";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(
@@ -24,18 +24,18 @@ class Usuario
         if (!empty($this->objetos)) {
             echo 'noAdd';
         } else {
-            $sql = "    INSERT INTO usuario(id_usuario, nombre_usuario, correoIns_usuario, horasNecesarias_usuario, horasRealizadas_usuario, contras_usuario, cursos_id_crs, tipoUsuario_id_tipoUsuario)
-                        VALUES(:cedula, :nombre, :correo, :horasN, :horasR, :contrasena, :curso, :us_tipo)
+            $sql = "    INSERT INTO Usuario(nombre, apellidos, n_usuario, contrasena, n_cedula, correo, telefono, us_tipo)
+                        VALUES(:nombre, :apellidos, :n_usuario, :contrasena, :cedula, :correo, :telefono, :us_tipo)
             ";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(
-                ':cedula'    => $cedula,
                 ':nombre'    => $nombre,
-                ':correo'    => $correo,
-                ':horasN'    => $horasN,
-                ':horasR'    => $horasR,
-                ':contrasena' => $contrasena,
-                ':curso'    => $curso,
+                ':apellidos'    => $apellidos,
+                ':n_usuario'    => $n_usuario,
+                ':contrasena'    => $contrasena,
+                ':cedula' => $cedula,
+                ':correo' => $correo,
+                ':telefono'    => $telefono,
                 ':us_tipo'    => 2
                 
             ));
@@ -44,32 +44,35 @@ class Usuario
         }
     }
 
-    function editar($id_us, $nombre, $contrasena, $correo)
+    function editar($id_us, $nombre, $apellidos, $contrasena, $n_usuario, $cedula, $correo, $telefono)
     {
-            $sql = "    UPDATE  Usuario SET nombre_usuario = :nombre, correoIns_usuario = :correo, contras_usuario = :contrasena
+            $sql = "    UPDATE  Usuario SET nombre = :nombre, apellidos = :apellidos, n_usuario = :n_usuario, contrasena = :contrasena, n_cedula = :cedula, correo = :correo, telefono = :telefono
                         WHERE id_usuario = :id
             ";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(
                 ':nombre'    => $nombre,
+                ':apellidos' => $apellidos,
+                ':n_usuario' => $n_usuario,
                 ':contrasena' => $contrasena,
+                ':cedula' => $cedula,
                 ':correo' => $correo,
+                ':telefono' => $telefono,
                 ':id'    => $id_us
                 
             ));
             $this->objetos = $query->fetchall();
-            echo 'edit';
+            echo 'edit 11';
         }
 
     function buscar()
     {
         if (!empty($_POST['consulta'])) {
             $consulta = $_POST['consulta'];
-            $sql = "SELECT id_usuario, nombre_usuario, correoIns_usuario, horasNecesarias_usuario, horasRealizadas_usuario, nombre_crs FROM usuario
-            JOIN curso on cursos_id_crs=id_crs
-            WHERE nombre_usuario LIKE :consulta
-            OR correoIns_usuario LIKE :consulta
-            AND tipoUsuario_id_tipoUsuario = 2
+            $sql = "SELECT id_usuario, apellidos, nombre, n_cedula, correo, telefono FROM Usuario
+            WHERE apellidos LIKE :consulta
+            OR n_cedula LIKE :consulta
+            AND us_tipo = 2
                         ";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(
@@ -78,12 +81,11 @@ class Usuario
             $this->objetos = $query->fetchall();
             return $this->objetos;
         } else {
-            $sql = "SELECT id_usuario, nombre_usuario, correoIns_usuario, horasNecesarias_usuario, horasRealizadas_usuario, nombre_crs FROM usuario
-                    JOIN curso on cursos_id_crs=id_crs
-                    WHERE nombre_usuario NOT LIKE ''
-                    AND tipoUsuario_id_tipoUsuario = 2
-                    ORDER BY nombre_usuario ASC
-                    LIMIT 25                
+            $sql = "SELECT id_usuario, apellidos, nombre, n_cedula, correo, telefono FROM Usuario
+                    WHERE id_usuario NOT LIKE '' 
+                    AND us_tipo = 2 
+                    ORDER BY nombre ASC
+                    LIMIT 25
                     ";
             $query = $this->acceso->prepare($sql);
             $query->execute();
@@ -126,7 +128,7 @@ class Usuario
     {
         $sql = "  SELECT * 
                     FROM usuario
-                    JOIN tipoUsuario on tipoUsuario_id_tipoUsuario=id_tipoUsuario
+                    JOIN tipo_usuario on us_tipo=id_tipo_us
                     AND id_usuario=:id";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':id' => $id));
@@ -135,7 +137,7 @@ class Usuario
     }
 
     function buscar_us_id($id){
-        $sql = "SELECT * FROM usuario
+        $sql = "SELECT * FROM Usuario
                     WHERE id_usuario = :id
                     ";
             $query = $this->acceso->prepare($sql);
@@ -147,7 +149,7 @@ class Usuario
     }
 
     function eliminar($id){
-        $sql = "DELETE FROM usuario
+        $sql = "DELETE FROM Usuario
                 WHERE id_usuario=:id
         ";
         $query=$this->acceso->prepare($sql);

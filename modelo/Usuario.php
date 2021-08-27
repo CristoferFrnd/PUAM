@@ -136,6 +136,7 @@ class Usuario
 
     function buscar_us_id($id){
         $sql = "SELECT * FROM usuario
+                JOIN curso on cursos_id_crs=id_crs
                     WHERE id_usuario = :id
                     ";
             $query = $this->acceso->prepare($sql);

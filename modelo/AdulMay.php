@@ -1,7 +1,7 @@
 <?php
 include 'Conexion.php';
 
-class Usuario
+class AdulMay
 {
     var $objetos;
     public function __construct()
@@ -10,11 +10,11 @@ class Usuario
         $this->acceso = $db->pdo;
     }
 
-    function crear($nombre, $apellidos, $contrasena, $n_usuario, $cedula, $correo, $telefono)
+    function crear($cedula, $nombre, $telefonoC, $celular, $correo)
     {
-        $sql = "    SELECT n_cedula
-                    FROM Usuario
-                    WHERE n_cedula=:cedula
+        $sql = "    SELECT id_adMay
+                    FROM adultoMay
+                    WHERE id_adMay=:cedula
                     ";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(
@@ -24,19 +24,16 @@ class Usuario
         if (!empty($this->objetos)) {
             echo 'noAdd';
         } else {
-            $sql = "    INSERT INTO Usuario(nombre, apellidos, n_usuario, contrasena, n_cedula, correo, telefono, us_tipo)
-                        VALUES(:nombre, :apellidos, :n_usuario, :contrasena, :cedula, :correo, :telefono, :us_tipo)
+            $sql = "    INSERT INTO adultoMay(id_adMay, nombre_adMay, telefonoC_AdMay, celular_AdMay, correoE_AdMay)
+                        VALUES(:cedula, :nombre, :telefono, :celular, :correo)
             ";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(
-                ':nombre'    => $nombre,
-                ':apellidos'    => $apellidos,
-                ':n_usuario'    => $n_usuario,
-                ':contrasena'    => $contrasena,
                 ':cedula' => $cedula,
-                ':correo' => $correo,
-                ':telefono'    => $telefono,
-                ':us_tipo'    => 2
+                ':nombre'    => $nombre,
+                ':celular'    => $celular,
+                ':telefono'    => $telefonoC,
+                ':correo'    => $correo
                 
             ));
             $this->objetos = $query->fetchall();
@@ -44,36 +41,30 @@ class Usuario
         }
     }
 
-    function editar($id_us, $nombre, $apellidos, $contrasena, $n_usuario, $cedula, $correo, $telefono)
+    function editar($cedula, $nombre, $telefonoC, $celular, $correo)
     {
-            $sql = "    UPDATE  Usuario SET nombre = :nombre, apellidos = :apellidos, n_usuario = :n_usuario, contrasena = :contrasena, n_cedula = :cedula, correo = :correo, telefono = :telefono
+            $sql = "    UPDATE  adultoMay SET id_adMay = :cedula, nombre_adMay = :nombre, telefonoC_AdMay = :telefono, celular_AdMay = :celular correoE_AdMay = :correo
                         WHERE id_usuario = :id
             ";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(
-                ':nombre'    => $nombre,
-                ':apellidos' => $apellidos,
-                ':n_usuario' => $n_usuario,
-                ':contrasena' => $contrasena,
                 ':cedula' => $cedula,
-                ':correo' => $correo,
-                ':telefono' => $telefono,
-                ':id'    => $id_us
-                
+                ':nombre'    => $nombre,
+                ':celular'    => $celular,
+                ':telefono'    => $telefonoC,
+                ':correo'    => $correo
             ));
             $this->objetos = $query->fetchall();
-            echo 'edit 11';
+            echo 'edit';
         }
 
     function buscar()
     {
         if (!empty($_POST['consulta'])) {
             $consulta = $_POST['consulta'];
-            $sql = "SELECT id_usuario, apellidos, nombre, n_cedula, correo, telefono FROM Usuario
-            WHERE apellidos LIKE :consulta
-            OR n_cedula LIKE :consulta
-            AND us_tipo = 2
-                        ";
+            $sql = "SELECT * FROM adultoMay
+            WHERE nombre_adMay LIKE :consulta
+            OR id_adMay LIKE :consulta";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(
                 ':consulta' => "%$consulta%"
@@ -81,10 +72,9 @@ class Usuario
             $this->objetos = $query->fetchall();
             return $this->objetos;
         } else {
-            $sql = "SELECT id_usuario, apellidos, nombre, n_cedula, correo, telefono FROM Usuario
-                    WHERE id_usuario NOT LIKE '' 
-                    AND us_tipo = 2 
-                    ORDER BY nombre ASC
+            $sql = "SELECT * FROM adultoMay
+                    WHERE id_adMay NOT LIKE '' 
+                    ORDER BY nombre_adMay ASC
                     LIMIT 25
                     ";
             $query = $this->acceso->prepare($sql);
@@ -94,63 +84,21 @@ class Usuario
         }
     }
 
-    function loguearse($us, $pass)
-    {
-        $sql = "  SELECT * 
-                    FROM usuario
-                    WHERE correoIns_usuario=:n_usuario
-                    ";
-        $query = $this->acceso->prepare($sql);
-        $query->execute(array(':n_usuario' => $us));
-        $objetos = $query->fetchall();
-        foreach ($objetos as $objeto) {
-            $contrasena_actual = $objeto->contras_usuario;
-        }
-            if ($pass == $contrasena_actual) {
-                return "logueado";
-            }
-        
-    }
-
-    function obtenerDatosLogueo($user)
-    {
-        $sql = "  SELECT * 
-                    FROM usuario
-                    JOIN tipoUsuario on tipoUsuario_id_tipoUsuario=id_tipoUsuario
-                    WHERE correoIns_usuario=:n_usuario";
-        $query = $this->acceso->prepare($sql);
-        $query->execute(array(':n_usuario' => $user));
-        $this->objetos = $query->fetchall();
-        return $this->objetos;
-    }
-
-    function obtenerDatos($id)
-    {
-        $sql = "  SELECT * 
-                    FROM usuario
-                    JOIN tipo_usuario on us_tipo=id_tipo_us
-                    AND id_usuario=:id";
-        $query = $this->acceso->prepare($sql);
-        $query->execute(array(':id' => $id));
-        $this->objetos = $query->fetchall();
-        return $this->objetos;
-    }
-
-    function buscar_us_id($id){
-        $sql = "SELECT * FROM Usuario
-                    WHERE id_usuario = :id
+    function buscar_am_id($id){
+        $sql = "SELECT * FROM adultoMay
+                    WHERE id_adMay = :id
                     ";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(
-                ':id' => "$id"
+                ':id' => $id
             ));
             $this->objetos = $query->fetchall();
             return $this->objetos;
     }
 
     function eliminar($id){
-        $sql = "DELETE FROM Usuario
-                WHERE id_usuario=:id
+        $sql = "DELETE FROM adultoMay
+                WHERE id_adMay = :id
         ";
         $query=$this->acceso->prepare($sql);
         if(!empty($query->execute(array(':id' => $id)))){

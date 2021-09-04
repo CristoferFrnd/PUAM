@@ -32,4 +32,56 @@ class Clase
             echo $fecha;
         
     }
+
+    function buscar()
+    {
+        if (!empty($_POST['consulta'])) {
+            $consulta = $_POST['consulta'];
+            $sql = "SELECT id_clase fecha_clase, duracion_clase, evidencia_clase, tema_clase, nombre_usuario AS tutor, nombre_crs, descripcion_tipoClase, nombre_adMay, id_adMay FROM clase
+                    JOIN curso on cursos_id_crs=id_crs
+                    JOIN tipoClase on tipoClase_id_tipoClase=id_tipoClase
+                    JOIN adultoMay on adultoMay_id_adMay=id_adMay
+                    JOIN usuario on tutores_id_tutor=id_usuario
+                    WHERE nombre_adMay LIKE :consulta
+                    OR id_adMay LIKE :consulta
+                    OR fecha_clase LIKE :consulta
+                    OR nombre_usuario LIKE :consulta
+                    OR nombre_crs LIKE :consulta
+                    OR descripcion_tipoClase LIKE :consulta
+            
+                        ";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(
+                ':consulta' => "%$consulta%"
+            ));
+            $this->objetos = $query->fetchall();
+            return $this->objetos;
+        } else {
+            $sql = "SELECT id_clase, fecha_clase, duracion_clase, evidencia_clase, tema_clase, nombre_usuario AS tutor, nombre_crs, descripcion_tipoClase, nombre_adMay, id_adMay FROM clase
+                    JOIN curso on cursos_id_crs=id_crs
+                    JOIN tipoClase on tipoClase_id_tipoClase=id_tipoClase
+                    JOIN adultoMay on adultoMay_id_adMay=id_adMay
+                    JOIN usuario on tutores_id_tutor=id_usuario
+                    WHERE nombre_adMay NOT LIKE ''
+                    LIMIT 25                
+                    ";
+            $query = $this->acceso->prepare($sql);
+            $query->execute();
+            $this->objetos = $query->fetchall();
+            return $this->objetos;
+        }
+    }
+
+    function eliminar($id){
+        $sql = "DELETE FROM clase
+                WHERE id_clase=:id
+        ";
+        $query=$this->acceso->prepare($sql);
+        if(!empty($query->execute(array(':id' => $id)))){
+            echo 'delete';
+        }
+        else{
+            echo 'noDelete';
+        }
+    }
 }

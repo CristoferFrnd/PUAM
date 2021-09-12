@@ -20,3 +20,24 @@ if ($_POST['funcion'] == 'registrar') {
 
     $clase->crear($fecha, $duracion, $imgContent, $adulM, $tema, $tutor, $curso, $tipo);
 }
+
+if ($_POST['funcion'] == 'listar') {
+    $clase->buscar();
+    $json = array();
+    foreach ($clase->objetos as $objeto) {
+        $json[] = array(
+            'id_clase' => $objeto->id_clase,
+            'fecha_clase' => $objeto->fecha_clase,
+            'duracion_clase' => $objeto->duracion_clase,
+            'evidencia_clase' => $objeto->evidencia_clase,
+            'tema_clase' => $objeto->tema_clase,
+            'tutor'  => $objeto->tutor,
+            'nombre_crs' => $objeto->nombre_crs,
+            'descripcion_tipoClase' => $objeto->descripcion_tipoClase,
+            'nombre_adMay'  => $objeto->nombre_adMay,
+            'id_adMay'  => $objeto->id_adMay,
+        );
+    }
+    $jsonString= json_encode($json);
+    echo $jsonString;  
+}

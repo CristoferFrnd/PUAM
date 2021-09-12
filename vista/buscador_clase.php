@@ -14,7 +14,7 @@ if ($_SESSION['us_tipo'] == 1) {
             <section>
                 <div class="container-fluid">
                     <div class="card card-success animate__animated animate__bounceInRight">
-                         <div class="card-body">
+                        <div class="card-body">
                             <table id="tabla" class="display table table-hover text-nowrap" style="width:100%">
                                 <thead>
                                     <tr>

@@ -20,50 +20,44 @@ if ($_SESSION['us_tipo'] == 1 || ($_SESSION['us_tipo'] == 2)) {
                     </div>
 
 
+
+                    
                     <form id="form-editar-alumno">
+                        <input type="text" id="id_us" hidden="true" value="<?php echo $_SESSION['usuario']; ?>">
+
                         <div class="form-row">
-                            <input type="text" id="id_us" hidden="true" value="<?php echo $_SESSION['usuario']; ?>">
-                            <div class="form-group col-md-6">
-                                <label for="apellidos">Apellidos</label>
-                                <input type="text" class="form-control" id="apellidos" placeholder="Apellidos" required="true">
+                            <div class="form-group col-md-8">
+                                <label for="apellidos">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" value="<?php echo $_SESSION['nombre_us']; ?>" required="true" disabled>
                             </div>
-                            <form id="form-editar-alumno">
-                                <div class="form-row">
-                                    <input type="text" id="id_us" hidden="true" value="<?php echo $_SESSION['usuario']; ?>">
-                                        <div class="form-group col-md-8">
-                                            <label for="apellidos">Nombre</label>
-                                            <input type="text" class="form-control" id="apellidos" placeholder="Nombre" value ="<?php echo $_SESSION['nombre_us']; ?>" required="true" disabled>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                        <label for="cedula">N. Cedula</label>
-                                            <input type="text" class="form-control" id="cedula" placeholder="Cedula" value="<?php echo $_SESSION['usuario']; ?>" required="true" disabled>
-                                    </div>
-                                       
-                                </div>
-                                <div class="form-row">
-                                <div class="form-group col-md-4">
-                                        <label for="dir">Correo</label>
-                                        <input type="text" class="form-control" id="correo" placeholder="Correo" value="<?php echo $_SESSION['correo']; ?>"required="true" disabled>
-                                </div>
-                                <div class="form-group col-md-4">
-                                        <label for="tel">Telefono</label>
-                                        <input type="text" class="form-control" id="tel" placeholder="Telefono" required="true">
-                                    </div>
-                                    <div class="form-group col-md-4">
-                                        <label for="nombre">Contraseña</label>
-                                        <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" required="true">
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Confirmar Cambios</button>
-                           
-                            </form>
-                        </div>    
-                    </div>
-                </div>    
+                            <div class="form-group col-md-4">
+                                <label for="cedula">N. Cedula</label>
+                                <input type="text" class="form-control" id="cedula" placeholder="Cedula" required="true" disabled>
+                            </div>
 
-
-
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="dir">Correo</label>
+                                <input type="text" class="form-control" id="correo" placeholder="Correo" value="<?php echo $_SESSION['correo']; ?>" required="true" disabled>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="tel">Telefono</label>
+                                <input type="text" class="form-control" id="tel" placeholder="Telefono" required="true">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="nombre">Contraseña</label>
+                                <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" required="true">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Confirmar Cambios</button>
+                    </form>
+                </div>
             </div>
+
+
+
+        </div>
         </div>
     </body>
 
@@ -74,8 +68,4 @@ if ($_SESSION['us_tipo'] == 1 || ($_SESSION['us_tipo'] == 2)) {
 }
 ?>
 
-<<<<<<< Updated upstream
 <script src="../js/alumno.js"></script>
-=======
-<script src="../js/alumno.js"></script>
->>>>>>> Stashed changes

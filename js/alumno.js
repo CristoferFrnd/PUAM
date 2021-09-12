@@ -97,13 +97,12 @@ $(document).ready(function () {
         $.post('../controlador/alumnoController.php', { ID, funcion }, (response) => {
             const ALUMNO = JSON.parse(response);
             $('#nombre').val(ALUMNO.nombre);
-            $('#apellidos').val(ALUMNO.apellidos);
             $('#correo').val(ALUMNO.correo);
-            $('#contrasena').val(ALUMNO.contrasena);
-            $('#tel').val(ALUMNO.telefono);
-            $('#cedula').val(ALUMNO.n_cedula);
-            $('#n_us').val(ALUMNO.n_usuario);
+            $('#contrasena').val(ALUMNO.pass);
+            $('#tel').val(ALUMNO.tel);
+            $('#cedula').val(ALUMNO.id_usuario);
             $('#id_us').val(ID);
+            console.log(response);
         });
     }
 

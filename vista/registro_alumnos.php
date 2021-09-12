@@ -45,11 +45,6 @@ if ($_SESSION['us_tipo'] == 1) {
                             <label for="nombre">Contraseña</label>
                             <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" required="true">
                         </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="nombre">N. Usuario</label>
-                            <input type="text" class="form-control" id="n_us" placeholder="Nombre de Usuario" required="true">
-                        </div>
                     </div>
 
                     <div class="form-row">

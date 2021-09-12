@@ -9,6 +9,84 @@ if ($_SESSION['us_tipo'] == 1) {
     <?php
     include_once 'layouts/nav.php';
     ?>
+    <div class="container">
+            <!-- Lista de opciones -->
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                    <a class="nav-link active" id="list-estud-form" data-toggle="tab" href="#list-estud"
+                    role="tab" aria-controls="list-clase" aria-selected="true">Listar estudiantes</a>
+                </li>
+  
+                <li class="nav-item">
+                    <a class="nav-link" id="ing-clase-form" data-toggle="tab" href="#ing-clase"
+                    role="tab" aria-controls="ing-clase" aria-selected="false">Agregar clase</a>
+                </li>
+                              
+                <li class="nav-item">
+                    <a class="nav-link" id="edit-alum-form" data-toggle="tab" href="#edit-alum"
+                    role="tab" aria-controls="edit-alum" aria-selected="false">Editar información</a>
+                </li>
+                
+            </ul>
+
+            <div class="tab-content" id="myTabContent">   
+                <!-- Formulario para editar estudiante -->
+                <div class="tab-pane fade show" id="list-estud" role="tabpanel" aria-labelledby="list-stud-form">
+                    <div class="card">
+                        <div class="card-body">
+                          Listar estudiantes  
+                          
+                        </div>    
+                    </div>
+                </div>    
+                <!-- Formulario para agregar nueva clase-->
+                <div class="tab-pane fade show" id="ing-clase" role="tabpanel" aria-labelledby="ing-clase-form">
+                    <div class="card">
+                        <div class="card-body">
+                            agregar estudiantes
+                        </div>    
+                    </div>
+                </div>
+                <!-- Tabla para listar clases-->
+                <div class="tab-pane fade show active" id="list-clase" role="tabpanel" aria-labelledby="list-clase-form">  
+                    <div class="form-row" align="center" style="margin-top:15px">
+                        <div class="form-group col-sm-12">
+                            <input type="text" class="form-control" id="nombre" placeholder="Buscar"/>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead style="background-color:white; color:black">
+                                <th>Fecha</th>
+                                <th>Duración</th>
+                                <th>Adulto Mayor</th>
+                                <th>Tema tratado</th>
+                                <th>Evidencia</th>
+                            </thead>
+                            <tbody style="color:white"> 
+                                <tr>
+                                    <td>25/06/2021</td>
+                                    <td>2</td>
+                                    <td>adulto</td>
+                                    <td>prueba</td>
+                                    <td> <button type="button" class="btn btn-light">Ver imagen</button></td>
+                                </tr>
+                                <tr>
+                                    <td>26/06/2021</td>
+                                    <td>1</td>
+                                    <td>adulto2</td>
+                                    <td>prueba2</td>
+                                    <td> <button type="button" class="btn btn-light">Ver imagen</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     <!-- modal editar alumno -->
     <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -53,7 +131,6 @@ if ($_SESSION['us_tipo'] == 1) {
 
                         <div class="form-row">
 
-
                             <div class="form-group col-md-4">
                                 <label for="dir">Correo</label>
                                 <input type="text" class="form-control" id="correo" placeholder="Correo" required="true">
@@ -63,8 +140,6 @@ if ($_SESSION['us_tipo'] == 1) {
                                 <input type="text" class="form-control" id="tel" placeholder="Telefono" required="true">
                             </div>
                         </div>
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Guardar Cambios</button>
@@ -134,6 +209,8 @@ if ($_SESSION['us_tipo'] == 1) {
             </section>
 
         </div>
+        
+
     </body>
     <!-- /.content-wrapper -->
 <?php

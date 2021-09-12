@@ -126,5 +126,4 @@ $(document).ready(function () {
         $('#id_del_us').val(ID);
         $('#msg').html(`<p>Esta seguro de eliminar al alumno/a ${alumno}? Esta acción no se puede revertir.</p>`)
     });
-
 })

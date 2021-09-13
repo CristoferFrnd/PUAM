@@ -7,11 +7,11 @@ if ($_POST['funcion'] == 'listar') {
     $json = array();
     foreach ($adulMay->objetos as $objeto) {
         $json[] = array(
-            'id_adulMay' => $objeto->id_adMay,
-            'nombre' => $objeto->nombre_adMay,
-            'telefono' => $objeto->telefonoC_AdMay,
-            'celular' => $objeto->celular_AdMay,
-            'correo' => $objeto->correoE_AdMay
+            'id_adulMay' => $objeto->id_admay,
+            'nombre' => $objeto->nombre_admay,
+            'telefono' => $objeto->telefonoc_admay,
+            'celular' => $objeto->celular_admay,
+            'correo' => $objeto->correoe_admay
         );
     }
     $jsonString= json_encode($json);
@@ -21,11 +21,11 @@ if ($_POST['funcion'] == 'listar') {
 if ($_POST['funcion'] == 'registrar') {
     $cedula = $_POST['cedula'];
     $nombre = $_POST['nombre'];
-    $telefonoC = $_POST['telefono'];
+    $telefono = $_POST['telefono'];
     $celular = $_POST['celular'];
     $correo = $_POST['correo'];
     
-    $adulMay->crear($cedula, $nombre, $telefonoC, $celular, $correo);
+    $adulMay->crear($cedula, $nombre, $telefono, $celular, $correo);
 }
 
 if ($_POST['funcion'] == 'editar') {

@@ -10,8 +10,9 @@
         </button>
         <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="buscador_alumnos.php">Alumnos Registrados</a>
-                <a class="nav-item nav-link" href="registro_alumnos.php">Ingresar Nuevos Alumnos</a>
+                <a class="nav-item nav-link" href="buscador_clase.php">Clases</a>
+                <a class="nav-item nav-link" href="registrar_alumno.php">Alumnos</a>
+                <a class="nav-item nav-link" href="registrar_am.php">Adultos Mayores</a>
                 <a class="nav-item nav-link" href="../controlador/logout.php" style="color: red;">Salir</a>
             </div>
         </div>

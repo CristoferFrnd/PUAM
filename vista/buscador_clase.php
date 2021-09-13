@@ -18,11 +18,11 @@ if ($_SESSION['us_tipo'] == 1) {
                             <table id="tabla" class="display table table-hover text-nowrap" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>N. Cedula</th>
-
-                                        <th>Correo</th>
-                                        <th>Telefono</th>
+                                        <th>Fecha</th>
+                                        <th>Adulto Mayor</th>
+                                        <th>Tutor</th>
                                         <th>Curso</th>
+                                        <th>Tipo de Clase</th>
                                     </tr>
                                 </thead>
                                 <tbody id="clases">
@@ -47,7 +47,7 @@ if ($_SESSION['us_tipo'] == 1) {
                     </button>
                 </div>
                 <div class="modal-body">
-                   
+                
                         <div class="form-row" >
                             <input type="text" id="id_clase" hidden="true">
                             <div class="form-group col-md-4">
@@ -55,7 +55,7 @@ if ($_SESSION['us_tipo'] == 1) {
                                 <input type="text" class="form-control" id="fecha" disabled>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="duracion">Duración</label>
+                                <label for="duracion">Duración (H)</label>
                                 <input type="text" class="form-control" id="duracion" disabled>
                             </div>
                             <div class="form-group col-md-4">
@@ -80,8 +80,6 @@ if ($_SESSION['us_tipo'] == 1) {
                         </div>
 
                         <div class="form-row">
-                       
-                           
                         </div>
 
                         <div class="form-row">
@@ -99,7 +97,6 @@ if ($_SESSION['us_tipo'] == 1) {
                 <div class="modal-footer">
 
                 </div>
-               
             </div>
         </div>
     </div>

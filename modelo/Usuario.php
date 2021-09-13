@@ -64,7 +64,7 @@ class Usuario
     {
         if (!empty($_POST['consulta'])) {
             $consulta = $_POST['consulta'];
-            $sql = "SELECT id_usuario, nombre_usuario, correoIns_usuario, horasNecesarias_usuario, horasRealizadas_usuario, nombre_crs FROM usuario
+            $sql = "SELECT id_usuario, nombre_usuario, correoIns_usuario, horasNecesarias_usuario, horasRealizadas_usuario, nombre_crs, tel_usuario FROM usuario
             JOIN curso on cursos_id_crs=id_crs
             WHERE nombre_usuario LIKE :consulta
             OR correoIns_usuario LIKE :consulta
@@ -77,7 +77,7 @@ class Usuario
             $this->objetos = $query->fetchall();
             return $this->objetos;
         } else {
-            $sql = "SELECT id_usuario, nombre_usuario, correoIns_usuario, horasNecesarias_usuario, horasRealizadas_usuario, nombre_crs FROM usuario
+            $sql = "SELECT id_usuario, nombre_usuario, correoIns_usuario, horasNecesarias_usuario, horasRealizadas_usuario, nombre_crs, tel_usuario FROM usuario
                     JOIN curso on cursos_id_crs=id_crs
                     WHERE nombre_usuario NOT LIKE ''
                     AND tipoUsuario_id_tipoUsuario = 2

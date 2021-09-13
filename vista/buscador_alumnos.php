@@ -35,7 +35,6 @@ if ($_SESSION['us_tipo'] == 1) {
                     <div class="card">
                         <div class="card-body">
                           Listar estudiantes  
-                          
                         </div>    
                     </div>
                 </div>    

@@ -9,10 +9,11 @@ if ($_POST['funcion'] == 'listar') {
         $json[] = array(
             'id_usuario' => $objeto->id_usuario,
             'nombre' => $objeto->nombre_usuario,
-            'correo' => $objeto->correoIns_usuario,
-            'horasN' => $objeto->horasNecesarias_usuario,
-            'horasR' => $objeto->horasRealizadas_usuario,
-            'curso'  => $objeto->nombre_crs
+            'correo' => $objeto->correoins_usuario,
+            'horasN' => $objeto->horasnecesarias_usuario,
+            'horasR' => $objeto->horasrealizadas_usuario,
+            'curso'  => $objeto->nombre_crs,
+            'tel'  => $objeto->tel_usuario
         );
     }
     $jsonString= json_encode($json);
@@ -52,7 +53,6 @@ if ($_POST['funcion'] == 'buscar_us_id') {
             'id_usuario' => $objeto->id_usuario,
             'nombre' => $objeto->nombre_usuario,
             'correo' => $objeto->correoins_usuario,
-            'pass' => $objeto->contras_usuario,
             'horasN' => $objeto->horasnecesarias_usuario,
             'horasR' => $objeto->horasrealizadas_usuario,
             'curso'  => $objeto->nombre_crs,

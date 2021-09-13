@@ -32,8 +32,8 @@ if ($_POST['funcion'] == 'listar') {
             'tema_clase' => $objeto->tema_clase,
             'tutor'  => $objeto->tutor,
             'nombre_crs' => $objeto->nombre_crs,
-            'descripcion_tipoClase' => $objeto->descripcion_tipoClase,
-            'nombre_adMay'  => $objeto->nombre_adMay,
+            'descripcion_tipoClase' => $objeto->descripcion_tipoclase,
+            'nombre_adMay'  => $objeto->nombre_admay,
             'id_adMay'  => $objeto->id_adMay
             
         );
@@ -43,8 +43,7 @@ if ($_POST['funcion'] == 'listar') {
 }
 
 if ($_POST['funcion'] == 'buscar_id') {
-    $id = $_post['ID'];
-    
+    $id = $_POST['ID'];
     $clase->buscar_clase_id($id);
     $json = array();
     foreach ($clase->objetos as $objeto) {
@@ -54,12 +53,12 @@ if ($_POST['funcion'] == 'buscar_id') {
             'tema_clase' => $objeto->tema_clase,
             'tutor'  => $objeto->tutor,
             'nombre_crs' => $objeto->nombre_crs,
-            'descripcion_tipoClase' => $objeto->descripcion_tipoClase,
-            'nombre_adMay'  => $objeto->nombre_adMay,
-            'id_adMay'  => $objeto->id_adMay
+            'descripcion_tipoClase' => $objeto->descripcion_tipoclase,
+            'nombre_adMay'  => $objeto->nombre_admay,
+            'id_adMay'  => $objeto->id_admay
             
         );
     }
-    $jsonString = json_encode($json);
+    $jsonString = json_encode($json[0]);
     echo $jsonString;
 }

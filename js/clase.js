@@ -15,8 +15,8 @@ $(document).ready(function () {
                     <td>${clase.nombre_adMay}</td>
                     <td>${clase.tutor}</td>
                     <td>${clase.nombre_crs}</td>
+                    <td>${clase.descripcion_tipoClase}</td>
                     <td><button class='verdetalle btn btn-primary' data-toggle='modal' data-target='#exampleModal'>Ver detalle</button></td>
-                    
                 </tr>
                     `;
             });
@@ -28,7 +28,6 @@ $(document).ready(function () {
         funcion = 'buscar_id';
         const ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
         const ID = $(ELEMENTO).attr('data-id');
-        
         $.post('../controlador/claseController.php', { funcion, ID }, (response) => {
             const CLASE = JSON.parse(response);
             $('#fecha').val(CLASE.fecha_clase);
@@ -37,7 +36,6 @@ $(document).ready(function () {
             $('#tema').val(CLASE.tema_clase);
             $('#tutor').val(CLASE.tutor);
             $('#adulM').val(CLASE.nombre_adMay);
-            console.log(response);
         });
     
     });

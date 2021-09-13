@@ -1,23 +1,24 @@
 $(document).ready(function () {
     listar_alumnos();
-    datos_alumno();
+    //datos_alumno();
 
     function listar_alumnos(consulta) {
         funcion = "listar";
         $.post('../controlador/alumnoController.php', { consulta, funcion }, (response) => {
             const ALUMNOS = JSON.parse(response);
             let template = ``;
+            console.log(response);
             ALUMNOS.forEach(alumno => {
                 template += `
                     <tr us_id=${alumno.id_usuario} us_ap=${alumno.apellidos}>
-                    <td>${alumno.n_cedula}</td>
-                    <td>${alumno.apellidos}</td>
-                    <td>${alumno.nombre}</td>
-                    <td>${alumno.correo}</td>
-                    <td>${alumno.telefono}</td>
-                    <td><button type='button' class='editar-alumno btn btn-primary' data-toggle='modal' data-target='#exampleModal'>Editar</button></td>
-                    <td><button class='adv btn btn-danger' data-toggle='modal' data-target='#confirm-delete'>Eliminar</i></button></td>
-                </tr>
+                        <td>${alumno.id_usuario}</td>
+                        <td>${alumno.nombre}</td>
+                        <td>${alumno.correo}</td>
+                        <td>${alumno.tel}</td>
+                        <td>${alumno.horasR}</td>
+                        <td>${alumno.curso}</td>
+                        <td><button type='button' class='editar-alumno btn btn-primary' data-toggle='modal' data-target='#exampleModal'><i class="fas fa-edit"></i></button></td>
+                    </tr>
                     `;
             });
             $('#alumnos').html(template);

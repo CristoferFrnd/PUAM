@@ -15,6 +15,7 @@
 <!-- Bootstrap 4 -->
 <script src="../js/bootstrap.min.js"></script>
 
+<script src="https://kit.fontawesome.com/78519a9d7d.js" crossorigin="anonymous"></script>
 
 </body>
 

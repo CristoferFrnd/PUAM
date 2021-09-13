@@ -26,7 +26,16 @@ if ($_POST['funcion'] == 'listar') {
     $json = array();
     foreach ($clase->objetos as $objeto) {
         $json[] = array(
-            'id_clase' => $objeto->id_clase
+            'id_clase' => $objeto->id_clase,
+            'fecha_clase' => $objeto->fecha_clase,
+            'duracion_clase' => $objeto->duracion_clase,
+            'tema_clase' => $objeto->tema_clase,
+            'tutor'  => $objeto->tutor,
+            'nombre_crs' => $objeto->nombre_crs,
+            'descripcion_tipoClase' => $objeto->descripcion_tipoClase,
+            'nombre_adMay'  => $objeto->nombre_adMay,
+            'id_adMay'  => $objeto->id_adMay
+            
         );
     }
     $jsonString = json_encode($json);

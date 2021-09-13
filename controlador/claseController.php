@@ -43,7 +43,8 @@ if ($_POST['funcion'] == 'listar') {
 }
 
 if ($_POST['funcion'] == 'buscar_id') {
-    $id = $_post['id_clase'];
+    $id = $_post['ID'];
+    
     $clase->buscar_clase_id($id);
     $json = array();
     foreach ($clase->objetos as $objeto) {
@@ -62,5 +63,3 @@ if ($_POST['funcion'] == 'buscar_id') {
     $jsonString = json_encode($json);
     echo $jsonString;
 }
-
-

@@ -19,10 +19,10 @@ if ($_SESSION['us_tipo'] == 1) {
                                 <thead>
                                     <tr>
                                         <th>N. Cedula</th>
-                                        <th>Apellidos</th>
-                                        <th>Nombre</th>
+
                                         <th>Correo</th>
                                         <th>Telefono</th>
+                                        <th>Curso</th>
                                     </tr>
                                 </thead>
                                 <tbody id="clases">
@@ -47,45 +47,47 @@ if ($_SESSION['us_tipo'] == 1) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    
-                        <div class="form-row">
+                   
+                        <div class="form-row" >
                             <input type="text" id="id_clase" hidden="true">
-                            <div class="form-group col-md-8">
+                            <div class="form-group col-md-4">
                                 <label for="fecha">Fecha</label>
-                                <input type="text" class="form-control" id="fecha" value="ejemplo" disabled>
+                                <input type="text" class="form-control" id="fecha" disabled>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="dur">Duración</label>
-                                <input type="text" class="form-control" id="duracion" value="ejemplo" id="dur" disabled>
+                                <label for="duracion">Duración</label>
+                                <input type="text" class="form-control" id="duracion" disabled>
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label for="curso">Curso</label>
-                                <input type="text" class="form-control" id="curso" value="ejemplo" disabled>
+                                <input type="text" class="form-control" id="curso" disabled>
                             </div>
                            
                         </div>
                         <div class="form-row">
                             <label for="tema">Tema tratado</label>
-                            <input type="text" class="form-control" id="tema" value="ejemplo" disabled>
-                        </div>
-
-                        <div class="form-row">
-                            
-                                <label for="adulM">Adulto mayor</label>
-                                <input type="text" class="form-control" id="adulM" value="ejemplo" disabled>
+                            <input type="text" class="form-control" id="tema" disabled>
                         </div>
 
                         <div class="form-row">
                         <div class="form-group col-md-6">
+                                <label for="adulM">Adulto mayor</label>
+                                <input type="text" class="form-control" id="adulM" disabled>
+                                </div>
+                                <div class="form-group col-md-6">
                                 <label for="tutor">Tutor</label>
-                                <input type="text" class="form-control" id="tutor" value="ejemplo" disabled>
+                                <input type="text" class="form-control" id="tutor" disabled>
                             </div>
+                        </div>
+
+                        <div class="form-row">
+                       
                            
                         </div>
 
                         <div class="form-row">
                             <label for="img">Evidencia</label>
-                            <input type="text" class="form-control" id="img" value="ejemplo" disabled>
+                            <input type="text" class="form-control" id="img" disabled>
 
                         </div>
 
@@ -93,7 +95,7 @@ if ($_SESSION['us_tipo'] == 1) {
 
                     </div>
 
-
+</div>
 
                 <div class="modal-footer">
 

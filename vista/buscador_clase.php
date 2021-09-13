@@ -95,7 +95,7 @@ if ($_SESSION['us_tipo'] == 1) {
 
                     <div class="form-row">
                         <label for="img">Evidencia</label>
-                        <img src="../img/ev.jpg" class="img-fluid" alt="Evidencia" id="img">
+                        <img src="../img/ev.jpg" class="img-fluid" id="img">
                     </div>
 
 </div>

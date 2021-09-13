@@ -62,7 +62,7 @@ if ($_SESSION['us_tipo'] == 2) {
                             <input type="text" id="id_clase" hidden="true">
                             <div class="form-group col-md-4">
                                 <label for="fecha">Fecha</label>
-                                <input type="text" class="form-control" id="fecha" disabled>
+                                <input type="date" class="form-control" id="fecha" disabled>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="duracion">Duración (H)</label>

@@ -23,6 +23,31 @@ $(document).ready(function () {
         });
     }
 
+    function listar_clases_al(id) {
+        funcion = "buscar_clase_alumno";
+        $.post('../controlador/claseController.php', { id, funcion }, (response) => {
+            console.log(response);
+            const CLASES = JSON.parse(response);
+            let template = ``;
+            CLASES.forEach(clase => {
+                template += `
+                <tr>
+                    <td>${clase.fecha_clase}</td>
+                    <td>${clase.nombre_adMay}</td>
+                    <td>${clase.nombre_crs}</td>
+                    <td>${clase.descripcion_tipoClase}</td>
+                    <td>
+                    <div class="container-btn-add"><button class='verdetalle btn btn-primary' data-toggle='modal' data-target='#exampleModal'>Ver detalle</button></div>
+                    </td>
+                    
+                    
+                </tr>
+                    `;
+            });
+            $('#clases_alumno').html(template);
+        });
+    }
+
     $(document).on('click', '.verdetalle', (e) => {
         funcion = 'buscar_id';
         const ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;

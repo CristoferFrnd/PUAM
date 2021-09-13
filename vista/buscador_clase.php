@@ -58,6 +58,10 @@ if ($_SESSION['us_tipo'] == 1) {
                                 <label for="dur">Duración</label>
                                 <input type="text" class="form-control" id="duracion" value="ejemplo" id="dur" disabled>
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="curso">Curso</label>
+                                <input type="text" class="form-control" id="curso" value="ejemplo" disabled>
+                            </div>
                            
                         </div>
                         <div class="form-row">
@@ -69,9 +73,6 @@ if ($_SESSION['us_tipo'] == 1) {
                             
                                 <label for="adulM">Adulto mayor</label>
                                 <input type="text" class="form-control" id="adulM" value="ejemplo" disabled>
-                            
-
-
                         </div>
 
                         <div class="form-row">
@@ -79,10 +80,7 @@ if ($_SESSION['us_tipo'] == 1) {
                                 <label for="tutor">Tutor</label>
                                 <input type="text" class="form-control" id="tutor" value="ejemplo" disabled>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="curso">Curso</label>
-                                <input type="text" class="form-control" id="curso" value="ejemplo" disabled>
-                            </div>
+                           
                         </div>
 
                         <div class="form-row">

@@ -41,26 +41,34 @@ if ($_SESSION['us_tipo'] == 1) {
                     </div>
 
                     <div class="form-row">
+                        <div class="col-md-2"></div>
 
                         <div class="form-group col-md-4">
-                            <label for="nombre">Contraseña</label>
-                            <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" required="true">
+                            <label for="correo">Correo</label>
+                            <input type="text" class="form-control" id="correo" placeholder="Correo" required="true">
                         </div>
+
                     </div>
 
                     <div class="form-row">
-
+                        <div class="col-md-2"></div>
 
                         <div class="form-group col-md-4">
-                            <label for="dir">Correo</label>
-                            <input type="text" class="form-control" id="correo" placeholder="Correo" required="true">
+                            <label for="horasR">Horas Realizadas</label>
+                            <input type="number" class="form-control" id="horasR" placeholder="Horas Realizadas" required="true">
                         </div>
+
                         <div class="form-group col-md-4">
-                            <label for="tel">Telefono</label>
-                            <input type="text" class="form-control" id="tel" placeholder="Telefono" required="true">
+                            <label for="horasR">Curso</label>
+                            <select class="form-select" aria-label="Default select example" id="cursos">
+                                <option selected value="1">Informática</option>
+                            </select>
+
                         </div>
+
+                        <div class="col-md-2"></div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
                 </form>
             </div>
         </div>

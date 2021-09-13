@@ -10,7 +10,7 @@ class Usuario
         $this->acceso = $db->pdo;
     }
 
-    function crear($nombre, $contrasena, $cedula, $correo, $horasN, $horasR, $curso)
+    function crear($nombre, $contrasena, $cedula, $correo, $horasR, $curso)
     {
         $sql = "    SELECT id_usuario
                     FROM usuario
@@ -24,15 +24,14 @@ class Usuario
         if (!empty($this->objetos)) {
             echo 'noAdd';
         } else {
-            $sql = "    INSERT INTO usuario(id_usuario, nombre_usuario, correoIns_usuario, horasNecesarias_usuario, horasRealizadas_usuario, contras_usuario, cursos_id_crs, tipoUsuario_id_tipoUsuario)
-                        VALUES(:cedula, :nombre, :correo, :horasN, :horasR, :contrasena, :curso, :us_tipo)
+            $sql = "    INSERT INTO usuario(id_usuario, nombre_usuario, correoIns_usuario, horasRealizadas_usuario, contras_usuario, cursos_id_crs, tipoUsuario_id_tipoUsuario)
+                        VALUES(:cedula, :nombre, :correo, :horasR, :contrasena, :curso, :us_tipo)
             ";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(
                 ':cedula'    => $cedula,
                 ':nombre'    => $nombre,
                 ':correo'    => $correo,
-                ':horasN'    => $horasN,
                 ':horasR'    => $horasR,
                 ':contrasena' => $contrasena,
                 ':curso'    => $curso,

@@ -62,7 +62,6 @@ if ($_SESSION['us_tipo'] == 1) {
                                 <label for="curso">Curso</label>
                                 <input type="text" class="form-control" id="curso" value="ejemplo" disabled>
                             </div>
-                           
                         </div>
                         <div class="form-row">
                             <label for="tema">Tema tratado</label>

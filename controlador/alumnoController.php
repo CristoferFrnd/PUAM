@@ -24,11 +24,10 @@ if ($_POST['funcion'] == 'registrar') {
     $contrasena = $_POST['contrasena'];
     $cedula = $_POST['cedula'];
     $correo = $_POST['correo'];
-    $horasN = $_POST['horasN'];
     $horasR = $_POST['horasR'];
     $curso = $_POST['curso'];
 
-    $usuario->crear($nombre, $contrasena, $cedula, $correo, $horasN, $horasR, $curso);
+    $usuario->crear($nombre, $contrasena, $cedula, $correo, $horasR, $curso);
 }
 
 if ($_POST['funcion'] == 'editar') {

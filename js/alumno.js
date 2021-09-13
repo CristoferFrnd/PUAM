@@ -36,17 +36,16 @@ $(document).ready(function () {
     $('#form-registrar-alumno').submit(e => {
         let nombre = $('#nombre').val();
         let cedula = $('#cedula').val();
-        let apellidos = $('#apellidos').val();
-        let contrasena = $('#contrasena').val();
+        let contrasena = '123456';
         let correo = $('#correo').val();
-        let telefono = $('#tel').val();
-        let n_usuario = $('#n_us').val();
-        funcion = 'registrar';
-        $.post('../controlador/alumnoController.php', { funcion, nombre, apellidos, n_usuario, contrasena, cedula, correo, telefono }, (response) => {
-            alert(response);
-            $('#form-alumno-socio').trigger('reset');
-            location.href = '../vista/buscador_alumnos.php'
+        let horasR = $('#horasR').val();
+        let curso = $('#cursos').val();
 
+        funcion = 'registrar';
+        $.post('../controlador/alumnoController.php', { funcion, nombre, contrasena, cedula, correo, horasR, curso }, (response) => {
+            alert(response);
+            $('#form-registar-alumno').trigger('reset');
+            location.href = '../vista/registrar_alumno.php'
         });
 
         e.preventDefault();

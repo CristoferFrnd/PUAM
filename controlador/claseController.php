@@ -43,7 +43,7 @@ if ($_POST['funcion'] == 'listar') {
 }
 
 if ($_POST['funcion'] == 'buscar_id') {
-    $id = $_post['ID'];
+    $id = $_POST['ID'];
     
     $clase->buscar_clase_id($id);
     $json = array();

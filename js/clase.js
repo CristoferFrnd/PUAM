@@ -5,7 +5,6 @@ $(document).ready(function () {
     function listar_clases(consulta) {
         funcion = "listar";
         $.post('../controlador/claseController.php', { consulta, funcion }, (response) => {
-
             const CLASES = JSON.parse(response);
             let template = ``;
             CLASES.forEach(clase => {
@@ -37,7 +36,6 @@ $(document).ready(function () {
             $('#tema').val(CLASE.tema_clase);
             $('#tutor').val(CLASE.tutor);
             $('#adulM').val(CLASE.nombre_adMay);
-            console.log(response);
         });
     
     });
@@ -56,5 +54,6 @@ function datos_clase() {
         $('#adulM').val(CLASE.nombre_adMay);
         console.log(response);
     });
+  
 }
 

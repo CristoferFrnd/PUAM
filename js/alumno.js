@@ -88,7 +88,7 @@ $(document).ready(function () {
             $('#n_us').val(ALUMNO.n_usuario);
             $('#id_us').val(ID);
         });
-
+        
     });
 
     function datos_alumno() {

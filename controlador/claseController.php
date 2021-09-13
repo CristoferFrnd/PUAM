@@ -38,6 +38,29 @@ if ($_POST['funcion'] == 'listar') {
             
         );
     }
-    $jsonString= json_encode($json);
-    echo $jsonString;  
+    $jsonString = json_encode($json);
+    echo $jsonString;
 }
+
+if ($_POST['funcion'] == 'buscar_id') {
+    $id = $_post['id_clase'];
+    $clase->buscar_clase_id($id);
+    $json = array();
+    foreach ($clase->objetos as $objeto) {
+        $json[] = array(
+            'fecha_clase' => $objeto->fecha_clase,
+            'duracion_clase' => $objeto->duracion_clase,
+            'tema_clase' => $objeto->tema_clase,
+            'tutor'  => $objeto->tutor,
+            'nombre_crs' => $objeto->nombre_crs,
+            'descripcion_tipoClase' => $objeto->descripcion_tipoClase,
+            'nombre_adMay'  => $objeto->nombre_adMay,
+            'id_adMay'  => $objeto->id_adMay
+            
+        );
+    }
+    $jsonString = json_encode($json);
+    echo $jsonString;
+}
+
+

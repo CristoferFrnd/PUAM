@@ -7,7 +7,6 @@ $(document).ready(function () {
         $.post('../controlador/alumnoController.php', { consulta, funcion }, (response) => {
             const ALUMNOS = JSON.parse(response);
             let template = ``;
-            console.log(response);
             ALUMNOS.forEach(alumno => {
                 template += `
                     <tr us_id=${alumno.id_usuario} us_ap=${alumno.apellidos}>
@@ -95,6 +94,7 @@ $(document).ready(function () {
         funcion = "buscar_us_id";
         ID = $('#id_us').val();
         $.post('../controlador/alumnoController.php', { ID, funcion }, (response) => {
+            console.log(response);
             const ALUMNO = JSON.parse(response);
             $('#nombre').val(ALUMNO.nombre);
             $('#correo').val(ALUMNO.correo);

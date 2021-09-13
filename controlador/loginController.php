@@ -13,7 +13,7 @@ if (!empty($_SESSION['us_tipo'])) {
             break;
 
         case 2:
-            header('Location: ../vista/editar_alumno.php');
+            header('Location: ../vista/registrar_clase.php');
             break;
 
         default:
@@ -36,7 +36,7 @@ if (!empty($_SESSION['us_tipo'])) {
                 break;
 
             case 2:
-                header('Location: ../vista/editar_alumno.php');
+                header('Location: ../vista/registrar_clase.php');
                 break;
 
             default:

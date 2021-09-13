@@ -55,6 +55,7 @@ if ($_POST['funcion'] == 'buscar_us_id') {
             'correo' => $objeto->correoins_usuario,
             'horasN' => $objeto->horasnecesarias_usuario,
             'horasR' => $objeto->horasrealizadas_usuario,
+            'pass' => $objeto->contras_usuario,
             'curso'  => $objeto->nombre_crs,
             'tel'  => $objeto->tel_usuario,
         );

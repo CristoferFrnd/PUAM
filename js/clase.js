@@ -10,7 +10,7 @@ $(document).ready(function () {
             let template = ``;
             CLASES.forEach(clase => {
                 template += `
-                    <tr >
+                    <tr data-id="${clase.id_clase}">
                     <td>${clase.fecha_clase}</td>
                     <td>${clase.nombre_adMay}</td>
                     <td>${clase.tutor}</td>

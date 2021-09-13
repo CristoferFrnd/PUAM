@@ -29,7 +29,6 @@ if ($_POST['funcion'] == 'listar') {
             'id_clase' => $objeto->id_clase,
             'fecha_clase' => $objeto->fecha_clase,
             'duracion_clase' => $objeto->duracion_clase,
-           
             'tema_clase' => $objeto->tema_clase,
             'tutor'  => $objeto->tutor,
             'nombre_crs' => $objeto->nombre_crs,

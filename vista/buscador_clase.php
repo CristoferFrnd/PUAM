@@ -35,15 +35,76 @@ if ($_SESSION['us_tipo'] == 1) {
                     </div>
                 </div>
             </section>
-
         </div>
 
+        <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Detalle de clase</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    
+                        <div class="form-row">
+                            <input type="text" id="id_clase" hidden="true">
+                            <div class="form-group col-md-8">
+                                <label for="fecha">Fecha</label>
+                                <input type="text" class="form-control" id="fecha" value="ejemplo" disabled>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="dur">Duración</label>
+                                <input type="text" class="form-control" id="duracion" value="ejemplo" id="dur" disabled>
+                            </div>
+                           
+                        </div>
+                        <div class="form-row">
+                            <label for="tema">Tema tratado</label>
+                            <input type="text" class="form-control" id="tema" value="ejemplo" disabled>
+                        </div>
+
+                        <div class="form-row">
+                            
+                                <label for="adulM">Adulto mayor</label>
+                                <input type="text" class="form-control" id="adulM" value="ejemplo" disabled>
+                            
+
+
+                        </div>
+
+                        <div class="form-row">
+                        <div class="form-group col-md-6">
+                                <label for="tutor">Tutor</label>
+                                <input type="text" class="form-control" id="tutor" value="ejemplo" disabled>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="curso">Curso</label>
+                                <input type="text" class="form-control" id="curso" value="ejemplo" disabled>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <label for="img">Evidencia</label>
+                            <input type="text" class="form-control" id="img" value="ejemplo" disabled>
+
+                        </div>
 
 
 
+                    </div>
 
+
+
+                <div class="modal-footer">
+
+                </div>
+               
+            </div>
+        </div>
+    </div>
     <body>
-   
     </body>
 
 <?php

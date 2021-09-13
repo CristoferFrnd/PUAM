@@ -62,3 +62,24 @@ if ($_POST['funcion'] == 'buscar_id') {
     $jsonString = json_encode($json[0]);
     echo $jsonString;
 }
+
+if ($_POST['funcion'] == 'buscar_clase_alumno') {
+    $id = $_POST['id'];
+    $clase->buscar_clase_alumno($id);
+    $json = array();
+    foreach ($clase->objetos as $objeto) {
+        $json[] = array(
+            'fecha_clase' => $objeto->fecha_clase,
+            'duracion_clase' => $objeto->duracion_clase,
+            'tema_clase' => $objeto->tema_clase,
+            'tutor'  => $objeto->tutor,
+            'nombre_crs' => $objeto->nombre_crs,
+            'descripcion_tipoClase' => $objeto->descripcion_tipoclase,
+            'nombre_adMay'  => $objeto->nombre_admay,
+            'id_adMay'  => $objeto->id_admay
+            
+        );
+    }
+    $jsonString = json_encode($json);
+    echo $jsonString;
+}

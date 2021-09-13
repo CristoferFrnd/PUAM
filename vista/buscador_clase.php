@@ -85,11 +85,7 @@ if ($_SESSION['us_tipo'] == 1) {
                     <div class="form-row">
                         <label for="img">Evidencia</label>
                         <input type="text" class="form-control" id="img" disabled>
-
                     </div>
-
-
-
                 </div>
 
             </div>
@@ -100,8 +96,8 @@ if ($_SESSION['us_tipo'] == 1) {
         </div>
     </div>
     </body>
-
-<?php
+    
+    <?php
     include_once 'layouts/footer.php';
 } else {
     header('Location: ../index.php');

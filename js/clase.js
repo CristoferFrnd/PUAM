@@ -1,5 +1,9 @@
 $(document).ready(function () {
-    listar_clases();
+    if ($('#us_tipo').val() == 2) {
+        listar_clases_al($('#us_id').val());
+    } else {
+        listar_clases();
+    }
     //datos_alumno();
 
     function listar_clases(consulta) {
@@ -24,10 +28,32 @@ $(document).ready(function () {
         });
     }
 
+    function listar_clases_al(id) {
+        funcion = "buscar_clase_alumno";
+        $.post('../controlador/claseController.php', { id, funcion }, (response) => {
+            console.log(response);
+            const CLASES = JSON.parse(response);
+            let template = ``;
+            CLASES.forEach(clase => {
+                template += `
+                <tr>
+                    <td>${clase.fecha_clase}</td>
+                    <td>${clase.nombre_adMay}</td>
+                    <td>${clase.nombre_crs}</td>
+                    <td>${clase.descripcion_tipoClase}</td>
+                    <td><button class='verdetalle btn btn-primary' data-toggle='modal' data-target='#exampleModal'>Ver detalle</button></td>
+                </tr>
+                    `;
+            });
+            $('#clases_alumno').html(template);
+        });
+    }
+
     $(document).on('click', '.verdetalle', (e) => {
         funcion = 'buscar_id';
         const ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
         const ID = $(ELEMENTO).attr('data-id');
+        
         $.post('../controlador/claseController.php', { funcion, ID }, (response) => {
             const CLASE = JSON.parse(response);
             $('#fecha').val(CLASE.fecha_clase);

@@ -88,6 +88,22 @@ class Clase
             return $this->objetos;
     }
 
+    function buscar_clase_alumno($id){
+        $sql = "SELECT id_clase, fecha_clase, duracion_clase, evidencia_clase, tema_clase, tutores_id_tutor AS tutor, nombre_crs, descripcion_tipoClase, nombre_adMay, id_adMay FROM clase
+        JOIN curso on cursos_id_crs=id_crs
+        JOIN tipoClase on tipoClase_id_tipoClase=id_tipoClase
+        JOIN adultoMay on adultoMay_id_adMay=id_adMay
+        JOIN usuario on tutores_id_tutor=id_usuario
+        WHERE tutores_id_tutor = :id
+                    ";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(
+                ':id' => $id
+            ));
+            $this->objetos = $query->fetchall();
+            return $this->objetos;
+    }
+
     function eliminar($id){
         $sql = "DELETE FROM clase
                 WHERE id_clase=:id

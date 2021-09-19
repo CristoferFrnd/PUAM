@@ -1,5 +1,6 @@
 <?php
 include '../modelo/Clase.php';
+session_start();
 $clase = new Clase();
 
 
@@ -12,22 +13,24 @@ if (isset($_POST["submit"])) {
         /*
          * Insert image data into database
          */
-        // $fecha = $_POST['fecha'];
-        // $duracion = $_POST['duracion'];
-        // $adulM = $_POST['adulM'];
-        // $tema = $_POST['tema'];
-        // $tutor = $_POST['tutor'];
-        // $curso = $_POST['curso'];
-        // $tipo = $_POST['tipo'];
-
-        $fecha = '2021-08-30';
-        $duracion = 2;
-        $adulM = '3456789';
-        $tema = 'prueba';
-        $tutor = '234567890';
+        $fecha = $_POST['fecha'];
+        $duracion = $_POST['duracion'];
+        $adulM = $_POST['adulM'];
+        $tema = $_POST['tema'];
+        $tutor = $_SESSION['usuario'];
         $curso = 1;
-        $tipo = 2;
+        $tipo = 1;
 
+        // $fecha = '2021-08-30';
+        // $duracion = 2;
+        // $adulM = '3456789';
+        // $tema = 'prueba';
+        // $tutor = '1798765432';
+        // $curso = 1;
+        // $tipo = 1;
+           
+        echo $fecha."\n".$duracion."\n".$adulM."\n".$tema."\n".$tutor."\n".$curso."\n".$tipo;
         $clase->crear($fecha, $duracion, $imgContent, $adulM, $tema, $tutor, $curso, $tipo);
+        header('Location: ../vista/registrar_clase.php');
     }
 }

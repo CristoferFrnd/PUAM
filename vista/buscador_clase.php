@@ -19,7 +19,7 @@ if ($_SESSION['us_tipo'] == 1) {
                             <thead>
                                 <tr>
                                     <th>Fecha</th>
-                                    <th>Adulto Mayor</th>
+                                    <th>Participante</th>
                                     <th>Tutor</th>
                                     <th>Curso</th>
                                     <th>Tipo de Clase</th>
@@ -70,7 +70,7 @@ if ($_SESSION['us_tipo'] == 1) {
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="adulM">Adulto mayor</label>
+                            <label for="adulM">Particpante</label>
                             <input type="text" class="form-control" id="adulM" disabled>
                         </div>
                         <div class="form-group col-md-6">
@@ -84,7 +84,7 @@ if ($_SESSION['us_tipo'] == 1) {
 
                     <div class="form-row">
                         <label for="img">Evidencia</label>
-                        <input type="text" class="form-control" id="img" disabled>
+                        <img src="../img/reunion.jpg" class="img-fluid" alt="Eniun" id="img">
                     </div>
                 </div>
 
@@ -94,6 +94,7 @@ if ($_SESSION['us_tipo'] == 1) {
 
             </div>
         </div>
+    
     </div>
     </body>
     

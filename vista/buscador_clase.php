@@ -70,7 +70,7 @@ if ($_SESSION['us_tipo'] == 1) {
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="adulM">Particpante</label>
+                            <label for="adulM">Participante</label>
                             <input type="text" class="form-control" id="adulM" disabled>
                         </div>
                         <div class="form-group col-md-6">
@@ -94,11 +94,11 @@ if ($_SESSION['us_tipo'] == 1) {
 
             </div>
         </div>
-    
+
     </div>
     </body>
-    
-    <?php
+
+<?php
     include_once 'layouts/footer.php';
 } else {
     header('Location: ../index.php');

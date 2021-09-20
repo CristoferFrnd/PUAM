@@ -62,6 +62,7 @@ $(document).ready(function () {
             $('#tema').val(CLASE.tema_clase);
             $('#tutor').val(CLASE.tutor);
             $('#adulM').val(CLASE.nombre_adMay);
+            
         });
     
     });

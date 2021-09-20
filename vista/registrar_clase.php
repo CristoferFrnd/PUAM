@@ -48,7 +48,7 @@ if ($_SESSION['us_tipo'] == 2) {
     <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+            <div class="modal-header">
                     <h5 class="modal-title">Detalle de clase</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -102,7 +102,7 @@ if ($_SESSION['us_tipo'] == 2) {
 
             </div>
         </div>
-    
+
     </div>
 
     <div class="modal fade" tabindex="-1" role="dialog" id="agregarClaseModal" aria-hidden="true">
@@ -144,14 +144,14 @@ if ($_SESSION['us_tipo'] == 2) {
                         </div>
 
                         <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="img">Evidencia: </label>
-                            <input type="file" name="image" />
+                            <div class="form-group col-md-6">
+                                <label for="img">Evidencia: </label>
+                                <input type="file" name="image" />
                             </div>
                         </div>
 
 
-                        <input type="submit" name="submit" value="Registrar" class="btn btn-primary"/>
+                        <input type="submit" name="submit" value="Registrar" class="btn btn-primary" />
                     </form>
                 </div>
             </div>

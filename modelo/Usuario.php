@@ -152,8 +152,22 @@ class Usuario
     function buscar_crs_est($id)
     {
         $sql = "SELECT id_usuario, nombre_usuario FROM usuario
-                WHERE cursos_id_crs=:id;
+                WHERE cursos_id_crs=:id
                     ";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(
+                ':id' => $id
+            ));
+            $this->objetos = $query->fetchall();
+            return $this->objetos;
+    }
+
+    function buscar_adulM_est($id)
+    {
+        $sql = "SELECT id_adMay,nombre_adMay,celular_AdMay,telefonoC_AdMay, correoE_AdMay 
+        FROM adultoMay_has_cursos
+        JOIN adultoMay ON adultoMay_id=id_adMay
+        WHERE tutores_id_tutor=:id";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(
                 ':id' => $id

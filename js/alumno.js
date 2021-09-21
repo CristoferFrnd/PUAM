@@ -38,11 +38,12 @@ $(document).ready(function () {
         let cedula = $('#cedula').val();
         let contrasena = '123456';
         let correo = $('#correo').val();
+        let telefono = $('#telefono').val();
         let horasR = $('#horasR').val();
         let curso = $('#cursos').val();
 
         funcion = 'registrar';
-        $.post('../controlador/alumnoController.php', { funcion, nombre, contrasena, cedula, correo, horasR, curso }, (response) => {
+        $.post('../controlador/alumnoController.php', { funcion, nombre, contrasena, cedula, correo, telefono, horasR, curso }, (response) => {
             alert(response);
             $('#form-registar-alumno').trigger('reset');
             location.href = '../vista/registrar_alumno.php'

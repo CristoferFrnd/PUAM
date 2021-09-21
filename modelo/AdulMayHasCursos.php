@@ -32,11 +32,10 @@ class AdulMayHasCursos
         }
     }
 
-
-
+   
     function eliminar($id){
-        $sql = "DELETE FROM adultoMay
-                WHERE id_adMay = :id
+        $sql = "DELETE FROM adultoMay_has_cursos
+                WHERE adultoMay_has_cursos = :id
         ";
         $query=$this->acceso->prepare($sql);
         if(!empty($query->execute(array(':id' => $id)))){

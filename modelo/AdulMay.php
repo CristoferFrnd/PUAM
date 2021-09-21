@@ -84,7 +84,25 @@ class AdulMay
         }
     }
 
-    function buscar_am_id($id){
+    function act_estado($id,$estado)
+    {
+        if($estado == 0){
+            $sql = "UPDATE adultoMay SET activ_AdMay = 1
+            WHERE id_adMay = :id";
+        } else {
+            $sql = "UPDATE adultoMay SET activ_AdMay = 0
+            WHERE id_adMay = :id";
+        }
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+            ':id' => $id
+        ));
+        $this->objetos = $query->fetchall();
+        echo "actualizado";
+    }
+
+    function buscar_am_id($id)
+    {
         $sql = "SELECT * FROM adultoMay
                     WHERE id_adMay = :id
                     ";
@@ -96,7 +114,8 @@ class AdulMay
             return $this->objetos;
     }
 
-    function buscar_crs_adulMay($id){
+    function buscar_crs_adulMay($id)
+    {
         $sql = "SELECT nombre_crs,nombre_usuario,fechaIngreso_curso FROM adultoMay_has_cursos 
                 JOIN curso ON cursos_id_crs = id_crs
                 JOIN usuario ON tutores_id_tutor = id_usuario
@@ -110,7 +129,8 @@ class AdulMay
             return $this->objetos;
     }
 
-    function eliminar($id){
+    function eliminar($id)
+    {
         $sql = "DELETE FROM adultoMay
                 WHERE id_adMay = :id
         ";

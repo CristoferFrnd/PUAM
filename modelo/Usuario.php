@@ -174,8 +174,8 @@ class Usuario
             ));
             $this->objetos = $query->fetchall();
             return $this->objetos;
-    }
-
+    }    
+    
     function eliminar($id)
     {
         $sql = "DELETE FROM usuario

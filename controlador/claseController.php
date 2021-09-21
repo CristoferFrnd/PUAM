@@ -34,8 +34,7 @@ if ($_POST['funcion'] == 'listar') {
             'nombre_crs' => $objeto->nombre_crs,
             'descripcion_tipoClase' => $objeto->descripcion_tipoclase,
             'nombre_adMay'  => $objeto->nombre_admay,
-            'id_adMay'  => $objeto->id_adMay
-            
+            'id_adMay'  => $objeto->id_adMay,
         );
     }
     $jsonString = json_encode($json);

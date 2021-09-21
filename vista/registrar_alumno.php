@@ -54,7 +54,14 @@ if ($_SESSION['us_tipo'] == 1) {
                                 <input type="text" class="form-control" id="correo" placeholder="Correo" required="true">
                             </div>
 
+                            <div class="form-group col-md-4">
+                                <label for="telefono">Telefono</label>
+                                <input type="text" class="form-control" id="telefono" placeholder="Telefono" required="true">
+                            </div>
+
                         </div>
+
+                       
 
                         <div class="form-row">
                             <div class="col-md-2"></div>
@@ -65,7 +72,7 @@ if ($_SESSION['us_tipo'] == 1) {
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="horasR">Curso</label>
+                                <label for="cursos">Curso</label>
                                 <select class="form-select" aria-label="Default select example" id="cursos">
                                     <option selected value="1">Informática</option>
                                 </select>
@@ -74,7 +81,11 @@ if ($_SESSION['us_tipo'] == 1) {
 
                             <div class="col-md-2"></div>
                         </div>
+                        <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Registrar</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                        
                     </form>
                 </div>
             </div>

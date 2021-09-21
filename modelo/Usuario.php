@@ -58,7 +58,7 @@ class Usuario
             ));
             $this->objetos = $query->fetchall();
             echo 'edit';
-        }
+    }
 
     function buscar()
     {
@@ -133,7 +133,8 @@ class Usuario
         return $this->objetos;
     }
 
-    function buscar_us_id($id){
+    function buscar_us_id($id)
+    {
         $sql = "SELECT * FROM usuario
                 JOIN curso on cursos_id_crs=id_crs
                     WHERE id_usuario = :id
@@ -146,7 +147,21 @@ class Usuario
             return $this->objetos;
     }
 
-    function eliminar($id){
+    function buscar_crs_est($id)
+    {
+        $sql = "SELECT id_usuario, nombre_usuario FROM usuario
+                WHERE cursos_id_crs=:id;
+                    ";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(
+                ':id' => $id
+            ));
+            $this->objetos = $query->fetchall();
+            return $this->objetos;
+    }
+
+    function eliminar($id)
+    {
         $sql = "DELETE FROM usuario
                 WHERE id_usuario=:id
         ";

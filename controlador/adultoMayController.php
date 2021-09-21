@@ -58,3 +58,18 @@ if ($_POST['funcion'] == 'buscar_us_id') {
     $jsonString = json_encode($json[0]);
     echo $jsonString;
 }
+
+if ($_POST['funcion'] == 'buscar_crs_adulMay') {
+    $id=$_POST['id_adMay'];
+    $adulMay->buscar_crs_adulMay($id);
+    $json = array();
+    foreach ($adulMay->objetos as $objeto) {
+        $json[] = array(
+            'nombreC' => $objeto->nombre_crs,
+            'nombreP' => $objeto->nombre_usuario,
+            'fechaI' => $objeto->fechaIngreso_curso
+        );
+    }
+    $jsonString = json_encode($json[0]);
+    echo $jsonString;
+}

@@ -96,6 +96,20 @@ class AdulMay
             return $this->objetos;
     }
 
+    function buscar_crs_adulMay($id){
+        $sql = "SELECT nombre_crs,nombre_usuario,fechaIngreso_curso FROM adultoMay_has_cursos 
+                JOIN curso ON cursos_id_crs = id_crs
+                JOIN usuario ON tutores_id_tutor = id_usuario
+                WHERE adultoMay_id =:id;
+                    ";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(
+                ':id' => $id
+            ));
+            $this->objetos = $query->fetchall();
+            return $this->objetos;
+    }
+
     function eliminar($id){
         $sql = "DELETE FROM adultoMay
                 WHERE id_adMay = :id

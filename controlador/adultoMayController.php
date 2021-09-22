@@ -11,7 +11,8 @@ if ($_POST['funcion'] == 'listar') {
             'nombre' => $objeto->nombre_admay,
             'telefono' => $objeto->telefonoc_admay,
             'celular' => $objeto->celular_admay,
-            'correo' => $objeto->correoe_admay
+            'correo' => $objeto->correoe_admay,
+            'estado' => $objeto->activ_admay
         );
     }
     $jsonString= json_encode($json);
@@ -72,4 +73,11 @@ if ($_POST['funcion'] == 'buscar_crs_adulMay') {
     }
     $jsonString = json_encode($json[0]);
     echo $jsonString;
+}
+
+if ($_POST['funcion'] == 'actualizar-estado') {
+    $id = $_POST['id'];
+    $estado = $_POST['estado'];
+    $adulMay->act_estado($id, $estado);
+    echo 'actualizado';
 }

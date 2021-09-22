@@ -100,6 +100,7 @@ if ($_SESSION['us_tipo'] == 1) {
                                     <th>Correo</th>
                                     <th>Telefono</th>
                                     <th>Estado</th>
+                                    <th>Editar</th>
                                 </tr>
                             </thead>
                             <tbody id="adultoMay_tab">

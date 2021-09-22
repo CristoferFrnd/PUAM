@@ -17,7 +17,7 @@ if ($_SESSION['us_tipo'] == 1) {
 <body>
 
     <!-- modal Registrar Alumno -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
+    <div class="modal fade" tabindex="-1" role="dialog" id="ModalAgregar" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -92,18 +92,102 @@ if ($_SESSION['us_tipo'] == 1) {
         </div>
     </div>
 
+    <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Alumno</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-editar-alumno">
+                        <div class="form-row">
+
+                            <div class="col-md-2"></div>
+
+                            <div class="form-group col-md-4">
+                                <label for="nombreE">Nombre</label>
+                                <input type="text" class="form-control" id="nombreE" placeholder="Nombre" required="true" disabled>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="cedulaE">N. Cedula</label>
+                                <input type="text" class="form-control" id="cedulaE" placeholder="Cedula" required="true" disabled>
+                            </div>
+
+                            <div class="col-md-2"></div>
+
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-md-2"></div>
+
+                            <div class="form-group col-md-4">
+                                <label for="correoE">Correo</label>
+                                <input type="text" class="form-control" id="correoE" placeholder="Correo" required="true" disabled>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="telE">Telefono</label>
+                                <input type="text" class="form-control" id="telE" placeholder="Telefono" required="true">
+                            </div>
+
+                        </div>
+
+                       
+
+                        <div class="form-row">
+                            <div class="col-md-2"></div>
+
+                            <div class="form-group col-md-4">
+                                <label for="horasRE">Horas Realizadas</label>
+                                <input type="number" class="form-control" id="horasRE" placeholder="Horas Realizadas" required="true" >
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="cursos">Curso</label>
+                                <select class="form-select" aria-label="Default select example" id="cursos">
+                                    <option selected value="1">Informática</option>
+                                </select>
+
+                            </div>
+
+                            <div class="col-md-2"></div>
+                        </div>
+                        <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- TABLITA-->
-    <div class="content-wrapper container">
+    <div class="content-wrapper container top">
         <br>
         <section>
             <div class="container-fluid">
-                <div class="container-btn-add">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user-plus"></i></button>
-                </div>
+                
                 <div class="card card-success animate__animated animate__bounceInRight">
+                <div class="titulo-tabla">
+                <h3 >LISTADO DE TUTORES</h3>
+                
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalAgregar"><i class="fas fa-user-plus"></i> AGREGAR</button>
+                </div>
+                
                     <div class="card-body">
-                        <table id="tabla" class="display table table-hover text-nowrap" style="width:100%">
+                    <div class="container-btn-add">
+                    <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
+                    <i class="fa fa-search lupa" aria-hidden="true"></i>
+                    
+                     </div>
+                        <table id="tabla" class="table table-striped table-bordered table-sm" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>N. Cedula</th>

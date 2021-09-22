@@ -69,7 +69,9 @@ class Usuario
             $sql = "SELECT id_usuario, nombre_usuario, correoIns_usuario, horasNecesarias_usuario, horasRealizadas_usuario, nombre_crs, tel_usuario FROM usuario
             JOIN curso on cursos_id_crs=id_crs
             WHERE nombre_usuario LIKE :consulta
-            OR correoIns_usuario LIKE :consulta
+            OR correoIns_usuario LIKE :consulta 
+            OR id_usuario LIKE :consulta
+            OR nombre_crs LIKE :consulta
             AND tipoUsuario_id_tipoUsuario = 2
                         ";
             $query = $this->acceso->prepare($sql);

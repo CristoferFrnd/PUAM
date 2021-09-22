@@ -5,6 +5,7 @@ $(document).ready(function () {
     function listar_alumnos(consulta) {
         funcion = "listar";
         $.post('../controlador/alumnoController.php', { consulta, funcion }, (response) => {
+            
             const ALUMNOS = JSON.parse(response);
             let template = ``;
             ALUMNOS.forEach(alumno => {
@@ -24,7 +25,8 @@ $(document).ready(function () {
         });
     }
 
-    $(document).on('keyup', '#buscar-alumno', function () {
+    $(document).on('keyup', '#search', function () {
+        console.log('prueba')
         let valor = $(this).val();
         if (valor != '') {
             listar_alumnos(valor);
@@ -79,14 +81,14 @@ $(document).ready(function () {
         const ID = $(ELEMENTO).attr('us_id');
         $.post('../controlador/alumnoController.php', { funcion, ID }, (response) => {
             const ALUMNO = JSON.parse(response);
-            $('#nombre').val(ALUMNO.nombre);
-            $('#apellidos').val(ALUMNO.apellidos);
-            $('#correo').val(ALUMNO.correo);
-            $('#contrasena').val(ALUMNO.contrasena);
-            $('#tel').val(ALUMNO.telefono);
-            $('#cedula').val(ALUMNO.n_cedula);
-            $('#n_us').val(ALUMNO.n_usuario);
-            $('#id_us').val(ID);
+            console.log(response);
+            $('#nombreE').val(ALUMNO.nombre);
+            $('#apellidosE').val(ALUMNO.apellidos);
+            $('#correoE').val(ALUMNO.correo);
+            $('#contrasenaE').val(ALUMNO.contrasena);
+            $('#telE').val(ALUMNO.tel);
+            $('#cedulaE').val(ALUMNO.id_usuario);
+            $('#horasRE').val(ALUMNO.horasR);
         });
 
     });

@@ -23,9 +23,6 @@ include_once 'layouts/header.php';
                         <h1 class="text-center">Editar Datos</h1>
                     </div>
 
-
-
-                    
                     <form id="form-editar-alumno">
                         <input type="text" id="id_us" hidden="true" value="<?php echo $_SESSION['usuario']; ?>">
 
@@ -42,7 +39,7 @@ include_once 'layouts/header.php';
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
-                                <label for="dir">Correo</label>
+                                <label for="correo">Correo</label>
                                 <input type="text" class="form-control" id="correo" placeholder="Correo" value="<?php echo $_SESSION['correo']; ?>" required="true" disabled>
                             </div>
                             <div class="form-group col-md-4">
@@ -50,7 +47,7 @@ include_once 'layouts/header.php';
                                 <input type="text" class="form-control" id="tel" placeholder="Telefono" required="true">
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="nombre">Contraseña</label>
+                                <label for="contrasena">Contraseña</label>
                                 <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" required="true">
                             </div>
                         </div>

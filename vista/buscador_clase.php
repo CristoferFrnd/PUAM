@@ -9,13 +9,18 @@ if ($_SESSION['us_tipo'] == 1) {
     <?php
     include_once 'layouts/nav.php';
     ?>
-    <div class="content-wrapper container">
+    <div class="content-wrapper container top">
         <br>
         <section>
             <div class="container-fluid">
                 <div class="card card-success animate__animated animate__bounceInRight">
+                  <h3 style="padding: 20px;" >LISTADO DE CLASES</h3>
                     <div class="card-body">
-                        <table id="tabla" class="display table table-hover text-nowrap" style="width:100%">
+                    <div class="container-btn-add">
+                    <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
+                    <i class="fa fa-search lupa" aria-hidden="true"></i>
+                    </div><br/>
+                        <table id="tabla" class="table table-striped table-bordered table-sm" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Fecha</th>
@@ -23,6 +28,7 @@ if ($_SESSION['us_tipo'] == 1) {
                                     <th>Tutor</th>
                                     <th>Curso</th>
                                     <th>Tipo de Clase</th>
+                                    <th>Detalle</th>
                                 </tr>
                             </thead>
                             <tbody id="clases">
@@ -86,6 +92,11 @@ if ($_SESSION['us_tipo'] == 1) {
                         <label for="img">Evidencia</label>
                         <img src="../img/reunion.jpg" class="img-fluid" alt="Eniun" id="img">
                     </div>
+
+                    <div class="modal-footer">
+                    
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
                 </div>
 
             </div>

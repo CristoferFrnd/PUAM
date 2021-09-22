@@ -17,8 +17,7 @@ if ($_SESSION['us_tipo'] == 1) {
 <body>
 
 
-
-    <!-- modal editar alumno -->    
+    <!-- modal editar Adulto Mayor -->
     <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -43,7 +42,6 @@ if ($_SESSION['us_tipo'] == 1) {
 
                         <div class="form-row">
                             <div class=col-md-2></div>
-
 
                             <div class="form-group col-md-4">
                                 <label for="cedula">N. Cedula</label>
@@ -82,43 +80,31 @@ if ($_SESSION['us_tipo'] == 1) {
         </div>
     </div>
 
-    <!-- modal confirmar cambio de estado -->
-    <div class="modal fade" id="estadoM" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                
-                <div class="modal-header">
-                    ¿Está seguro de cambiar el estado del participante?
-                </div>
-                <div id="msg" class="modal-body">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-danger conf_cambio" data-dismiss="modal">Si</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 
     <!-- TABLITA-->
-    <div class="content-wrapper container">
+    <div class="content-wrapper container top">
         <br>
         <section>
             <div class="container-fluid">
-                <div class="container-btn-add">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user-plus"></i></button>
-                </div>
-                <div class="card card-success animate__animated animate__bounceInRight">
+            <div class="card card-success animate__animated animate__bounceInRight">
+            <div class="titulo-tabla">
+            <h3  >LISTADO DE PARTICIPANTES</h3>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user-plus"></i> AGREGAR</button>
+                </div>  
                     <div class="card-body">
-                        <table id="tabla" class="display table table-hover text-nowrap" style="width:100%">
+                    <div class="container-btn-add">
+                    <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search1">
+                    <i class="fa fa-search lupa" aria-hidden="true"></i>
+                    
+                     </div>
+                        <table id="tabla" class="table table-striped table-bordered table-sm" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>N. Cedula</th>
-                                    <th>Apellidos</th>
                                     <th>Nombre</th>
+                                    <th>Teléfono</th>
+                                    <th>Celular</th>
                                     <th>Correo</th>
-                                    <th>Telefono</th>
                                     <th>Estado</th>
                                     <th>Editar</th>
                                 </tr>

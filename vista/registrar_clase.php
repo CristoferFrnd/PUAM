@@ -45,7 +45,6 @@ if ($_SESSION['us_tipo'] == 2) {
         </section>
     </div>
 
-    <!-- MODAL VER DETALLE -->
     <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -61,30 +60,30 @@ if ($_SESSION['us_tipo'] == 2) {
                         <input type="text" id="id_clase" hidden="true">
                         <div class="form-group col-md-4">
                             <label for="fecha">Fecha</label>
-                            <input type="text" class="form-control" id="fechaD" disabled>
+                            <input type="text" class="form-control" id="fecha" disabled>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="duracion">Duración (H)</label>
-                            <input type="text" class="form-control" id="duracionD" disabled>
+                            <input type="text" class="form-control" id="duracion" disabled>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="curso">Curso</label>
-                            <input type="text" class="form-control" id="cursoD" disabled>
+                            <input type="text" class="form-control" id="curso" disabled>
                         </div>
                     </div>
                     <div class="form-row">
                         <label for="tema">Tema tratado</label>
-                        <input type="text" class="form-control" id="temaD" disabled>
+                        <input type="text" class="form-control" id="tema" disabled>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="adulM">Particpante</label>
-                            <input type="text" class="form-control" id="adulMD" disabled>
+                            <input type="text" class="form-control" id="adulM" disabled>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="tutor">Tutor</label>
-                            <input type="text" class="form-control" id="tutorD" disabled>
+                            <input type="text" class="form-control" id="tutor" disabled>
                         </div>
                     </div>
 
@@ -106,7 +105,6 @@ if ($_SESSION['us_tipo'] == 2) {
 
     </div>
 
-    <!-- MODAL CLASE REGISTRO --> 
     <div class="modal fade" tabindex="-1" role="dialog" id="agregarClaseModal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -147,7 +145,7 @@ if ($_SESSION['us_tipo'] == 2) {
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="image">Evidencia: </label>
+                                <label for="img">Evidencia: </label>
                                 <input type="file" name="image" />
                             </div>
                         </div>

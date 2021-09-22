@@ -3,7 +3,6 @@ include '../modelo/Clase.php';
 session_start();
 $clase = new Clase();
 
-
 if (isset($_POST["submit"])) {
     $check = getimagesize($_FILES["image"]["tmp_name"]);
     if ($check !== false) {
@@ -28,7 +27,7 @@ if (isset($_POST["submit"])) {
         // $tutor = '1798765432';
         // $curso = 1;
         // $tipo = 1;
-           
+        
         echo $fecha."\n".$duracion."\n".$adulM."\n".$tema."\n".$tutor."\n".$curso."\n".$tipo;
         $clase->crear($fecha, $duracion, $imgContent, $adulM, $tema, $tutor, $curso, $tipo);
         header('Location: ../vista/registrar_clase.php');

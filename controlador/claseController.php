@@ -68,6 +68,7 @@ if ($_POST['funcion'] == 'buscar_clase_alumno') {
     $json = array();
     foreach ($clase->objetos as $objeto) {
         $json[] = array(
+            'id_clase' => $objeto-> id_clase,
             'fecha_clase' => $objeto->fecha_clase,
             'duracion_clase' => $objeto->duracion_clase,
             'tema_clase' => $objeto->tema_clase,

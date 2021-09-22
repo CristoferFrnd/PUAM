@@ -37,7 +37,7 @@ class Clase
     {
         if (!empty($_POST['consulta'])) {
             $consulta = $_POST['consulta'];
-            $sql = "SELECT id_clase fecha_clase, duracion_clase, evidencia_clase, tema_clase, nombre_usuario AS tutor, nombre_crs, descripcion_tipoClase, nombre_adMay, id_adMay FROM clase
+            $sql = "SELECT id_clase, fecha_clase, duracion_clase, evidencia_clase, tema_clase, nombre_usuario AS tutor, nombre_crs, descripcion_tipoClase, nombre_adMay, id_adMay FROM clase
                     JOIN curso on cursos_id_crs=id_crs
                     JOIN tipoClase on tipoClase_id_tipoClase=id_tipoClase
                     JOIN adultoMay on adultoMay_id_adMay=id_adMay

@@ -17,7 +17,7 @@ if ($_SESSION['us_tipo'] == 1) {
 <body>
 
 
-    <!-- modal editar Adulto Mayor -->
+    <!-- modal Agregar Adulto Mayor -->
     <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -71,11 +71,92 @@ if ($_SESSION['us_tipo'] == 1) {
                         </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal editar Adulto Mayor -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalEditar" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Editar Participante</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="form-editar-am">
+                        <div class="form-row">
+
+                            <div class=col-md-2></div>
+                            <div class="form-group col-md-8">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" class="form-control" id="nombreE" placeholder="Nombre" required="true">
+                            </div>
+                            <div class=col-md-2></div>
+
+                        </div>
+
+                        <div class="form-row">
+                            <div class=col-md-2></div>
+
+                            <div class="form-group col-md-4">
+                                <label for="cedula">N. Cedula</label>
+                                <input type="text" class="form-control" id="cedulaE" placeholder="Cedula" required="true">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="celular">Celular</label>
+                                <input type="text" class="form-control" id="celularE" placeholder="celular" required="true">
+                            </div>
+                            <div class=col-md-2></div>
+
+                        </div>
+
+                        <div class="form-row">
+
+                            <div class=col-md-2></div>
+
+                            <div class="form-group col-md-4">
+                                <label for="dir">Correo</label>
+                                <input type="text" class="form-control" id="correoE" placeholder="Correo" required="true">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="telefono">Telefono</label>
+                                <input type="text" class="form-control" id="telefonoE" placeholder="Telefono" required="true">
+                            </div>
+                            <div class=col-md-2></div>
+                        </div>
+                </div>
+                <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Guardar Cambios</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
 
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal confirmar cambio de estado -->
+    <div class="modal fade" id="estadoM" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    ¿Está seguro de cambiar el estado del participante?
+                </div>
+                <div id="msg" class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger conf_cambio" data-dismiss="modal">Si</button>
+                </div>
             </div>
         </div>
     </div>
@@ -96,7 +177,7 @@ if ($_SESSION['us_tipo'] == 1) {
                     <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search1">
                     <i class="fa fa-search lupa" aria-hidden="true"></i>
                     
-                     </div>
+                    </div>
                         <table id="tabla" class="table table-striped table-bordered table-sm" style="width:100%">
                             <thead>
                                 <tr>

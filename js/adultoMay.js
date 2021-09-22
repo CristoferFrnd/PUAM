@@ -24,8 +24,8 @@ $(document).ready(function () {
                     <td>${adultomay.celular}</td>
                     <td>${adultomay.correo}</td>
                                         
-                    <td><button type='button' class='estado_adulM btn ${color}'>${estado}</button></td>
-                    <td><button type='button' class='editar-alumno btn btn-primary' data-toggle='modal' data-target='#exampleModal'><i class="fas fa-edit"></i></button></td>
+                    <td><button type='button' class='conf_estado btn ${color}' data-toggle='modal' data-target='#estadoM'>${estado}</button></td>
+                    <td><button type='button' class='editar-alumno btn btn-primary' data-toggle='modal' data-target='#modalEditar'><i class="fas fa-edit"></i></button></td>
                     </tr>
                     `;
 
@@ -65,30 +65,29 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
-    $(document).on('click', '.estado_adulM', (e) => {
-        funcion = 'actualizar-estado';
-        const ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
-        const Btn = $(this)[0].activeElement;
-        const estado = $(ELEMENTO).attr('data-estado');
-        console.log(estado);
-        const id = $(ELEMENTO).attr('data-id');
-        console.log(id);
+    $(document).on('click', '.conf_estado', (e) => {
+        $ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
+        $Btn = $(this)[0].activeElement;
+        estado = $($ELEMENTO).attr('data-estado');
+        id = $($ELEMENTO).attr('data-id');
+    });
 
+    $(document).on('click', '.conf_cambio', (e) => {
+        funcion = 'actualizar-estado';
         $.post('../controlador/adultoMayController.php', { funcion, id , estado}, (response) => {
-           
             if(estado == '1'){
-                $(ELEMENTO).attr('data-estado', 0);
-                $(Btn).removeClass('btn-success');
-                $(Btn).addClass('btn-danger');
-                $(Btn).text('Inactivo');
+                $($ELEMENTO).attr('data-estado', 0);
+                $($Btn).removeClass('btn-success');
+                $($Btn).addClass('btn-danger');
+                $($Btn).text('Inactivo');
             }else{
-                $(ELEMENTO).attr('data-estado', 1);
-                $(Btn).removeClass('btn-danger');
-                $(Btn).addClass('btn-success');
-                $(Btn).text('Activo');
+                $($ELEMENTO).attr('data-estado', 1);
+                $($Btn).removeClass('btn-danger');
+                $($Btn).addClass('btn-success');
+                $($Btn).text('Activo');
             }
 
-           
+        
         });
 
     });

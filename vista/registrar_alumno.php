@@ -61,8 +61,6 @@ if ($_SESSION['us_tipo'] == 1) {
 
                         </div>
 
-                       
-
                         <div class="form-row">
                             <div class="col-md-2"></div>
 
@@ -73,23 +71,24 @@ if ($_SESSION['us_tipo'] == 1) {
 
                             <div class="form-group col-md-4">
                                 <label for="cursos">Curso</label>
-                                <select class="form-select" aria-label="Default select example" id="cursos">
-                                    <option selected value="1">Informática</option>
+                                <br />
+                                <select class="form-select form-select-lg mb-4 form-control" aria-label=".form-select-lg example" id="cursos">
                                 </select>
-
                             </div>
 
-                            <div class="col-md-2"></div>
                         </div>
-                        <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Registrar</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        </div>
-                        
-                    </form>
+
+                        <div class="col-md-2"></div>
                 </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+
+                </form>
             </div>
         </div>
+    </div>
     </div>
 
     <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
@@ -136,32 +135,32 @@ if ($_SESSION['us_tipo'] == 1) {
 
                         </div>
 
-                       
+
 
                         <div class="form-row">
                             <div class="col-md-2"></div>
 
                             <div class="form-group col-md-4">
                                 <label for="horasRE">Horas Realizadas</label>
-                                <input type="number" class="form-control" id="horasRE" placeholder="Horas Realizadas" required="true" >
+                                <input type="number" class="form-control" id="horasRE" placeholder="Horas Realizadas" required="true">
                             </div>
 
                             <div class="form-group col-md-4">
-                            <label for="cursos">Curso</label>
-                            <br/>
-                            <select class="form-select form-select-lg mb-4 form-control" aria-label=".form-select-lg example" id="cursos">
-                            <option selected value="1">Informática</option>
-                            <option selected value="2">Expresion Corporal</option>
-                            </select>
+                                <label for="cursos">Curso</label>
+                                <br />
+                                <select class="form-select form-select-lg mb-4 form-control" aria-label=".form-select-lg example" id="curso">
+                                    <option selected value="1">Informática</option>
+                                    <option selected value="2">Expresion Corporal</option>
+                                </select>
                             </div>
 
                             <div class="col-md-2"></div>
                         </div>
                         <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         </div>
-                        
+
                     </form>
                 </div>
             </div>
@@ -174,20 +173,20 @@ if ($_SESSION['us_tipo'] == 1) {
         <br>
         <section>
             <div class="container-fluid">
-                
+
                 <div class="card card-success animate__animated animate__bounceInRight">
-                <div class="titulo-tabla">
-                <h3 >LISTADO DE TUTORES</h3>
-                
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalAgregar"><i class="fas fa-user-plus"></i> AGREGAR</button>
-                </div>
-                
+                    <div class="titulo-tabla">
+                        <h3>LISTADO DE TUTORES</h3>
+
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalAgregar"><i class="fas fa-user-plus"></i> AGREGAR</button>
+                    </div>
+
                     <div class="card-body">
-                    <div class="container-btn-add">
-                    <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
-                    <i class="fa fa-search lupa" aria-hidden="true"></i>
-                    
-                     </div>
+                        <div class="container-btn-add">
+                            <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
+                            <i class="fa fa-search lupa" aria-hidden="true"></i>
+
+                        </div>
                         <table id="tabla" class="table table-striped table-bordered table-sm" style="width:100%">
                             <thead>
                                 <tr>
@@ -219,3 +218,4 @@ include_once 'layouts/footer.php';
 ?>
 
 <script src="../js/alumno.js"></script>
+<script src="../js/curso.js"></script>

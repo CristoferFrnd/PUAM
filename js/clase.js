@@ -36,12 +36,12 @@ $(document).ready(function () {
             let template = ``;
             CLASES.forEach(clase => {
                 template += `
-                <tr>
+                <tr data-id="${clase.id_clase}>
                     <td>${clase.fecha_clase}</td>
                     <td>${clase.nombre_adMay}</td>
                     <td>${clase.nombre_crs}</td>
                     <td>${clase.descripcion_tipoClase}</td>
-                    <td><button class='verdetalle btn btn-primary' data-toggle='modal' data-target='#exampleModal'>Ver detalle</button></td>
+                    <td><button class='verdetalle btn btn-primary' data-toggle='modal' data-target='#modalDetalle'>Ver detalle</button></td>
                 </tr>
                     `;
             });
@@ -66,12 +66,12 @@ $(document).ready(function () {
         
         $.post('../controlador/claseController.php', { funcion, ID }, (response) => {
             const CLASE = JSON.parse(response);
-            $('#fecha').val(CLASE.fecha_clase);
-            $('#duracion').val(CLASE.duracion_clase);
-            $('#curso').val(CLASE.nombre_crs);
-            $('#tema').val(CLASE.tema_clase);
-            $('#tutor').val(CLASE.tutor);
-            $('#adulM').val(CLASE.nombre_adMay);
+            $('#fechaD').val(CLASE.fecha_clase);
+            $('#duracionD').val(CLASE.duracion_clase);
+            $('#cursoD').val(CLASE.nombre_crs);
+            $('#temaD').val(CLASE.tema_clase);
+            $('#tutorD').val(CLASE.tutor);
+            $('#adulMD').val(CLASE.nombre_adMay);
             
         });
     

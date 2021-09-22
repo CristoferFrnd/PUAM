@@ -117,7 +117,7 @@ if ($_SESSION['us_tipo'] == 2) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="../helpers/claseRegistro.php" enctype="multipart/form-data">
+                    <form method="POST" action="../helpers/claseRegistro.php" enctype="multipart/form-data">
                         <div class="form-row">
                             <input type="text" id="id_clase" hidden="true">
                             <div class="form-group col-md-4">

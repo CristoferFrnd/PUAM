@@ -1,10 +1,6 @@
 <body>
-    <div class="main">
-        <h1>Mostrando imagen almacenada en MySQL</h1>
-        <div class="panel panel-primary">
-            <div class="panel-body">
-                <img src='../helpers/ver.php' alt='Evidencia' width="600" />
-            </div>
-        </div>
-    </div>
+    <form action="#" method="post" enctype="multipart/form"></form>
+    <input type="text" name="nombre">
+    <input type="file" name="imagen">
+    <input type="submit" value="Enviar">
 </body>

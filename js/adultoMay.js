@@ -16,7 +16,7 @@ $(document).ready(function () {
                     estado='Activo';
                     color= 'btn-success';
                 }
-                console.log(estado)
+                console.log(estado);
                 template += `
                     <tr data-estado="${adultomay.estado}" data-id="${adultomay.id_adulMay}">
                     <td>${adultomay.id_adulMay}</td>
@@ -24,7 +24,6 @@ $(document).ready(function () {
                     <td>${adultomay.telefono}</td>
                     <td>${adultomay.celular}</td>
                     <td>${adultomay.correo}</td>
-                                        
                     <td><button type='button' class='conf_estado btn ${color}' data-toggle='modal' data-target='#estadoM'>${estado}</button></td>
                     <td><button type='button' class='editar-alumno btn btn-primary' data-toggle='modal' data-target='#exampleModal'><i class="fas fa-edit"></i></button></td>
                     </tr>
@@ -58,19 +57,15 @@ $(document).ready(function () {
 
     $(document).on('click', '.conf_estado', (e) => {
         $ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
-        console.log($ELEMENTO);
         $Btn = $(this)[0].activeElement;
-        $estado = $($ELEMENTO).attr('data-estado');
-        console.log($estado);
-        $id = $($ELEMENTO).attr('data-id');
-        console.log($id);
+        estado = $($ELEMENTO).attr('data-estado');
+        id = $($ELEMENTO).attr('data-id');
     });
 
     $(document).on('click', '.conf_cambio', (e) => {
         funcion = 'actualizar-estado';
-        $.post('../controlador/adultoMayController.php', { funcion, $id , $estado}, (response) => {
-           
-            if($estado == '1'){
+        $.post('../controlador/adultoMayController.php', { funcion, id , estado}, (response) => {
+            if(estado == '1'){
                 $($ELEMENTO).attr('data-estado', 0);
                 $($Btn).removeClass('btn-success');
                 $($Btn).addClass('btn-danger');
@@ -81,8 +76,6 @@ $(document).ready(function () {
                 $($Btn).addClass('btn-success');
                 $($Btn).text('Activo');
             }
-
-           
         });
     });
 

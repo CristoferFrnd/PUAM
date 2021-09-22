@@ -17,7 +17,8 @@ if ($_SESSION['us_tipo'] == 1) {
 <body>
 
 
-    <!-- modal editar Adulto Mayor -->
+
+    <!-- modal editar alumno -->    
     <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -42,6 +43,7 @@ if ($_SESSION['us_tipo'] == 1) {
 
                         <div class="form-row">
                             <div class=col-md-2></div>
+
 
                             <div class="form-group col-md-4">
                                 <label for="cedula">N. Cedula</label>
@@ -76,6 +78,24 @@ if ($_SESSION['us_tipo'] == 1) {
                 </div>
 
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal confirmar cambio de estado -->
+    <div class="modal fade" id="estadoM" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                
+                <div class="modal-header">
+                    ¿Está seguro de cambiar el estado del participante?
+                </div>
+                <div id="msg" class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger conf_cambio" data-dismiss="modal">Si</button>
+                </div>
             </div>
         </div>
     </div>

@@ -40,6 +40,7 @@ $(document).ready(function () {
                     <td>${clase.fecha_clase}</td>
                     <td>${clase.nombre_adMay}</td>
                     <td>${clase.nombre_crs}</td>
+                    <td>${clase.tema_clase}</td>
                     <td>${clase.descripcion_tipoClase}</td>
                     <td><button class='verdetalle btn btn-primary' data-toggle='modal' data-target='#modalDetalle'>Ver detalle</button></td>
                 </tr>
@@ -56,6 +57,16 @@ $(document).ready(function () {
             listar_clases(valor);
         } else {
             listar_clases();
+        }
+    })
+
+    $(document).on('keyup', '#search2', function () {
+        console.log('prueba2')
+        let valor = $(this).val();
+        if (valor != '') {
+            listar_clases_al(valor);
+        } else {
+            listar_clases_al();
         }
     })
 
@@ -76,6 +87,8 @@ $(document).ready(function () {
         });
     
     });
+
+    
 })
 
 function datos_clase() {

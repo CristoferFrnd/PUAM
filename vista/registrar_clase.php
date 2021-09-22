@@ -17,13 +17,20 @@ if ($_SESSION['us_tipo'] == 2) {
 
 
         <section>
-            <div class="container-fluid">
-                <div class="container-btn-add">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarClaseModal"><i class="fas fa-user-plus"></i></button>
-                </div>
+            <div class="container-fluid top">
+
                 <div class="card card-success animate__animated animate__bounceInRight">
+                <div class="titulo-tabla">
+                <h3>LISTADO DE CLASES</h3>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarClaseModal"><i class="fas fa-user-plus"></i></button>
+                </div>
                     <div class="card-body">
-                        <table id="tabla-clases" class="display table table-hover text-nowrap" style="width:100%">
+                    <div class="container-btn-add">
+                    <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search2">
+                    <i class="fa fa-search lupa" aria-hidden="true"></i>
+                    
+                    </div>
+                        <table id="tabla-clases" class="table table-striped table-bordered table-sm" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Fecha</th>
@@ -31,6 +38,7 @@ if ($_SESSION['us_tipo'] == 2) {
                                     <th>Curso</th>
                                     <th>Tema</th>
                                     <th>Tipo de Clase</th>
+                                    <th>Detalle</th>
                                 </tr>
                             </thead>
                             <tbody id="clases_alumno">
@@ -56,7 +64,6 @@ if ($_SESSION['us_tipo'] == 2) {
                     </button>
                 </div>
                 <div class="modal-body">
-
                     <div class="form-row">
                         <input type="text" id="id_clase" hidden="true">
                         <div class="form-group col-md-4">

@@ -21,7 +21,7 @@ if ($_SESSION['us_tipo'] == 1) {
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Agregar Alumno</h5>
+                    <h5 class="modal-title">Agregar Tutor</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -68,7 +68,7 @@ if ($_SESSION['us_tipo'] == 1) {
                                 <label for="horasR">Horas Realizadas</label>
                                 <input type="number" class="form-control" id="horasR" placeholder="Horas Realizadas" required="true">
                             </div>
-
+                        
                             <div class="form-group col-md-4">
                                 <label for="cursos">Curso</label>
                                 <br />

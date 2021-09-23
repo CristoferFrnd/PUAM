@@ -149,7 +149,7 @@ if ($_SESSION['us_tipo'] == 1) {
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn-matr btn-primary" id="matri" class="btn btn-primary">Matricular</button>
+                    <button type="button" class="btn-aux btn-primary" id="matri" class="btn btn-primary matr_btn">Aux</button>
                 </div>
             </div>
 
@@ -196,5 +196,5 @@ if ($_SESSION['us_tipo'] == 1) {
 include_once 'layouts/footer.php';
 ?>
 
-<script src="../js/adultoMay.js"></script>
 <script src="../js/curso.js"></script>
+<script src="../js/adultoMay.js"></script>

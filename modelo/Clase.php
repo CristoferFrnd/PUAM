@@ -29,7 +29,7 @@ class Clase
 
             ));
             $this->objetos = $query->fetchall();
-            echo $fecha;
+            //echo $fecha;
         
     }
 

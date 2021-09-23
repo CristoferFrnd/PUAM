@@ -35,6 +35,8 @@ class Clase
 
     function buscar()
     {
+        $rowsInit = $_POST['rowsInit'];
+        $rows = $_POST['rows'];
         if (!empty($_POST['consulta'])) {
             $consulta = $_POST['consulta'];
             $sql = "SELECT id_clase, fecha_clase, duracion_clase, evidencia_clase, tema_clase, nombre_usuario AS tutor, nombre_crs, descripcion_tipoClase, nombre_adMay, id_adMay FROM clase
@@ -63,7 +65,7 @@ class Clase
                     JOIN adultoMay on adultoMay_id_adMay=id_adMay
                     JOIN usuario on tutores_id_tutor=id_usuario
                     WHERE nombre_adMay NOT LIKE ''
-                    LIMIT 25                
+                    LIMIT $rowsInit, $rows         
                     ";
             $query = $this->acceso->prepare($sql);
             $query->execute();

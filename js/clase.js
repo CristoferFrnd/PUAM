@@ -2,14 +2,25 @@ $(document).ready(function () {
     if ($('#us_tipo').val() == 2) {
         listar_clases_al($('#us_id').val());
     } else {
-        listar_clases();
+        listar_clases(null, 'next');
     }
     //datos_alumno();
 
-    function listar_clases(consulta) {
+    function listar_clases(consulta, aux) {
         funcion = "listar";
-        $.post('../controlador/claseController.php', { consulta, funcion }, (response) => {
+        if (aux == "next") {
+            rowsInit = $('#rows').val();
+            rows = parseInt(rowsInit) + 50;
+            $('#rows').val(rows);
+        }
+        else {
+            rows = $('#rows').val();
+            rowsInit = parseInt(rows) - 6;
+            rows = parseInt(rows) - 3;
+            $('#rows').val(rows);
 
+        }
+        $.post('../controlador/claseController.php', { consulta, funcion, rowsInit, rows }, (response) => {
             const CLASES = JSON.parse(response);
             let template = ``;
             CLASES.forEach(clase => {
@@ -28,10 +39,17 @@ $(document).ready(function () {
         });
     }
 
+    $(document).on('click', '#next', (e) => {
+        listar_clases(null, "next");
+    });
+
+    $(document).on('click', '#prev', (e) => {
+        listar_clases(null, 'prev');
+    });
+
     function listar_clases_al(id) {
         funcion = "buscar_clase_alumno";
         $.post('../controlador/claseController.php', { id, funcion }, (response) => {
-            console.log(response);
             const CLASES = JSON.parse(response);
             let template = ``;
             CLASES.forEach(clase => {
@@ -51,7 +69,6 @@ $(document).ready(function () {
     }
 
     $(document).on('keyup', '#search', function () {
-        console.log('prueba')
         let valor = $(this).val();
         if (valor != '') {
             listar_clases(valor);
@@ -61,7 +78,6 @@ $(document).ready(function () {
     })
 
     $(document).on('keyup', '#search2', function () {
-        console.log('prueba2')
         let valor = $(this).val();
         if (valor != '') {
             listar_clases_al(valor);
@@ -74,7 +90,7 @@ $(document).ready(function () {
         funcion = 'buscar_id';
         const ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
         const ID = $(ELEMENTO).attr('data-id');
-        
+
         $.post('../controlador/claseController.php', { funcion, ID }, (response) => {
             const CLASE = JSON.parse(response);
             $('#fechaD').val(CLASE.fecha_clase);
@@ -83,12 +99,30 @@ $(document).ready(function () {
             $('#temaD').val(CLASE.tema_clase);
             $('#tutorD').val(CLASE.tutor);
             $('#adulMD').val(CLASE.nombre_adMay);
-            
+
         });
-    
+
     });
 
-    
+    $(document).on('click', '.verdetalle', (e) => {
+        funcion = 'buscar_id';
+        const ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
+        const ID = $(ELEMENTO).attr('data-id');
+
+        $.post('../controlador/claseController.php', { funcion, ID }, (response) => {
+            const CLASE = JSON.parse(response);
+            $('#fechaD').val(CLASE.fecha_clase);
+            $('#duracionD').val(CLASE.duracion_clase);
+            $('#cursoD').val(CLASE.nombre_crs);
+            $('#temaD').val(CLASE.tema_clase);
+            $('#tutorD').val(CLASE.tutor);
+            $('#adulMD').val(CLASE.nombre_adMay);
+
+        });
+
+    });
+
+
 })
 
 function datos_clase() {

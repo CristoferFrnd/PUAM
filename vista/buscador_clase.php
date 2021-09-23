@@ -20,6 +20,7 @@ if ($_SESSION['us_tipo'] == 1) {
                             <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
                             <i class="fa fa-search lupa" aria-hidden="true"></i>
                         </div>
+                        <input type="hidden" id="rows" value="0">
                         <table id="tabla" class="table table-striped table-bordered table-sm" style="width:100%">
                             <thead>
                                 <tr>
@@ -34,8 +35,12 @@ if ($_SESSION['us_tipo'] == 1) {
                             <tbody id="clases">
                             </tbody>
                         </table>
-                    </div>
-                    <div class="card-footer">
+                        <!-- <div class="datatable-pagination d-flex flex-row-reverse">
+                            <div class="datatable-pagination-buttons align-items-end">
+                                <button id="prev" data-mdb-ripple-color="dark" class="btn btn-link datatable-pagination-button datatable-pagination-left"><i class="fa fa-chevron-left"></i></button>
+                                <button id="next" data-mdb-ripple-color="dark" class="btn btn-link datatable-pagination-button datatable-pagination-right"><i class="fa fa-chevron-right"></i></button>
+                            </div>
+                        </div> -->
                     </div>
 
                 </div>
@@ -93,12 +98,12 @@ if ($_SESSION['us_tipo'] == 1) {
                         <img src="../img/reunion.jpg" class="img-fluid" alt="Eniun" id="img">
                     </div>
 
-                    
+
                 </div>
                 <div class="modal-footer">
 
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    </div>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
 
             </div>
 

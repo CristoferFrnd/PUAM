@@ -5,8 +5,7 @@ $(document).ready(function () {
     function listar_adultoMays(consulta) 
     {
         funcion = "listar";
-        $.post('../controlador/adultoMayController.php', { consulta, funcion }, (response) => {
-                            
+        $.post('../controlador/adultoMayController.php', { consulta, funcion }, (response) => {    
             const ADULTOMAYS = JSON.parse(response);
             let template = ``;
             ADULTOMAYS.forEach(adultomay => {
@@ -26,9 +25,10 @@ $(document).ready(function () {
                     <td>${adultomay.correo}</td>
                     <td><button type='button' class='conf_estado btn ${color}' data-toggle='modal' data-target='#estadoM'>${estado}</button></td>
                     <td><button type='button' class='editar-alumno btn btn-primary' data-toggle='modal' data-target='#exampleModal'><i class="fas fa-edit"></i></button></td>
+                    <td><button type='button' class='lis_cursos btn btn-primary' data-toggle='modal' data-target='#verCrs'> Ver Cursos</button></td>
+                    <td><button type='button' class='btn btn-primary' data-toggle='modal' data-target='#matrCrs'>+</button></td>
                     </tr>
                     `;
-
             });
 
             $('#adultoMay_tab').html(template);
@@ -78,6 +78,37 @@ $(document).ready(function () {
             }
         });
     });
+
+    $(document).on('click', '.lis_cursos', (e) => {
+        let template = ``;
+        $ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
+        $Btn = $(this)[0].activeElement;
+        id = $($ELEMENTO).attr('data-id');
+        console.log(id);
+
+        funcion = 'buscar_crs';
+        $.post('../controlador/adultoMayController.php', {funcion, id}, (response) => {
+            console.log(response)
+            const CUR = JSON.parse(response);
+            let template = ``;
+            console.log(CUR)
+            CUR.forEach(adultomay => {               
+                template += `
+                    <tr>
+                    <td>${adultomay.nombreC}</td>
+                    <td>${adultomay.nombreP}</td>
+                    <td>${adultomay.fechaI}</td>
+                    </tr>
+                    `;
+            });
+        });
+
+        $('#lista_Crs').html(template);
+    
+    });
+    
+
+    
 
 
 

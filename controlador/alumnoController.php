@@ -72,7 +72,7 @@ if ($_POST['funcion'] == 'buscar_us_id')
 
 if ($_POST['funcion'] == 'buscar_crs_est') 
 {
-    $id=$_POST['id_crs'];
+    $id=$_POST['id'];
     $usuario->buscar_crs_est($id);
     $json = array();
     foreach ($usuario->objetos as $objeto) {
@@ -81,6 +81,6 @@ if ($_POST['funcion'] == 'buscar_crs_est')
             'nombre' => $objeto->nombre_usuario,       
         );
     }
-    $jsonString = json_encode($json[0]);
+    $jsonString = json_encode($json);
     echo $jsonString;
 }

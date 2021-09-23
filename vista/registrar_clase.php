@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
 session_start();
 if ($_SESSION['us_tipo'] == 2) {
@@ -29,7 +27,7 @@ if ($_SESSION['us_tipo'] == 2) {
                             <thead>
                                 <tr>
                                     <th>Fecha</th>
-                                    <th>Adulto Mayor</th>
+                                    <th>Participante</th>
                                     <th>Curso</th>
                                     <th>Tema</th>
                                     <th>Tipo de Clase</th>
@@ -47,68 +45,68 @@ if ($_SESSION['us_tipo'] == 2) {
         </section>
     </div>
 
+    <!-- MODAL VER DETALLE -->
     <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
+            <div class="modal-header">
                     <h5 class="modal-title">Detalle de clase</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="../helpers/claseRegistro.php" enctype="multipart/form-data">
-                        <div class="form-row">
-                            <input type="text" id="id_clase" hidden="true">
-                            <div class="form-group col-md-4">
-                                <label for="fecha">Fecha</label>
-                                <input type="date" class="form-control" id="fecha" disabled>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="duracion">Duración (H)</label>
-                                <input type="text" class="form-control" id="duracion" disabled>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="curso">Curso</label>
-                                <input type="text" class="form-control" id="curso" disabled>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <label for="tema">Tema tratado</label>
-                            <input type="text" class="form-control" id="tema" disabled>
-                        </div>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="adulM">Adulto mayor</label>
-                                <input type="text" class="form-control" id="adulM" disabled>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="tutor">Tutor</label>
-                                <input type="text" class="form-control" id="tutor" disabled>
-                            </div>
+                    <div class="form-row">
+                        <input type="text" id="id_clase" hidden="true">
+                        <div class="form-group col-md-4">
+                            <label for="fecha">Fecha</label>
+                            <input type="text" class="form-control" id="fechaD" disabled>
                         </div>
-
-                        <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="duracion">Duración (H)</label>
+                            <input type="text" class="form-control" id="duracionD" disabled>
                         </div>
-
-                        <div class="form-row">
-                            <label for="img">Evidencia</label>
-                            <img src="../img/ev.jpg" class="img-fluid" alt="Evidencia" id="img">
-
+                        <div class="form-group col-md-4">
+                            <label for="curso">Curso</label>
+                            <input type="text" class="form-control" id="cursoD" disabled>
                         </div>
+                    </div>
+                    <div class="form-row">
+                        <label for="tema">Tema tratado</label>
+                        <input type="text" class="form-control" id="temaD" disabled>
+                    </div>
 
-                        
-                    </form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="adulM">Particpante</label>
+                            <input type="text" class="form-control" id="adulMD" disabled>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="tutor">Tutor</label>
+                            <input type="text" class="form-control" id="tutorD" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                    </div>
+
+                    <div class="form-row">
+                        <label for="img">Evidencia</label>
+                        <img src="../img/reunion.jpg" class="img-fluid" alt="Eniun" id="img">
+                    </div>
                 </div>
+
             </div>
 
             <div class="modal-footer">
 
             </div>
         </div>
+
     </div>
 
+    <!-- MODAL CLASE REGISTRO --> 
     <div class="modal fade" tabindex="-1" role="dialog" id="agregarClaseModal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -124,38 +122,38 @@ if ($_SESSION['us_tipo'] == 2) {
                             <input type="text" id="id_clase" hidden="true">
                             <div class="form-group col-md-4">
                                 <label for="fecha">Fecha</label>
-                                <input type="text" class="form-control" id="fecha">
+                                <input type="date" class="form-control" id="fecha" name="fecha" required="true">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="duracion">Duración (H)</label>
-                                <input type="text" class="form-control" id="duracion">
+                                <input type="text" class="form-control" id="duracion" name="duracion" requiered="true">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="curso">Curso</label>
-                                <input type="text" class="form-control" id="curso">
+                                <input type="text" class="form-control" id="curso" name="curso" requiered="true">
                             </div>
                         </div>
                         <div class="form-row">
                             <label for="tema">Tema tratado</label>
-                            <input type="text" class="form-control" id="tema">
+                            <input type="text" class="form-control" id="tema" name="tema" requiered="true">
                         </div>
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="adulM">Adulto mayor</label>
-                                <input type="text" class="form-control" id="adulM">
+                                <label for="adulM">Participante</label>
+                                <input type="text" class="form-control" id="adulM" name="adulM" requiered="true">
                             </div>
                         </div>
 
                         <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="img">Evidencia: </label>
-                            <input type="file" name="image" />
+                            <div class="form-group col-md-6">
+                                <label for="image">Evidencia: </label>
+                                <input type="file" name="image" />
                             </div>
                         </div>
 
 
-                        <input type="submit" name="submit" value="Registrar" class="btn btn-primary"/>
+                        <input type="submit" name="submit" value="Registrar" class="btn btn-primary" />
                     </form>
                 </div>
             </div>
@@ -167,16 +165,11 @@ if ($_SESSION['us_tipo'] == 2) {
     </div>
     </body>
 
-<body>
-    <form method="post" action="../helpers/claseRegistro.php" enctype="multipart/form-data">
-        Select image to upload:
-        <input type="file" name="image" />
-        <input type="submit" name="submit" value="registrar" />
-    </form>
 
-</body>
 <?php
-include_once 'layouts/footer.php';
+    include_once 'layouts/footer.php';
+} else {
+    header('Location: ../controlador/loginController.php');
+}
 ?>
-
-</html>
+<script src="../js/clase.js"></script>

@@ -10,3 +10,30 @@ body{
     height: 100%;
     width: 100%;
 }
+
+.container-btn-add{
+    display: flex;
+    
+    padding-bottom: 4px;
+}
+
+.titulo-tabla{
+    padding: 20px 20px 0px 20px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.lupa{
+    padding-top: 12px;
+    color: #1f6fa5;
+}
+.salir:hover{
+   
+    background-color: red;
+}
+
+.top{
+    padding-top: 80px;
+}
+

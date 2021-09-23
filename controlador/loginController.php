@@ -9,11 +9,11 @@ $usuario = new Usuario();
 if (!empty($_SESSION['us_tipo'])) {
     switch ($_SESSION['us_tipo']) {
         case 1:
-            header('Location: ../vista/buscador_alumnos.php');
+            header('Location: ../vista/buscador_clase.php');
             break;
 
         case 2:
-            header('Location: ../vista/editar_alumno.php');
+            header('Location: ../vista/registrar_clase.php');
             break;
 
         default:
@@ -32,11 +32,11 @@ if (!empty($_SESSION['us_tipo'])) {
         }
         switch ($_SESSION['us_tipo']) {
             case 1:
-                header('Location: ../vista/buscador_alumnos.php');
+                header('Location: ../vista/buscador_clase.php');
                 break;
 
             case 2:
-                header('Location: ../vista/editar_alumno.php');
+                header('Location: ../vista/registrar_clase.php');
                 break;
 
             default:

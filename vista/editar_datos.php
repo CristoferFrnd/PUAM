@@ -1,14 +1,18 @@
 <?php
 session_start();
-if ($_SESSION['us_tipo'] == 1 || ($_SESSION['us_tipo'] == 2)) {
-
-    include_once 'layouts/header.php';
+include_once 'layouts/header.php';
 ?>
 
 
-    <title>Editar Alumnos</title>
-    <?php
-    include_once 'layouts/nav_al.php';
+    <title>Datos Usuario</title>
+<?php
+    if ($_SESSION['us_tipo'] == 1) {
+        include_once 'layouts/nav.php';
+        ;
+    } else {
+        include_once 'layouts/nav_al.php';
+
+    }
     ?>
 
     <body>
@@ -63,9 +67,6 @@ if ($_SESSION['us_tipo'] == 1 || ($_SESSION['us_tipo'] == 2)) {
 
 <?php
     include_once 'layouts/footer.php';
-} else {
-    header('Location: ../index.php');
-}
 ?>
 
 <script src="../js/alumno.js"></script>

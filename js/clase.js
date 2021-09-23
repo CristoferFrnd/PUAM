@@ -50,7 +50,6 @@ $(document).ready(function () {
     function listar_clases_al(id, consulta) {
         funcion = "buscar_clase_alumno";
         $.post('../controlador/claseController.php', { id, funcion, consulta }, (response) => {
-            console.log(response);
             const CLASES = JSON.parse(response);
             let template = ``;
             CLASES.forEach(clase => {
@@ -88,40 +87,40 @@ $(document).ready(function () {
     })
 
     $(document).on('click', '.verdetalle', (e) => {
-        funcion = 'buscar_id';
         const ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
         const ID = $(ELEMENTO).attr('data-id');
 
-        $.post('../controlador/claseController.php', { funcion, ID }, (response) => {
+        $.post('../helpers/infoClase.php', { ID }, (response) => {
             const CLASE = JSON.parse(response);
-            $('#fechaD').val(CLASE.fecha_clase);
-            $('#duracionD').val(CLASE.duracion_clase);
-            $('#cursoD').val(CLASE.nombre_crs);
-            $('#temaD').val(CLASE.tema_clase);
-            $('#tutorD').val(CLASE.tutor);
-            $('#adulMD').val(CLASE.nombre_adMay);
-
+            $('#fechaD').val(CLASE[0].fecha_clase);
+            $('#duracionD').val(CLASE[0].duracion_clase);
+            $('#cursoD').val(CLASE[0].nombre_crs);
+            $('#temaD').val(CLASE[0].tema_clase);
+            $('#tutorD').val(CLASE[0].tutor);
+            $('#adulMD').val(CLASE[0].nombre_adMay);
+            let $img = document.getElementById('img');
+            $img.setAttribute('src',CLASE[0].evidencia);
         });
 
     });
 
-    $(document).on('click', '.verdetalle', (e) => {
-        funcion = 'buscar_id';
-        const ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
-        const ID = $(ELEMENTO).attr('data-id');
+    // $(document).on('click', '.verdetalle', (e) => {
+    //     funcion = 'buscar_id';
+    //     const ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
+    //     const ID = $(ELEMENTO).attr('data-id');
 
-        $.post('../controlador/claseController.php', { funcion, ID }, (response) => {
-            const CLASE = JSON.parse(response);
-            $('#fechaD').val(CLASE.fecha_clase);
-            $('#duracionD').val(CLASE.duracion_clase);
-            $('#cursoD').val(CLASE.nombre_crs);
-            $('#temaD').val(CLASE.tema_clase);
-            $('#tutorD').val(CLASE.tutor);
-            $('#adulMD').val(CLASE.nombre_adMay);
+    //     $.post('../controlador/claseController.php', { funcion, ID }, (response) => {
+    //         const CLASE = JSON.parse(response);
+    //         $('#fechaD').val(CLASE.fecha_clase);
+    //         $('#duracionD').val(CLASE.duracion_clase);
+    //         $('#cursoD').val(CLASE.nombre_crs);
+    //         $('#temaD').val(CLASE.tema_clase);
+    //         $('#tutorD').val(CLASE.tutor);
+    //         $('#adulMD').val(CLASE.nombre_adMay);
 
-        });
+    //     });
 
-    });
+    // });
 
     function datos_clase() {
         funcion = "buscar_id";

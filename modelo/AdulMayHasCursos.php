@@ -10,7 +10,7 @@ class AdulMayHasCursos
         $this->acceso = $db->pdo;
     }
 
-    function crear($curso,$tutor,$estado,$fecha,$adulMay)
+    function crear($curso, $tutor, $estado, $fecha, $adulMay)
     {
         if (!empty($this->objetos)) {
             echo 'noAdd';
@@ -25,25 +25,38 @@ class AdulMayHasCursos
                 ':estado'    => $estado,
                 ':fecha'    => $fecha,
                 ':adulMay'    => $adulMay
-                
+
             ));
             $this->objetos = $query->fetchall();
             echo 'add';
         }
     }
 
-   
-    function eliminar($id){
+
+    function eliminar($id)
+    {
         $sql = "DELETE FROM adultoMay_has_cursos
                 WHERE adultoMay_has_cursos = :id
         ";
-        $query=$this->acceso->prepare($sql);
-        if(!empty($query->execute(array(':id' => $id)))){
+        $query = $this->acceso->prepare($sql);
+        if (!empty($query->execute(array(':id' => $id)))) {
             echo 'delete';
-        }
-        else{
+        } else {
             echo 'noDelete';
         }
     }
-}
 
+    function adMay_crs_std($id)
+    {
+        $sql = "SELECT  id_adMay,  nombre_adMay FROM adultoMay_has_cursos 
+                JOIN adultoMay ON adultoMay_id = id_adMay
+                WHERE tutores_id_tutor = :id;
+    ";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+            ':id' => $id
+        ));
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+    }
+}

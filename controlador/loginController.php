@@ -44,6 +44,6 @@ if (!empty($_SESSION['us_tipo'])) {
                 break;
         }
     } else {
-        header('Location: ../index.php');
+        echo "nologin";
     }
 }

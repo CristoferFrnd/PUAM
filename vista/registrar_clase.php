@@ -174,6 +174,8 @@ if ($_SESSION['us_tipo'] == 2) {
             </div>
         </div>
     </div>
+
+    <input type="button" value="Prueba" id="prueba">
     </body>
 
 

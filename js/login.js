@@ -1,19 +1,17 @@
-const inputs = document.querySelectorAll(".input");
+$(document).ready(function () {
+	$('#form-login').submit(e => {
+        user = $('#user').val();
+        pass = $('#pass').val();
+        funcion = 'registrar';
+        $.post('controlador/loginController.php', { user, pass }, (response) => {
+            if(response == 'nologin'){
+				// no login
+				alert(response);
+			} else {
+				window.open("vista/registrar_clase.php", "_self");
+			}
+        });
 
-function addcl(){
-	let parent = this.parentNode.parentNode;
-	parent.classList.add("focus");
-}
-
-function remcl(){
-	let parent = this.parentNode.parentNode;
-	if(this.value == ""){
-		parent.classList.remove("focus");
-	}
-}
-
-
-inputs.forEach(input => {
-	input.addEventListener("focus", addcl);
-	input.addEventListener("blur", remcl);
+        e.preventDefault();
+    });
 });

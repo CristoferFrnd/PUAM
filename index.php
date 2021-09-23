@@ -24,15 +24,15 @@ if (!empty($_SESSION['us_tipo'])) {
         <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
             <div class="card">
                 <div class="card-body">
-                    <form action="controlador/loginController.php" method="post">
+                    <form id="form-login">
                         <h2>Gestion Alumnos</h2>
                         <div class="form-group">
                             <label for="user">Usuario</label>
-                            <input type="text" name="user" class="form-control">
+                            <input type="text" id="user" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="pass">Contraseña</label>
-                            <input type="password" name="pass" class="form-control">
+                            <input type="password" id="pass" class="form-control">
                         </div>
                         <div class="form-group ">
                             <input type="submit" class="btn btn-primary" value="Ingresar">
@@ -41,16 +41,18 @@ if (!empty($_SESSION['us_tipo'])) {
                 </div>
             </div>
         </div>
-
     </body>
     <footer class="main-footer">
-    <div class="fixed-bottom text-center text-light">
-        <b>Version</b> 1.0
+        <div class="fixed-bottom text-center text-light">
+            <b>Version</b> 1.0
 
-        Desarrollado por <strong><a>>####</a></strong> Todos los derechos reservados.
+            Desarrollado por <strong><a>>####</a></strong> Todos los derechos reservados.
+        </div>
+    </footer>
     </div>
-</footer>
-</div>
+    <script src="js/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/login.js"></script>
 
 </html>

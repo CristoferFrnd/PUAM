@@ -2,25 +2,25 @@ $(document).ready(function () {
     if ($('#us_tipo').val() == 2) {
         listar_clases_al($('#us_id').val());
     } else {
-        listar_clases(null, 'next');
+        listar_clases();
     }
     //datos_alumno();
 
     function listar_clases(consulta, aux) {
         funcion = "listar";
-        if (aux == "next") {
-            rowsInit = $('#rows').val();
-            rows = parseInt(rowsInit) + 50;
-            $('#rows').val(rows);
-        }
-        else {
-            rows = $('#rows').val();
-            rowsInit = parseInt(rows) - 6;
-            rows = parseInt(rows) - 3;
-            $('#rows').val(rows);
+        // if (aux == "next") {
+        //     rowsInit = $('#rows').val();
+        //     rows = parseInt(rowsInit) + 50;
+        //     $('#rows').val(rows);
+        // }
+        // else {
+        //     rows = $('#rows').val();
+        //     rowsInit = parseInt(rows) - 6;
+        //     rows = parseInt(rows) - 3;
+        //     $('#rows').val(rows);
 
-        }
-        $.post('../controlador/claseController.php', { consulta, funcion, rowsInit, rows }, (response) => {
+        // }
+        $.post('../controlador/claseController.php', { consulta, funcion }, (response) => {
             const CLASES = JSON.parse(response);
             let template = ``;
             CLASES.forEach(clase => {

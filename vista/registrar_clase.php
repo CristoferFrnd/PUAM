@@ -158,7 +158,7 @@ if ($_SESSION['us_tipo'] == 2) {
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                <label for="img">Evidencia: </label>
+                                <label for="image">Evidencia: </label>
                                 <input type="file" name="image" />
                             </div>
                         </div>

@@ -47,14 +47,15 @@ $(document).ready(function () {
         listar_clases(null, 'prev');
     });
 
-    function listar_clases_al(id) {
+    function listar_clases_al(id, consulta) {
         funcion = "buscar_clase_alumno";
-        $.post('../controlador/claseController.php', { id, funcion }, (response) => {
+        $.post('../controlador/claseController.php', { id, funcion, consulta }, (response) => {
+            console.log(response);
             const CLASES = JSON.parse(response);
             let template = ``;
             CLASES.forEach(clase => {
                 template += `
-                <tr data-id="${clase.id_clase}>
+                <tr data-id="${clase.id_clase}">
                     <td>${clase.fecha_clase}</td>
                     <td>${clase.nombre_adMay}</td>
                     <td>${clase.nombre_crs}</td>
@@ -80,9 +81,9 @@ $(document).ready(function () {
     $(document).on('keyup', '#search2', function () {
         let valor = $(this).val();
         if (valor != '') {
-            listar_clases_al(valor);
+            listar_clases_al($('#us_id').val(), valor);
         } else {
-            listar_clases_al();
+            listar_clases_al($('#us_id').val());
         }
     })
 
@@ -122,21 +123,23 @@ $(document).ready(function () {
 
     });
 
+    function datos_clase() {
+        funcion = "buscar_id";
+        ID = $('#id_clase').val();
+        $.post('../controlador/claseController.php', { ID, funcion }, (response) => {
+            const CLASE = JSON.parse(response);
+            $('#fecha').val(CLASE.fecha_clase);
+            $('#duracion').val(CLASE.duracion_clase);
+            $('#curso').val(CLASE.nombre_crs);
+            $('#tema').val(CLASE.tema_clase);
+            $('#tutor').val(CLASE.tutor);
+            $('#adulM').val(CLASE.nombre_adMay);
+            //console.log(response);
+        });
+    }
+
 
 })
 
-function datos_clase() {
-    funcion = "buscar_id";
-    ID = $('#id_clase').val();
-    $.post('../controlador/claseController.php', { ID, funcion }, (response) => {
-        const CLASE = JSON.parse(response);
-        $('#fecha').val(CLASE.fecha_clase);
-        $('#duracion').val(CLASE.duracion_clase);
-        $('#curso').val(CLASE.nombre_crs);
-        $('#tema').val(CLASE.tema_clase);
-        $('#tutor').val(CLASE.tutor);
-        $('#adulM').val(CLASE.nombre_adMay);
-        console.log(response);
-    });
-}
+
 

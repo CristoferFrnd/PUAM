@@ -29,22 +29,22 @@ include_once 'layouts/header.php';
                         <div class="form-row">
                             <div class="form-group col-md-8">
                                 <label for="apellidos">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" value="<?php echo $_SESSION['nombre_us']; ?>" required="true" disabled>
+                                <input type="text" class="form-control" id="nombre" placeholder="Nombre" required="true" disabled>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="cedulaE">N. Cédula</label>
-                                <input type="text" class="form-control" id="cedulaE" placeholder="Cedula" required="true" disabled>
+                                <input type="text" class="form-control" id="cedula" placeholder="Cedula" required="true" disabled>
                             </div>
 
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="correo">Correo</label>
-                                <input type="text" class="form-control" id="correoE" placeholder="Correo" required="true">
+                                <input type="text" class="form-control" id="correo" placeholder="Correo" required="true" disabled>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="tel">Telefono</label>
-                                <input type="text" class="form-control" id="telE" placeholder="Telefono" value="<?php echo $_SESSION['correo']; ?>" required="true" disabled >
+                                <input type="text" class="form-control" id="tel" placeholder="Telefono" required="true" >
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="contrasena">Contraseña</label>

@@ -1,6 +1,7 @@
 $(document).ready(function () {
     listar_alumnos();
     listar_cursos();
+    datos_alumno();
 
     function listar_alumnos(consulta) {
         funcion = "listar";

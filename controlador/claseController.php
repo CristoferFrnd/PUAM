@@ -87,7 +87,7 @@ if ($_POST['funcion'] == 'buscar_am_al') {
             'celular_admay' => $objeto->celular_admay, 
             'telefonoc_admay' => $objeto->telefonoc_admay,
             'correoe_admay' => $objeto->correoe_admay,
-            'activ_admay' => $objeto->activ_admay,
+            'activ_admay' => $objeto->activ_admay
         );
     }
     $jsonString = json_encode($json);

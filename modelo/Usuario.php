@@ -99,6 +99,7 @@ class Usuario
     {
         $sql = "  SELECT * 
                     FROM usuario
+                    JOIN curso ON cursos_id_crs = id_crs
                     WHERE correoIns_usuario=:n_usuario
                     ";
         $query = $this->acceso->prepare($sql);
@@ -118,6 +119,7 @@ class Usuario
         $sql = "  SELECT * 
                     FROM usuario
                     JOIN tipoUsuario on tipoUsuario_id_tipoUsuario=id_tipoUsuario
+                    JOIN curso ON cursos_id_crs = id_crs
                     WHERE correoIns_usuario=:n_usuario";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':n_usuario' => $user));
@@ -164,19 +166,7 @@ class Usuario
             return $this->objetos;
     }
 
-    function buscar_adulM_est($id)
-    {
-        $sql = "SELECT id_adMay,nombre_adMay,celular_AdMay,telefonoC_AdMay, correoE_AdMay 
-        FROM adultoMay_has_cursos
-        JOIN adultoMay ON adultoMay_id=id_adMay
-        WHERE tutores_id_tutor=:id";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(
-                ':id' => $id
-            ));
-            $this->objetos = $query->fetchall();
-            return $this->objetos;
-    }    
+
     
     function eliminar($id)
     {

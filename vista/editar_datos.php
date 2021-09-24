@@ -16,7 +16,7 @@ include_once 'layouts/header.php';
     ?>
 
     <body>
-        <div class="container p-5">
+        <div class="content-wrapper container top">
             <div class="card">
                 <div class="card-body">
                     <div class="pb-5">
@@ -32,26 +32,28 @@ include_once 'layouts/header.php';
                                 <input type="text" class="form-control" id="nombre" placeholder="Nombre" value="<?php echo $_SESSION['nombre_us']; ?>" required="true" disabled>
                             </div>
                             <div class="form-group col-md-4">
-                                <label for="cedula">N. Cedula</label>
-                                <input type="text" class="form-control" id="cedula" placeholder="Cedula" required="true" disabled>
+                                <label for="cedulaE">N. Cédula</label>
+                                <input type="text" class="form-control" id="cedulaE" placeholder="Cedula" required="true" disabled>
                             </div>
 
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="correo">Correo</label>
-                                <input type="text" class="form-control" id="correo" placeholder="Correo" value="<?php echo $_SESSION['correo']; ?>" required="true" disabled>
+                                <input type="text" class="form-control" id="correo" placeholder="Correo" required="true">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="tel">Telefono</label>
-                                <input type="text" class="form-control" id="tel" placeholder="Telefono" required="true">
+                                <input type="text" class="form-control" id="correo" placeholder="Telefono" value="<?php echo $_SESSION['correo']; ?>" required="true" disabled >
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="contrasena">Contraseña</label>
                                 <input type="password" class="form-control" id="contrasena" placeholder="Contraseña" required="true">
                             </div>
                         </div>
+                        <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Confirmar Cambios</button>
+                        </div>
                     </form>
                 </div>
             </div>

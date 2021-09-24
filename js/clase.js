@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    $('#curso').val($('#us_curso').val());
+    listar_tclase();
+    listar_am_al();
     if ($('#us_tipo').val() == 2) {
         listar_clases_al($('#us_id').val());
     } else {
@@ -32,6 +35,7 @@ $(document).ready(function () {
                     <td>${clase.nombre_crs}</td>
                     <td>${clase.descripcion_tipoClase}</td>
                     <td><button class='verdetalle btn btn-primary' data-toggle='modal' data-target='#exampleModal'>Ver detalle</button></td>
+                    
                 </tr>
                     `;
             });
@@ -85,6 +89,39 @@ $(document).ready(function () {
             listar_clases_al($('#us_id').val());
         }
     })
+
+    function listar_tclase() {
+        funcion = "buscar_tclase";
+        $.post('../controlador/claseController.php', { funcion }, (response) => {
+            
+            const TCLASES = JSON.parse(response);
+            let template = ``;
+            TCLASES.forEach(tclase => {
+                template += `
+                        <option value="${tclase.id_tcrs}">${tclase.nombre_tcrs}</option>
+                    `;
+            });
+            $('#tclases').html(template);
+        });
+    }
+
+    function listar_am_al() {
+        funcion = "buscar_am_al";
+        ID = $('#us_id').val();
+        $.post('../controlador/claseController.php', { funcion, ID }, (response) => {
+            console.log(response);
+            const AMPORAL = JSON.parse(response);
+            let template = ``;
+            AMPORAL.forEach(amxal => {
+                template += `
+                        <option value="${amxal.id_adMay}">${amxal.nombre_admay}</option>
+                    `;
+            });
+            $('#ad_al').html(template);
+        });
+    }
+
+
 
     $(document).on('click', '.verdetalle', (e) => {
         const ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;

@@ -29,6 +29,8 @@ if (!empty($_SESSION['us_tipo'])) {
             $_SESSION['usuario'] = $objeto->id_usuario;
             $_SESSION['us_tipo'] = $objeto->id_tipousuario;
             $_SESSION['nombre_us'] = $objeto->nombre_usuario;
+            $_SESSION['curso_us'] = $objeto->nombre_crs;
+            $_SESSION['curso_id'] = $objeto->cursos_id_crs;
         }
         switch ($_SESSION['us_tipo']) {
             case 1:

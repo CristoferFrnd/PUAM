@@ -1,6 +1,7 @@
 <?php
 include '../modelo/AdulMayHasCursos.php';
-$adulMayHasCursos = new AdulMayHasCursos();
+
+$adulMayHasCursos = new adulMayHasCursos();
 
 if ($_POST['funcion'] == 'registrar') {
     $curso = $_POST['curso'];

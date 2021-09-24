@@ -161,6 +161,61 @@ if ($_SESSION['us_tipo'] == 1) {
         </div>
     </div>
 
+    <!-- modal mostrar cursos -->
+    <div class="modal fade" id="verCrs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Cursos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table id="tabla" class="display table table-hover text-nowrap" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Curso</th>
+                                <th>Tutor</th>
+                                <th>Fecha ingreso</th>
+                            </tr>
+                        </thead>
+                        <tbody id="lista_Crs"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal matricular en curso -->
+    <div class="modal fade" id="matrCrs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Matrícula</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table id="tabla" class="display table table-hover text-nowrap" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>Seleccion</th>
+                                <th>Curso</th>
+                                <th>Tutor</th>
+                            </tr>
+                        </thead>
+                        <tbody id="matr_Crs"></tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-aux btn-primary" id="matri" class="btn btn-primary matr_btn">Aux</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
     <!-- TABLITA-->
     <div class="content-wrapper container top">
@@ -208,4 +263,5 @@ if ($_SESSION['us_tipo'] == 1) {
 include_once 'layouts/footer.php';
 ?>
 
+<script src="../js/curso.js"></script>
 <script src="../js/adultoMay.js"></script>

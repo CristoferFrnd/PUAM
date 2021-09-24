@@ -60,18 +60,20 @@ if ($_POST['funcion'] == 'buscar_us_id') {
     echo $jsonString;
 }
 
-if ($_POST['funcion'] == 'buscar_crs_adulMay') {
-    $id=$_POST['id_adMay'];
+if ($_POST['funcion'] == 'buscar_crs') {
+
+    $id=$_POST['id'];
     $adulMay->buscar_crs_adulMay($id);
     $json = array();
+
     foreach ($adulMay->objetos as $objeto) {
         $json[] = array(
             'nombreC' => $objeto->nombre_crs,
             'nombreP' => $objeto->nombre_usuario,
-            'fechaI' => $objeto->fechaIngreso_curso
+            'fechaI' => $objeto->fechaingreso_curso
         );
     }
-    $jsonString = json_encode($json[0]);
+    $jsonString = json_encode($json);
     echo $jsonString;
 }
 
@@ -81,3 +83,5 @@ if ($_POST['funcion'] == 'actualizar-estado') {
     $adulMay->act_estado($id, $estado);
     echo 'actualizado';
 }
+
+

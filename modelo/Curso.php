@@ -59,6 +59,8 @@ class Curso
             ));
             $this->objetos = $query->fetchall();
             return $this->objetos;
+
+            
     }
 
     function eliminar($id){

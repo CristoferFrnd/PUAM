@@ -90,7 +90,7 @@ $(document).ready(function () {
             $('#cedulaE').val(ALUMNO.id_usuario);
             $('#horasRE').val(ALUMNO.horasR);
         });
-
+        
     });
 
     function datos_alumno() {

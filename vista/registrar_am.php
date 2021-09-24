@@ -149,10 +149,9 @@ if ($_SESSION['us_tipo'] == 1) {
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn-aux btn-primary" id="matri" class="btn btn-primary matr_btn">Aux</button>
+                    <button type="button" class="btn-aux btn-primary" id="matri" class="btn btn-primary matr_btn">Matricular</button>
                 </div>
             </div>
-
         </div>
     </div>
 

@@ -1,6 +1,5 @@
 $(document).ready(function () {
     listar_cursos();
-    llenar_tutores();
 
     function listar_cursos(consulta) {
         funcion = "listar";
@@ -13,7 +12,8 @@ $(document).ready(function () {
                     <tr data-id=${curso.id_crs}>
                         <td><input type="checkbox" id="check${curso.id_crs}"/></td>
                         <td>${curso.nombre_crs}</td>
-                        <td><select id="${curso.id_crs}"/></td>
+                        
+                        <td><div class="form-control"><select id="${curso.id_crs}"/></div></td>
                     </tr>
                     `;
             });

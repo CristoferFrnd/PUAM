@@ -163,7 +163,7 @@ if ($_SESSION['us_tipo'] == 1) {
 
     <!-- modal mostrar cursos -->
     <div class="modal fade" id="verCrs" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Cursos</h5>
@@ -233,7 +233,7 @@ if ($_SESSION['us_tipo'] == 1) {
                     <i class="fa fa-search lupa" aria-hidden="true"></i>
                     
                     </div>
-                        <table id="tabla" class="table table-striped table-bordered table-responsive table-sm" style="height: 500px">
+                        <table id="tabla" class="table table-striped table-bordered table-responsive" style="height: 500px">
                             <thead>
                                 <tr>
                                     <th>N. Cedula</th>
@@ -243,6 +243,8 @@ if ($_SESSION['us_tipo'] == 1) {
                                     <th>Correo</th>
                                     <th>Estado</th>
                                     <th>Editar</th>
+                                    <th>Cursos</th>
+                                    <th>Matricular</th>
                                 </tr>
                             </thead>
                             <tbody id="adultoMay_tab">

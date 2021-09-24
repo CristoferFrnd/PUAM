@@ -1,6 +1,6 @@
 $(document).ready(function () {
     console.log($('#us_tipo').val() == 2);
-    if($('#us_tipo').val() == 2){
+    if ($('#us_tipo').val() == 2) {
         console.log("ingreso");
         listar_adultoMays_al();
     }
@@ -28,9 +28,9 @@ $(document).ready(function () {
                     <td>${adultomay.celular}</td>
                     <td>${adultomay.correo}</td>              
                     <td><button type='button' class='conf_estado btn ${color}' data-toggle='modal' data-target='#estadoM'>${estado}</button></td>
-                    <td><button type='button' class='editar-alumno btn btn-primary' data-toggle='modal' data-target='#exampleModal'><i class="fas fa-edit"></i></button></td>
-                    <td><button type='button' class='lis_cursos btn btn-primary' data-toggle='modal' data-target='#verCrs'> Ver Cursos</button></td>
-                    <td><button type='button' class='btn btn-primary btn-getId' data-toggle='modal' data-target='#matrCrs'>+</button></td>
+                    <td><button type='button' class='editar-alumno btn btn-primary' data-toggle='modal' data-target='#modalEditar'><i class="fas fa-edit"></i></button></td>
+                    <td><button type='button' class='lis_cursos btn btn-primary' data-toggle='modal' data-target='#verCrs'><i class="fas fa-bars"></i></button></td>
+                    <td><button type='button' class='btn btn-primary btn-getId' data-toggle='modal' data-target='#matrCrs'><i class="fas fa-user-plus"></i></button></td>
                     </tr>
                     `;
             });
@@ -42,10 +42,10 @@ $(document).ready(function () {
     function listar_adultoMays_al(consulta) {
         const ID = $('#us_id').val();
         funcion = "buscar_am_al";
-        $.post('../controlador/claseController.php', {ID, consulta, funcion }, (response) => {
+        $.post('../controlador/claseController.php', { ID, consulta, funcion }, (response) => {
             console.log(response);
             const ADULTOMAYS = JSON.parse(response);
-            if(ADULTOMAYS.length == 0) {
+            if (ADULTOMAYS.length == 0) {
                 alert("No Tienes Alumnos Registrados para tu Curso")
             }
             let template = ``;
@@ -72,7 +72,7 @@ $(document).ready(function () {
         });
     }
 
-    
+
     $(document).on('keyup', '#search1', function () {
         console.log('prueba')
         let valor = $(this).val();
@@ -124,7 +124,7 @@ $(document).ready(function () {
                 $($Btn).text('Activo');
             }
 
-        
+
         });
 
     });
@@ -137,19 +137,31 @@ $(document).ready(function () {
         console.log(id);
 
         funcion = 'buscar_crs';
+        TABLA = document.getElementById('lista_Crs');
         $.post('../controlador/adultoMayController.php', { funcion, id }, (response) => {
             const CURSOS = JSON.parse(response);
             let template = ``;
             CURSOS.forEach(curso => {
                 console.log(curso)
-                template += `
-                    <tr>
+                TABLA.innerHTML += `
+                <tr>
                     <td>${curso.nombreC}</td>
                     <td>${curso.nombreP}</td>
                     <td>${curso.fechaI}</td>
-                    </tr>
-                    `;
-            });
+                </tr>
+                `;
+            })
+
+            // CURSOS.forEach(curso => {
+            //     console.log(curso)
+            //     template += `
+            //         <tr>
+            //         <td>${curso.nombreC}</td>
+            //         <td>${curso.nombreP}</td>
+            //         <td>${curso.fechaI}</td>
+            //         </tr>
+            //         `;
+            // });
         });
 
         $('#lista_Crs').html(template);

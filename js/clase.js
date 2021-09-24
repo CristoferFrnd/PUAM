@@ -121,6 +121,16 @@ $(document).ready(function () {
     //     });
 
     // });
+ 
+    $(document).on('click', '#prueba', (e) => {
+        ID = $('#us_id').val();
+        funcion = 'adul_std';
+        console.log(ID, funcion);
+        $.post('../controlador/adultoMayhasCrsController.php', { ID, funcion }, (response) => {
+            console.log(response);
+        });
+
+    });
 
     function datos_clase() {
         funcion = "buscar_id";
@@ -136,17 +146,6 @@ $(document).ready(function () {
             //console.log(response);
         });
     }
-
-    
-    $(document).on('click', '#prueba', (e) => {
-        ID = $('#us_id').val();
-        funcion = 'adul_std';
-        console.log(ID, funcion);
-        $.post('../controlador/adultoMayhasCrsController.php', { ID, funcion }, (response) => {
-            console.log(response);
-        });
-
-    });
 
 })
 

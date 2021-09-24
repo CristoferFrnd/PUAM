@@ -32,7 +32,6 @@ if ($_SESSION['us_tipo'] == 1) {
                         </div>
                         <div class="card-footer">
                         </div>
-
                     </div>
                 </div>
             </section>

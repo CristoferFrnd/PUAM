@@ -32,26 +32,12 @@ class AdulMayHasCursos
         }
     }
 
-
-    function eliminar($id)
-    {
-        $sql = "DELETE FROM adultoMay_has_cursos
-                WHERE adultoMay_has_cursos = :id
-        ";
-        $query = $this->acceso->prepare($sql);
-        if (!empty($query->execute(array(':id' => $id)))) {
-            echo 'delete';
-        } else {
-            echo 'noDelete';
-        }
-    }
-
-    function adMay_crs_std($id)
+    function adul_curso_std($id)
     {
         $sql = "SELECT  id_adMay,  nombre_adMay FROM adultoMay_has_cursos 
                 JOIN adultoMay ON adultoMay_id = id_adMay
-                WHERE tutores_id_tutor = :id;
-    ";
+                WHERE tutores_id_tutor = :id
+            ";
         $query = $this->acceso->prepare($sql);
         $query->execute(array(
             ':id' => $id

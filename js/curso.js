@@ -1,6 +1,5 @@
 $(document).ready(function () {
     listar_cursos();
-    llenar_tutores();
 
     function listar_cursos(consulta) {
         funcion = "listar";
@@ -13,7 +12,9 @@ $(document).ready(function () {
                     <tr data-id=${curso.id_crs}>
                         <td><input type="checkbox" id="check${curso.id_crs}"/></td>
                         <td>${curso.nombre_crs}</td>
-                        <td><select id="${curso.id_crs}"/></td>
+                        <td>
+                        <select class="form-select form-select-m form-control" id="${curso.id_crs}"/>
+                        </td>
                     </tr>
                     `;
             });
@@ -22,16 +23,25 @@ $(document).ready(function () {
     }
 
     function llenar_tutores() {
-    
+
         let lista = document.querySelectorAll("select");
 
         lista.forEach(combo => {
             id = combo.getAttribute("id");
+            console.log(combo);
+
+            var length = combo.options.length;
+
+            for (i = length - 1; i >= 0; i--) {
+                combo.options[i] = null;
+            }
+
             funcion = 'buscar_crs_est';
-            
+
             $.post('../controlador/alumnoController.php', { funcion, id }, (response) => {
                 const ALUMNOS = JSON.parse(response);
-                
+
+
                 ALUMNOS.forEach(alumno => {
                     let option = document.createElement('option');
                     option.value = alumno.id_usuario;
@@ -40,11 +50,12 @@ $(document).ready(function () {
                 });
             });
 
-            
+
         })
     }
 
     $(document).on('click', '.btn-getId', (e) => {
+
         llenar_tutores();
     });
 })

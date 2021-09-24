@@ -10,10 +10,10 @@
         </button>
         <div class="collapse navbar-collapse justify-content-start  " id="navbarNavAltMarkup">
             <div class="navbar-nav">
+                <a class="nav-item nav-link navbar-brand" href="../controlador/logout.php" style="color: red;">Salir</a>
                 <a class="nav-item nav-link navbar-brand" href="buscador_clase.php">Clases</a>
                 <a class="nav-item nav-link navbar-brand " href="registrar_alumno.php">Tutores</a>
                 <a class="nav-item nav-link navbar-brand " href="registrar_am.php">Participantes</a>
-                <a class="nav-item nav-link navbar-brand" href="../controlador/logout.php" style="color: red;">Salir</a>
             </div>
         </div>
         <div>

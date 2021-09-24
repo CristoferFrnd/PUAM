@@ -13,8 +13,9 @@
 
         <div class="collapse navbar-collapse justify-content-start " id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link navbar-brand" href="registrar_clase.php">Clases</a>
                 <a class="nav-item nav-link navbar-brand" href="../controlador/logout.php" style="color: red;">Salir</a>
+                <a class="nav-item nav-link navbar-brand" href="registrar_clase.php">Clases</a>
+                <a class="nav-item nav-link navbar-brand" href="mis_alumnos.php">Mis Alumnos</a>
                 
             </div>
         </div>

@@ -32,18 +32,4 @@ class AdulMayHasCursos
             echo 'add';
         }
     }
-
-    function adul_curso_std($id)
-    {
-        $sql = "SELECT  id_adMay,  nombre_adMay FROM adultoMay_has_cursos 
-                JOIN adultoMay ON adultoMay_id = id_adMay
-                WHERE tutores_id_tutor = :id
-            ";
-        $query = $this->acceso->prepare($sql);
-        $query->execute(array(
-            ':id' => $id
-        ));
-        $this->objetos = $query->fetchall();
-        return $this->objetos;
-    }
 }

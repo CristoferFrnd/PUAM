@@ -16,7 +16,7 @@ if ($_SESSION['us_tipo'] == 2) {
         <input type="text" id="us_tipo" value="<?php echo $_SESSION['us_tipo']; ?>" hidden="true">
         <input type="text" id="us_id" value="<?php echo $_SESSION['usuario']; ?>" hidden="true">
         <input type="text" id="us_curso" value="<?php echo $_SESSION['curso_us']; ?>" hidden="true">
-       
+
 
         <section>
             <div class="container-fluid top">
@@ -24,7 +24,7 @@ if ($_SESSION['us_tipo'] == 2) {
                 <div class="card card-success animate__animated animate__bounceInRight">
                     <div class="titulo-tabla">
                         <h3>LISTADO DE CLASES</h3>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarClaseModal"><i class="fas fa-user-plus"> Agregar</i></button>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarClaseModal"><i class="fas fa-user-plus"> AGREGAR</i></button>
                     </div>
                     <div class="card-body">
                         <div class="container-btn-add">
@@ -132,7 +132,7 @@ if ($_SESSION['us_tipo'] == 2) {
                 </div>
                 <div class="modal-body">
                     <form method="POST" action="../helpers/claseRegistro.php" enctype="multipart/form-data">
-                    <input type="text" name="us_curso_id" id="us_curso_id" value="<?php echo $_SESSION['curso_id']; ?>" hidden="true">
+                        <input type="text" name="us_curso_id" id="us_curso_id" value="<?php echo $_SESSION['curso_id']; ?>" hidden="true">
 
                         <div class="form-row">
                             <div class="form-group col-md-4">
@@ -161,7 +161,7 @@ if ($_SESSION['us_tipo'] == 2) {
                                 <!--<input type="text" class="form-control" id="adulM" name="adulM" requiered="true">-->
                                 <br />
                                 <select name="adulM" class="form-select form-select-lg mb-4 form-control" aria-label=".form-select-lg example" id="ad_al">
-                                    
+
                                 </select>
                             </div>
 
@@ -169,7 +169,7 @@ if ($_SESSION['us_tipo'] == 2) {
                                 <label for="tclase">Tipo de Clase</label>
                                 <br />
                                 <select name="tclases" class="form-select form-select-lg mb-4 form-control" aria-label=".form-select-lg example" id="tclases">
-                                 </select>
+                                </select>
                             </div>
                         </div>
 
@@ -195,7 +195,7 @@ if ($_SESSION['us_tipo'] == 2) {
         </div>
     </div>
 
-    <input type="button" value="Prueba" id="prueba">
+    <!-- <input type="button" value="Prueba" id="prueba"> -->
     </body>
 
 

@@ -17,6 +17,7 @@ if ($_SESSION['us_tipo'] == 2) {
 <body>
 
     <input type="text" id="us_id" value="<?php echo $_SESSION['usuario']; ?>" hidden="true">
+    <input type="text" id="us_tipo" value="<?php echo $_SESSION['us_tipo']; ?>" hidden="true">
     <!-- modal Agregar Adulto Mayor -->
     <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">

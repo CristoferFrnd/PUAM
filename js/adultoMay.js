@@ -1,6 +1,9 @@
 $(document).ready(function () {
+    if($('#us_tipo' == 2)){
+        listar_adultoMays_al();
+    }
+    
     listar_adultoMays();
-    listar_adultoMays_al();
 
 
     function listar_adultoMays(consulta) {

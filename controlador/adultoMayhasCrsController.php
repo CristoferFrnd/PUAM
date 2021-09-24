@@ -1,6 +1,5 @@
 <?php
 include '../modelo/AdulMayHasCursos.php';
-
 $adulMayHasCursos = new adulMayHasCursos();
 
 if ($_POST['funcion'] == 'registrar') {
@@ -10,8 +9,9 @@ if ($_POST['funcion'] == 'registrar') {
     $fecha = $_POST['fecha'];
     $adulMay = $_POST['adulMay'];
     
-    $adulMayhasCursos->crear($curso,$tutor,$estado,$fecha,$adulMay);
+    $adulMayHasCursos->crear($curso,$tutor,$estado,$fecha,$adulMay);
 }
+
 
 if ($_POST['funcion'] == 'adul_std') {
     $id = $_POST['ID'];

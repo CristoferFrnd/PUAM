@@ -138,15 +138,15 @@ $(document).ready(function () {
 
         funcion = 'buscar_crs';
         $.post('../controlador/adultoMayController.php', { funcion, id }, (response) => {
-            const CUR = JSON.parse(response);
+            const CURSOS = JSON.parse(response);
             let template = ``;
-            console.log(CUR)
-            CUR.forEach(adultomay => {
+            CURSOS.forEach(curso => {
+                console.log(curso)
                 template += `
                     <tr>
-                    <td>${adultomay.nombreC}</td>
-                    <td>${adultomay.nombreP}</td>
-                    <td>${adultomay.fechaI}</td>
+                    <td>${curso.nombreC}</td>
+                    <td>${curso.nombreP}</td>
+                    <td>${curso.fechaI}</td>
                     </tr>
                     `;
             });

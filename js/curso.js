@@ -47,8 +47,4 @@ $(document).ready(function () {
     $(document).on('click', '.btn-getId', (e) => {
         llenar_tutores();
     });
-    
-
-   
-
 })

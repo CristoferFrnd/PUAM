@@ -88,6 +88,7 @@ $(document).ready(function () {
             $('#contrasenaE').val(ALUMNO.contrasena);
             $('#telE').val(ALUMNO.tel);
             $('#cedulaE').val(ALUMNO.id_usuario);
+            $('#cursoE').val(ALUMNO.curso);
             $('#horasRE').val(ALUMNO.horasR);
         });
         

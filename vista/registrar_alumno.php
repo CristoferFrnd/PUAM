@@ -129,9 +129,11 @@ if ($_SESSION['us_tipo'] == 1) {
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="telE">Telefono</label>
-                                <input type="text" class="form-control" id="telE" placeholder="Telefono" required="true">
+                                <label for="cursos">Curso</label>
+                                <br />
+                                <input type="text" class="form-control" id="cursoE" disabled>
                             </div>
+
 
                         </div>
 
@@ -146,13 +148,11 @@ if ($_SESSION['us_tipo'] == 1) {
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="cursos">Curso</label>
-                                <br />
-                                <select class="form-select form-select-lg mb-4 form-control" aria-label=".form-select-lg example" id="curso">
-                                    <option selected value="1">Informática</option>
-                                    <option selected value="2">Expresion Corporal</option>
-                                </select>
+                                <label for="telE">Telefono</label>
+                                <input type="text" class="form-control" id="telE" placeholder="Telefono" required="true">
                             </div>
+
+                            
 
                             <div class="col-md-2"></div>
                         </div>

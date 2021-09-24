@@ -43,8 +43,8 @@ $(document).ready(function () {
         const ID = $('#us_id').val();
         funcion = "buscar_am_al";
         $.post('../controlador/claseController.php', {ID, consulta, funcion }, (response) => {
+            console.log(response);
             const ADULTOMAYS = JSON.parse(response);
-            console.log(ADULTOMAYS);
             if(ADULTOMAYS.length == 0) {
                 alert("No Tienes Alumnos Registrados para tu Curso")
             }
@@ -63,7 +63,7 @@ $(document).ready(function () {
                     <td>${adultomay.telefonoc_admay}</td>
                     <td>${adultomay.celular_admay}</td>
                     <td>${adultomay.correoe_admay}</td>              
-                    <td><button type='button' class='conf_estado btn ${color}' data-toggle='modal' data-target='#estadoM' disabled>${activ_admay}</button></td>
+                    <td><button type='button' class='conf_estado btn ${color}' data-toggle='modal' data-target='#estadoM' disabled>${estado}</button></td>
                     </tr>
                     `;
             });

@@ -17,8 +17,8 @@ if (isset($_POST["submit"])) {
         $adulM = $_POST['adulM'];
         $tema = $_POST['tema'];
         $tutor = $_SESSION['usuario'];
-        $curso = 1;
-        $tipo = 1;
+        $tipo = $_POST['tclases'];
+        $curso = $_POST['us_curso_id'];
 
         // $fecha = '2021-08-30';
         // $duracion = 2;

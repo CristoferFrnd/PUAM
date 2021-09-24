@@ -1,16 +1,16 @@
 $(document).ready(function () {
     listar_alumnos();
-    //datos_alumno();
+    listar_cursos();
 
     function listar_alumnos(consulta) {
         funcion = "listar";
         $.post('../controlador/alumnoController.php', { consulta, funcion }, (response) => {
-            
+
             const ALUMNOS = JSON.parse(response);
             let template = ``;
             ALUMNOS.forEach(alumno => {
                 template += `
-                    <tr us_id=${alumno.id_usuario} us_ap=${alumno.apellidos}>
+                    <tr us_id="${alumno.id_usuario}">
                         <td>${alumno.id_usuario}</td>
                         <td>${alumno.nombre}</td>
                         <td>${alumno.correo}</td>
@@ -26,7 +26,6 @@ $(document).ready(function () {
     }
 
     $(document).on('keyup', '#search', function () {
-        console.log('prueba')
         let valor = $(this).val();
         if (valor != '') {
             listar_alumnos(valor);
@@ -46,7 +45,11 @@ $(document).ready(function () {
 
         funcion = 'registrar';
         $.post('../controlador/alumnoController.php', { funcion, nombre, contrasena, cedula, correo, telefono, horasR, curso }, (response) => {
-            alert(response);
+            if(response == 'add'){
+                alert("Tutor Agregado con Éxito");
+            }else{
+                alert("Error al Agregar Tutor");
+            }
             $('#form-registar-alumno').trigger('reset');
             location.href = '../vista/registrar_alumno.php'
         });
@@ -91,14 +94,13 @@ $(document).ready(function () {
             $('#cursoE').val(ALUMNO.curso);
             $('#horasRE').val(ALUMNO.horasR);
         });
-        
+
     });
 
     function datos_alumno() {
         funcion = "buscar_us_id";
         ID = $('#id_us').val();
         $.post('../controlador/alumnoController.php', { ID, funcion }, (response) => {
-            console.log(response);
             const ALUMNO = JSON.parse(response);
             $('#nombre').val(ALUMNO.nombre);
             $('#correo').val(ALUMNO.correo);
@@ -106,7 +108,6 @@ $(document).ready(function () {
             $('#tel').val(ALUMNO.tel);
             $('#cedula').val(ALUMNO.id_usuario);
             $('#id_us').val(ID);
-            console.log(response);
         });
     }
 
@@ -114,7 +115,6 @@ $(document).ready(function () {
     $(document).on('click', '.eliminar-alumno', (e) => {
         funcion = 'eliminar';
         const ID = $('#id_del_us').val();
-        console.log(ID);
         $.post('../controlador/alumnoController.php', { funcion, ID }, (response) => {
             console.log(response);
             listar_alumnos();
@@ -129,4 +129,19 @@ $(document).ready(function () {
         $('#id_del_us').val(ID);
         $('#msg').html(`<p>Esta seguro de eliminar al alumno/a ${alumno}? Esta acción no se puede revertir.</p>`)
     });
+
+    function listar_cursos() {
+        funcion = "listar";
+        $.post('../controlador/cursoController.php', { funcion }, (response) => {
+            console.log(response);
+            const CURSOS = JSON.parse(response);
+            let template = ``;
+            CURSOS.forEach(curso => {
+                template += `
+                        <option value="${curso.id_crs}">${curso.nombre_crs}</option>
+                    `;
+            });
+            $('#cursos').html(template);
+        });
+    }
 })

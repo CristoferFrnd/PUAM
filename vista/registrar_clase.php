@@ -32,7 +32,7 @@ if ($_SESSION['us_tipo'] == 2) {
                             <i class="fa fa-search lupa" aria-hidden="true"></i>
 
                         </div>
-                        <table id="tabla-clases" class="table table-striped table-bordered table-sm" style="width:100%">
+                        <table id="tabla-clases" class="table table-striped table-bordered table-resposive" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Fecha</th>

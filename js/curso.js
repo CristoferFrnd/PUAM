@@ -28,7 +28,6 @@ $(document).ready(function () {
 
         lista.forEach(combo => {
             id = combo.getAttribute("id");
-            console.log(combo);
 
             var length = combo.options.length;
 

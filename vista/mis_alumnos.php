@@ -16,7 +16,7 @@ if ($_SESSION['us_tipo'] == 2) {
 
 <body>
 
-
+    <input type="text" id="us_id" value="<?php echo $_SESSION['usuario']; ?>" hidden="true">
     <!-- modal Agregar Adulto Mayor -->
     <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -222,18 +222,17 @@ if ($_SESSION['us_tipo'] == 2) {
         <br>
         <section>
             <div class="container-fluid">
-            <div class="card card-success animate__animated animate__bounceInRight">
-            <div class="titulo-tabla">
-            <h3  >LISTADO DE PARTICIPANTES</h3>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user-plus"></i> AGREGAR</button>
-                </div>  
-                    <div class="card-body">
-                    <div class="container-btn-add">
-                    <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search1">
-                    <i class="fa fa-search lupa" aria-hidden="true"></i>
-                    
+                <div class="card card-success animate__animated animate__bounceInRight">
+                    <div class="titulo-tabla">
+                        <h3>LISTADO DE ALUMNOS</h3>
                     </div>
-                        <table id="tabla" class="table table-striped table-bordered table-sm" style="width:100%">
+                    <div class="card-body">
+                        <div class="container-btn-add">
+                            <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search1">
+                            <i class="fa fa-search lupa" aria-hidden="true"></i>
+
+                        </div>
+                        <table id="tabla" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th>N. Cedula</th>
@@ -242,10 +241,9 @@ if ($_SESSION['us_tipo'] == 2) {
                                     <th>Celular</th>
                                     <th>Correo</th>
                                     <th>Estado</th>
-                                    <th>Editar</th>
                                 </tr>
                             </thead>
-                            <tbody id="adultoMay_tab">
+                            <tbody id="adultoMay_tab_al">
                             </tbody>
                         </table>
                     </div>

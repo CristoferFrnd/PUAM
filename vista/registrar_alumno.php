@@ -187,7 +187,7 @@ if ($_SESSION['us_tipo'] == 1) {
                             <i class="fa fa-search lupa" aria-hidden="true"></i>
 
                         </div>
-                        <table id="tabla" class="table table-striped table-bordered table-sm" style="width:100%">
+                        <table id="tabla" class="table table-striped table-bordered table-responsive">
                             <thead>
                                 <tr>
                                     <th>N. Cedula</th>

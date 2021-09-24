@@ -1,5 +1,6 @@
 $(document).ready(function () {
     listar_adultoMays();
+    listar_adultoMays_al();
 
 
     function listar_adultoMays(consulta) {
@@ -14,15 +15,13 @@ $(document).ready(function () {
                     estado = 'Activo';
                     color = 'btn-success';
                 }
-                console.log(estado)
                 template += `
                     <tr data-estado="${adultomay.estado}" data-id="${adultomay.id_adulMay}">
                     <td>${adultomay.id_adulMay}</td>
                     <td>${adultomay.nombre}</td>
                     <td>${adultomay.telefono}</td>
                     <td>${adultomay.celular}</td>
-                    <td>${adultomay.correo}</td>
-                                        
+                    <td>${adultomay.correo}</td>              
                     <td><button type='button' class='conf_estado btn ${color}' data-toggle='modal' data-target='#estadoM'>${estado}</button></td>
                     <td><button type='button' class='editar-alumno btn btn-primary' data-toggle='modal' data-target='#exampleModal'><i class="fas fa-edit"></i></button></td>
                     <td><button type='button' class='lis_cursos btn btn-primary' data-toggle='modal' data-target='#verCrs'> Ver Cursos</button></td>
@@ -32,6 +31,39 @@ $(document).ready(function () {
             });
 
             $('#adultoMay_tab').html(template);
+        });
+    }
+
+    function listar_adultoMays_al(consulta) {
+        const ID = $('#us_id').val();
+        funcion = "buscar_am_al";
+        $.post('../controlador/claseController.php', {ID, consulta, funcion }, (response) => {
+            const ADULTOMAYS = JSON.parse(response);
+            console.log(ADULTOMAYS);
+            if(ADULTOMAYS.length == 0) {
+                alert("No Tienes Alumnos Registrados para tu Curso")
+            }
+            let template = ``;
+            ADULTOMAYS.forEach(adultomay => {
+                let estado = 'Inactivo';
+                let color = 'btn-danger';
+                if (adultomay.activ_admay == '1') {
+                    estado = 'Activo';
+                    color = 'btn-success';
+                }
+                template += `
+                    <tr data-estado="${adultomay.estado}" data-id="${adultomay.id_adMay}">
+                    <td>${adultomay.id_adMay}</td>
+                    <td>${adultomay.nombre_admay}</td>
+                    <td>${adultomay.telefonoc_admay}</td>
+                    <td>${adultomay.celular_admay}</td>
+                    <td>${adultomay.correoe_admay}</td>              
+                    <td><button type='button' class='conf_estado btn ${color}' data-toggle='modal' data-target='#estadoM' disabled>${activ_admay}</button></td>
+                    </tr>
+                    `;
+            });
+
+            $('#adultoMay_tab_al').html(template);
         });
     }
 
@@ -56,7 +88,7 @@ $(document).ready(function () {
 
         funcion = 'registrar';
         $.post('../controlador/adultoMayController.php', { funcion, cedula, nombre, telefono, celular, correo }, (response) => {
-            alert(response);
+            alert("Participante Registrado con Éxito");
             $('#form-registrar-am').trigger('reset');
             location.href = '../vista/registrar_am.php'
 
@@ -101,7 +133,6 @@ $(document).ready(function () {
 
         funcion = 'buscar_crs';
         $.post('../controlador/adultoMayController.php', { funcion, id }, (response) => {
-            console.log(response)
             const CUR = JSON.parse(response);
             let template = ``;
             console.log(CUR)
@@ -132,31 +163,18 @@ $(document).ready(function () {
 
 
         let lista = document.querySelectorAll('input[type="checkbox"]');
-        console.log(lista)
-
         lista.forEach(selector => {
             if (selector.checked) {
                 funcion = 'registrar';
                 curso = selector.getAttribute("id").substr(5);
-                console.log(curso)
                 tutor = document.getElementById(curso).value;
-                console.log(tutor);
                 estado = 1;
-                console.log(estado)
                 fecha = FechaHoy();
-                console.log(fecha);
-                console.log(adulMay)
-
                 $.post('../controlador/adultoMayhasCrsController.php', { funcion, curso, tutor, estado, fecha, adulMay }, (response) => {
                     alert(response);
 
                 });
             }
-
-
-
-
-
         })
 
 

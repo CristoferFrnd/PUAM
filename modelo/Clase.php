@@ -91,16 +91,16 @@ class Clase
 
     function buscar_tclase(){
         $sql = "SELECT * FROM tipoClase
-                      ";
+                ";
             $query = $this->acceso->prepare($sql);
             $query->execute();
             $this->objetos = $query->fetchall();
             return $this->objetos;
     }
-
+    
     function buscar_adulM_est($id)
     {
-        $sql = "SELECT id_adMay,nombre_adMay,celular_AdMay,telefonoC_AdMay, correoE_AdMay 
+        $sql = "SELECT id_adMay,nombre_adMay,celular_AdMay,telefonoC_AdMay, correoE_AdMay, activ_AdMay
         FROM adultoMay_has_cursos
         JOIN adultoMay ON adultoMay_id=id_adMay
         WHERE tutores_id_tutor=:id";

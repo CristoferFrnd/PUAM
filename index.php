@@ -23,9 +23,9 @@ if (!empty($_SESSION['us_tipo'])) {
     <body>
         <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
             <div class="card">
+                <img src="img/logo.png" alt="" class="img-login">
                 <div class="card-body">
                     <form id="form-login">
-                        <h2>Gestion Alumnos</h2>
                         <div class="form-group">
                             <label for="user">Usuario</label>
                             <input type="text" id="user" class="form-control">

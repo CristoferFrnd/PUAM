@@ -6,7 +6,7 @@ $(document).ready(function () {
         $.post('controlador/loginController.php', { user, pass }, (response) => {
             if(response == 'nologin'){
 				// no login
-				alert(response);
+				alert("Usuario o Contraseña Incorrecto");
 			} else {
 				window.open("vista/registrar_clase.php", "_self");
 			}

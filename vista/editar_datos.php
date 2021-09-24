@@ -40,11 +40,11 @@ include_once 'layouts/header.php';
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="correo">Correo</label>
-                                <input type="text" class="form-control" id="correo" placeholder="Correo" required="true">
+                                <input type="text" class="form-control" id="correoE" placeholder="Correo" required="true">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="tel">Telefono</label>
-                                <input type="text" class="form-control" id="correo" placeholder="Telefono" value="<?php echo $_SESSION['correo']; ?>" required="true" disabled >
+                                <input type="text" class="form-control" id="telE" placeholder="Telefono" value="<?php echo $_SESSION['correo']; ?>" required="true" disabled >
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="contrasena">Contraseña</label>

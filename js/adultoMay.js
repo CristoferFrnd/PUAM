@@ -1,8 +1,10 @@
 $(document).ready(function () {
-    if($('#us_tipo' == 2)){
+    console.log($('#us_tipo').val() == 2);
+    if($('#us_tipo').val() == 2){
+        console.log("ingreso");
         listar_adultoMays_al();
     }
-    
+
     listar_adultoMays();
 
 

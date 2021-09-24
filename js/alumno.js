@@ -133,7 +133,6 @@ $(document).ready(function () {
     function listar_cursos() {
         funcion = "listar";
         $.post('../controlador/cursoController.php', { funcion }, (response) => {
-            console.log(response);
             const CURSOS = JSON.parse(response);
             let template = ``;
             CURSOS.forEach(curso => {

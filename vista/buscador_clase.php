@@ -14,7 +14,7 @@ if ($_SESSION['us_tipo'] == 1) {
         <section>
             <div class="container-fluid">
                 <div class="card card-success animate__animated animate__bounceInRight">
-                    <h3 style="padding: 20px;">LISTADO DE CLASES</h3>
+                    <h3 style="padding: 20px;">LISTADO DE TODAS LAS CLASES</h3>
                     <div class="card-body">
                         <div class="container-btn-add">
                             <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">

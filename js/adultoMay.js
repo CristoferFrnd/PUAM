@@ -188,7 +188,7 @@ $(document).ready(function () {
                 estado = 1;
                 fecha = FechaHoy();
                 $.post('../controlador/adultoMayhasCrsController.php', { funcion, curso, tutor, estado, fecha, adulMay }, (response) => {
-                    alert(response);
+                    alert("Participante matriculado con éxito");
 
                 });
             }

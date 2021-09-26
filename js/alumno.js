@@ -48,13 +48,19 @@ $(document).ready(function () {
         $.post('../controlador/alumnoController.php', { funcion, nombre, contrasena, cedula, correo, telefono, horasR, curso }, (response) => {
             if(response == 'add'){
                 alert("Tutor Agregado con Éxito");
+                $.post('../helpers/recuperar.php', { funcion, correo }, (response) => {
+                    console.log(response);
+                });
+        
             }else{
                 alert("Error al Agregar Tutor");
             }
+            
             $('#form-registar-alumno').trigger('reset');
-            location.href = '../vista/registrar_alumno.php'
+            
         });
 
+        listar_alumnos();
         e.preventDefault();
     });
 
@@ -102,6 +108,7 @@ $(document).ready(function () {
         funcion = "buscar_us_id";
         ID = $('#id_us').val();
         $.post('../controlador/alumnoController.php', { ID, funcion }, (response) => {
+            console.log(response);
             const ALUMNO = JSON.parse(response);
             $('#nombre').val(ALUMNO.nombre);
             $('#correo').val(ALUMNO.correo);

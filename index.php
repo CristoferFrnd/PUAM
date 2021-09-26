@@ -33,6 +33,7 @@ if (!empty($_SESSION['us_tipo'])) {
                         <div class="form-group">
                             <label for="pass">Contraseña</label>
                             <input type="password" id="pass" class="form-control">
+                            <span id="avisoD" class="text-danger text-bold" >text</span>
                         </div>
                         <div class="form-group ">
                             <input type="submit" class="btn btn-primary" value="Ingresar">

@@ -21,7 +21,7 @@ if ($_SESSION['us_tipo'] == 1) {
                             <i class="fa fa-search lupa" aria-hidden="true"></i>
                         </div>
                         <input type="hidden" id="rows" value="0">
-                        <table id="tabla" class="table table-striped table-bordered" style="width:100%">
+                        <table id="tabla" class="table table-striped table-bordered table-responsive" style="width:100%; height:500px">
                             <thead>
                                 <tr>
                                     <th>Fecha</th>
@@ -93,13 +93,13 @@ if ($_SESSION['us_tipo'] == 1) {
                     <div class="form-row">
                     </div>
 
-                    
 
 
-                        <div class="form-group">
-                            <label for="img">Evidencia</label>
-                            <img class="img-fluid" style="width:100%" src="../img/reunion.jpg" alt="Eniun" id="img">
-                        </div>
+
+                    <div class="form-group">
+                        <label for="img">Evidencia</label>
+                        <img class="img-fluid" style="width:100%" alt="Eniun" id="img">
+                    </div>
                 </div>
                 <div class="modal-footer">
 

@@ -12,18 +12,27 @@ if ($_SESSION['us_tipo'] == 2) {
 
     <div class="content-wrapper container">
         <br>
+
         <input type="text" id="us_tipo" value="<?php echo $_SESSION['us_tipo']; ?>" hidden="true">
         <input type="text" id="us_id" value="<?php echo $_SESSION['usuario']; ?>" hidden="true">
+        <input type="text" id="us_curso" value="<?php echo $_SESSION['curso_us']; ?>" hidden="true">
 
 
         <section>
-            <div class="container-fluid">
-                <div class="container-btn-add">
-                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarClaseModal"><i class="fas fa-user-plus"></i></button>
-                </div>
+            <div class="container-fluid top">
+
                 <div class="card card-success animate__animated animate__bounceInRight">
+                    <div class="titulo-tabla">
+                        <h3>LISTADO DE CLASES</h3>
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarClaseModal"><i class="fas fa-user-plus"> AGREGAR</i></button>
+                    </div>
                     <div class="card-body">
-                        <table id="tabla-clases" class="display table table-hover text-nowrap" style="width:100%">
+                        <div class="container-btn-add">
+                            <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search2">
+                            <i class="fa fa-search lupa" aria-hidden="true"></i>
+
+                        </div>
+                        <table id="tabla-clases" class="table table-striped table-bordered table-responsive" style="width:100%; height:500px">
                             <thead>
                                 <tr>
                                     <th>Fecha</th>
@@ -31,6 +40,7 @@ if ($_SESSION['us_tipo'] == 2) {
                                     <th>Curso</th>
                                     <th>Tema</th>
                                     <th>Tipo de Clase</th>
+                                    <th>Detalle</th>
                                 </tr>
                             </thead>
                             <tbody id="clases_alumno">
@@ -45,18 +55,17 @@ if ($_SESSION['us_tipo'] == 2) {
         </section>
     </div>
 
-    <!-- MODAL VER DETALLE -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
+    <!-- MODAL DETALLE CLASE -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalDetalle" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
-            <div class="modal-header">
+                <div class="modal-header">
                     <h5 class="modal-title">Detalle de clase</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-
                     <div class="form-row">
                         <input type="text" id="id_clase" hidden="true">
                         <div class="form-group col-md-4">
@@ -79,7 +88,7 @@ if ($_SESSION['us_tipo'] == 2) {
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="adulM">Particpante</label>
+                            <label for="adulM">Participante</label>
                             <input type="text" class="form-control" id="adulMD" disabled>
                         </div>
                         <div class="form-group col-md-6">
@@ -91,10 +100,15 @@ if ($_SESSION['us_tipo'] == 2) {
                     <div class="form-row">
                     </div>
 
-                    <div class="form-row">
-                        <label for="img">Evidencia</label>
-                        <img src="../img/reunion.jpg" class="img-fluid" alt="Eniun" id="img">
+                    <div class="form-row img-responsive">
+                        <label for="img">Evidencia </label>
+                        <img src="../img/reunion.jpg" class="img-fluid " alt="Eniun" id="img">
                     </div>
+                </div>
+
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
 
             </div>
@@ -106,7 +120,7 @@ if ($_SESSION['us_tipo'] == 2) {
 
     </div>
 
-    <!-- MODAL CLASE REGISTRO --> 
+    <!-- MODAL AGREGAR CLASE -->
     <div class="modal fade" tabindex="-1" role="dialog" id="agregarClaseModal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -117,9 +131,10 @@ if ($_SESSION['us_tipo'] == 2) {
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post" action="../helpers/claseRegistro.php" enctype="multipart/form-data">
+                    <form method="POST" action="../helpers/claseRegistro.php" enctype="multipart/form-data">
+                        <input type="text" name="us_curso_id" id="us_curso_id" value="<?php echo $_SESSION['curso_id']; ?>" hidden="true">
+
                         <div class="form-row">
-                            <input type="text" id="id_clase" hidden="true">
                             <div class="form-group col-md-4">
                                 <label for="fecha">Fecha</label>
                                 <input type="date" class="form-control" id="fecha" name="fecha" required="true">
@@ -130,7 +145,8 @@ if ($_SESSION['us_tipo'] == 2) {
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="curso">Curso</label>
-                                <input type="text" class="form-control" id="curso" name="curso" requiered="true">
+                                <input type="text" class="form-control" id="curso" name="curso" requiered="true" disabled>
+                                <input type="hidden" id="id_curso" name="id_curso">
                             </div>
                         </div>
                         <div class="form-row">
@@ -139,9 +155,21 @@ if ($_SESSION['us_tipo'] == 2) {
                         </div>
 
                         <div class="form-row">
+
                             <div class="form-group col-md-6">
                                 <label for="adulM">Participante</label>
-                                <input type="text" class="form-control" id="adulM" name="adulM" requiered="true">
+                                <!--<input type="text" class="form-control" id="adulM" name="adulM" requiered="true">-->
+                                <br />
+                                <select name="adulM" class="form-select form-select-lg mb-4 form-control" aria-label=".form-select-lg example" id="ad_al">
+
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="tclase">Tipo de Clase</label>
+                                <br />
+                                <select name="tclases" class="form-select form-select-lg mb-4 form-control" aria-label=".form-select-lg example" id="tclases">
+                                </select>
                             </div>
                         </div>
 
@@ -152,8 +180,11 @@ if ($_SESSION['us_tipo'] == 2) {
                             </div>
                         </div>
 
+                        <div class="modal-footer">
+                            <input type="submit" name="submit" value="Registrar" class="btn btn-primary" />
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
 
-                        <input type="submit" name="submit" value="Registrar" class="btn btn-primary" />
                     </form>
                 </div>
             </div>
@@ -163,6 +194,8 @@ if ($_SESSION['us_tipo'] == 2) {
             </div>
         </div>
     </div>
+
+    <!-- <input type="button" value="Prueba" id="prueba"> -->
     </body>
 
 

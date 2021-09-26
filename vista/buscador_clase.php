@@ -9,13 +9,19 @@ if ($_SESSION['us_tipo'] == 1) {
     <?php
     include_once 'layouts/nav.php';
     ?>
-    <div class="content-wrapper container">
+    <div class="content-wrapper container top">
         <br>
         <section>
             <div class="container-fluid">
                 <div class="card card-success animate__animated animate__bounceInRight">
+                    <h3 style="padding: 20px;">LISTADO DE TODAS LAS CLASES</h3>
                     <div class="card-body">
-                        <table id="tabla" class="display table table-hover text-nowrap" style="width:100%">
+                        <div class="container-btn-add">
+                            <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
+                            <i class="fa fa-search lupa" aria-hidden="true"></i>
+                        </div>
+                        <input type="hidden" id="rows" value="0">
+                        <table id="tabla" class="table table-striped table-bordered table-responsive" style="width:100%; height:500px">
                             <thead>
                                 <tr>
                                     <th>Fecha</th>
@@ -23,13 +29,18 @@ if ($_SESSION['us_tipo'] == 1) {
                                     <th>Tutor</th>
                                     <th>Curso</th>
                                     <th>Tipo de Clase</th>
+                                    <th>Detalle</th>
                                 </tr>
                             </thead>
                             <tbody id="clases">
                             </tbody>
                         </table>
-                    </div>
-                    <div class="card-footer">
+                        <!-- <div class="datatable-pagination d-flex flex-row-reverse">
+                            <div class="datatable-pagination-buttons align-items-end">
+                                <button id="prev" data-mdb-ripple-color="dark" class="btn btn-link datatable-pagination-button datatable-pagination-left"><i class="fa fa-chevron-left"></i></button>
+                                <button id="next" data-mdb-ripple-color="dark" class="btn btn-link datatable-pagination-button datatable-pagination-right"><i class="fa fa-chevron-right"></i></button>
+                            </div>
+                        </div> -->
                     </div>
 
                 </div>
@@ -52,40 +63,47 @@ if ($_SESSION['us_tipo'] == 1) {
                         <input type="text" id="id_clase" hidden="true">
                         <div class="form-group col-md-4">
                             <label for="fecha">Fecha</label>
-                            <input type="text" class="form-control" id="fecha" disabled>
+                            <input type="text" class="form-control" id="fechaD" disabled>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="duracion">Duración (H)</label>
-                            <input type="text" class="form-control" id="duracion" disabled>
+                            <input type="text" class="form-control" id="duracionD" disabled>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="curso">Curso</label>
-                            <input type="text" class="form-control" id="curso" disabled>
+                            <input type="text" class="form-control" id="cursoD" disabled>
                         </div>
                     </div>
                     <div class="form-row">
                         <label for="tema">Tema tratado</label>
-                        <input type="text" class="form-control" id="tema" disabled>
+                        <input type="text" class="form-control" id="temaD" disabled>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="adulM">Participante</label>
-                            <input type="text" class="form-control" id="adulM" disabled>
+                            <input type="text" class="form-control" id="adulMD" disabled>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="tutor">Tutor</label>
-                            <input type="text" class="form-control" id="tutor" disabled>
+                            <input type="text" class="form-control" id="tutorD" disabled>
                         </div>
                     </div>
 
                     <div class="form-row">
                     </div>
 
-                    <div class="form-row">
+
+
+
+                    <div class="form-group">
                         <label for="img">Evidencia</label>
-                        <img src="../img/reunion.jpg" class="img-fluid" alt="Eniun" id="img">
+                        <img class="img-fluid" style="width:100%" alt="Eniun" id="img">
                     </div>
+                </div>
+                <div class="modal-footer">
+
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                 </div>
 
             </div>

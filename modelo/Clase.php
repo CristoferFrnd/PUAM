@@ -14,13 +14,12 @@ class Clase
     {
             //Inserción de datos
             $sql = "    INSERT INTO clase(fecha_clase, duracion_clase, evidencia_clase, adultoMay_id_adMay, tema_Clase, tutores_id_tutor, cursos_id_crs, tipoClase_id_tipoClase)
-                        VALUES(:fecha, :duracion, :evidencia, :adulM, :tema, :tutor, :curso, :tipo)
+                        VALUES(:fecha, :duracion, '$imgContent', :adulM, :tema, :tutor, :curso, :tipo)
             ";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(
                 ':fecha' => $fecha,
                 ':duracion'    => $duracion,
-                ':evidencia'    => $imgContent,
                 ':adulM'    => $adulM,
                 ':tema'    => $tema,
                 ':tutor'    => $tutor,
@@ -35,9 +34,11 @@ class Clase
 
     function buscar()
     {
+        // $rowsInit = $_POST['rowsInit'];
+        // $rows = $_POST['rows'];
         if (!empty($_POST['consulta'])) {
             $consulta = $_POST['consulta'];
-            $sql = "SELECT id_clase fecha_clase, duracion_clase, evidencia_clase, tema_clase, nombre_usuario AS tutor, nombre_crs, descripcion_tipoClase, nombre_adMay, id_adMay FROM clase
+            $sql = "SELECT id_clase, fecha_clase, duracion_clase, evidencia_clase, tema_clase, nombre_usuario AS tutor, nombre_crs, descripcion_tipoClase, nombre_adMay, id_adMay FROM clase
                     JOIN curso on cursos_id_crs=id_crs
                     JOIN tipoClase on tipoClase_id_tipoClase=id_tipoClase
                     JOIN adultoMay on adultoMay_id_adMay=id_adMay
@@ -63,7 +64,7 @@ class Clase
                     JOIN adultoMay on adultoMay_id_adMay=id_adMay
                     JOIN usuario on tutores_id_tutor=id_usuario
                     WHERE nombre_adMay NOT LIKE ''
-                    LIMIT 25                
+                    LIMIT 0, 50         
                     ";
             $query = $this->acceso->prepare($sql);
             $query->execute();
@@ -88,13 +89,58 @@ class Clase
             return $this->objetos;
     }
 
+    function buscar_tclase(){
+        $sql = "SELECT * FROM tipoClase
+                ";
+            $query = $this->acceso->prepare($sql);
+            $query->execute();
+            $this->objetos = $query->fetchall();
+            return $this->objetos;
+    }
+    
+    function buscar_adulM_est($id)
+    {
+        $sql = "SELECT id_adMay,nombre_adMay,celular_AdMay,telefonoC_AdMay, correoE_AdMay, activ_AdMay
+        FROM adultoMay_has_cursos
+        JOIN adultoMay ON adultoMay_id=id_adMay
+        WHERE tutores_id_tutor=:id";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(
+                ':id' => $id
+            ));
+            $this->objetos = $query->fetchall();
+            return $this->objetos;
+    }    
+
     function buscar_clase_alumno($id){
-        $sql = "SELECT id_clase, fecha_clase, duracion_clase, evidencia_clase, tema_clase, tutores_id_tutor AS tutor, nombre_crs, descripcion_tipoClase, nombre_adMay, id_adMay FROM clase
-        JOIN curso on cursos_id_crs=id_crs
-        JOIN tipoClase on tipoClase_id_tipoClase=id_tipoClase
-        JOIN adultoMay on adultoMay_id_adMay=id_adMay
-        JOIN usuario on tutores_id_tutor=id_usuario
-        WHERE tutores_id_tutor = :id
+        if (!empty($_POST['consulta'])) {
+            $consulta = $_POST['consulta'];
+            $sql = "SELECT id_clase, fecha_clase, duracion_clase, evidencia_clase, tema_clase, nombre_usuario AS tutor, id_crs, nombre_crs, descripcion_tipoClase, nombre_adMay, id_adMay FROM clase
+                    JOIN curso on cursos_id_crs=id_crs
+                    JOIN tipoClase on tipoClase_id_tipoClase=id_tipoClase
+                    JOIN adultoMay on adultoMay_id_adMay=id_adMay
+                    JOIN usuario on tutores_id_tutor=id_usuario
+                    WHERE tutores_id_tutor = :id
+                    AND (nombre_adMay LIKE :consulta
+                    OR id_adMay LIKE :consulta
+                    OR fecha_clase LIKE :consulta
+                    OR descripcion_tipoClase LIKE :consulta)
+                        ";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(
+                ':consulta' => "%$consulta%",
+                ':id' => $id
+            ));
+            $this->objetos = $query->fetchall();
+            return $this->objetos;
+        } else {
+            $sql = "SELECT id_clase, fecha_clase, duracion_clase, evidencia_clase, tema_clase, nombre_usuario AS tutor,id_crs, nombre_crs, descripcion_tipoClase, nombre_adMay, id_adMay FROM clase
+                    JOIN curso on cursos_id_crs=id_crs
+                    JOIN tipoClase on tipoClase_id_tipoClase=id_tipoClase
+                    JOIN adultoMay on adultoMay_id_adMay=id_adMay
+                    JOIN usuario on tutores_id_tutor=id_usuario
+                    WHERE tutores_id_tutor = :id
+                    LIMIT 0, 50       
                     ";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(
@@ -102,6 +148,7 @@ class Clase
             ));
             $this->objetos = $query->fetchall();
             return $this->objetos;
+        }
     }
 
     function eliminar($id){

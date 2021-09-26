@@ -21,7 +21,7 @@ if ($_SESSION['us_tipo'] == 1) {
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Agregar Alumno</h5>
+                    <h5 class="modal-title">Agregar Tutor</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -61,8 +61,6 @@ if ($_SESSION['us_tipo'] == 1) {
 
                         </div>
 
-                       
-
                         <div class="form-row">
                             <div class="col-md-2"></div>
 
@@ -70,33 +68,34 @@ if ($_SESSION['us_tipo'] == 1) {
                                 <label for="horasR">Horas Realizadas</label>
                                 <input type="number" class="form-control" id="horasR" placeholder="Horas Realizadas" required="true">
                             </div>
-
+                        
                             <div class="form-group col-md-4">
                                 <label for="cursos">Curso</label>
-                                <select class="form-select" aria-label="Default select example" id="cursos">
-                                    <option selected value="1">Informática</option>
+                                <br />
+                                <select class="form-select form-select-lg mb-4 form-control" aria-label=".form-select-lg example" id="cursos">
                                 </select>
-
                             </div>
 
-                            <div class="col-md-2"></div>
                         </div>
-                        <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Registrar</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                        </div>
-                        
-                    </form>
+
+                        <div class="col-md-2"></div>
                 </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+
+                </form>
             </div>
         </div>
+    </div>
     </div>
 
     <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Editar Alumno</h5>
+                    <h5 class="modal-title">Editar Tutor</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -130,37 +129,38 @@ if ($_SESSION['us_tipo'] == 1) {
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="telE">Telefono</label>
-                                <input type="text" class="form-control" id="telE" placeholder="Telefono" required="true">
+                                <label for="cursos">Curso</label>
+                                <br />
+                                <input type="text" class="form-control" id="cursoE" disabled>
                             </div>
+
 
                         </div>
 
-                       
+
 
                         <div class="form-row">
                             <div class="col-md-2"></div>
 
                             <div class="form-group col-md-4">
                                 <label for="horasRE">Horas Realizadas</label>
-                                <input type="number" class="form-control" id="horasRE" placeholder="Horas Realizadas" required="true" >
+                                <input type="number" class="form-control" id="horasRE" placeholder="Horas Realizadas" required="true">
                             </div>
 
                             <div class="form-group col-md-4">
-                                <label for="cursos">Curso</label>
-                                <select class="form-select" aria-label="Default select example" id="cursos">
-                                    <option selected value="1">Informática</option>
-                                </select>
-
+                                <label for="telE">Telefono</label>
+                                <input type="text" class="form-control" id="telE" placeholder="Telefono" required="true">
                             </div>
+
+                            
 
                             <div class="col-md-2"></div>
                         </div>
                         <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
                         </div>
-                        
+
                     </form>
                 </div>
             </div>
@@ -173,21 +173,21 @@ if ($_SESSION['us_tipo'] == 1) {
         <br>
         <section>
             <div class="container-fluid">
-                
+
                 <div class="card card-success animate__animated animate__bounceInRight">
-                <div class="titulo-tabla">
-                <h3 >LISTADO DE TUTORES</h3>
-                
-                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalAgregar"><i class="fas fa-user-plus"></i> AGREGAR</button>
-                </div>
-                
+                    <div class="titulo-tabla">
+                        <h3>LISTADO DE TUTORES</h3>
+
+                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalAgregar"><i class="fas fa-user-plus"></i> AGREGAR</button>
+                    </div>
+
                     <div class="card-body">
-                    <div class="container-btn-add">
-                    <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
-                    <i class="fa fa-search lupa" aria-hidden="true"></i>
-                    
-                     </div>
-                        <table id="tabla" class="table table-striped table-bordered table-sm" style="width:100%">
+                        <div class="container-btn-add">
+                            <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
+                            <i class="fa fa-search lupa" aria-hidden="true"></i>
+
+                        </div>
+                        <table id="tabla" class="table table-striped table-bordered table-responsive" style="height:500px">
                             <thead>
                                 <tr>
                                     <th>N. Cedula</th>
@@ -218,3 +218,4 @@ include_once 'layouts/footer.php';
 ?>
 
 <script src="../js/alumno.js"></script>
+<script src="../js/curso.js"></script>

@@ -26,12 +26,10 @@ class AdulMayHasCursos
                 ':estado'    => $estado,
                 ':fecha'    => $fecha,
                 ':adulMay'    => $adulMay
-                
+
             ));
             $this->objetos = $query->fetchall();
             echo 'add';
         }
     }
-
 }
-

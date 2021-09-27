@@ -2,6 +2,8 @@ $(document).ready(function () {
     listar_alumnos();
     listar_cursos();
     datos_alumno();
+    ls=document.localStorage;
+    
 
     function listar_alumnos(consulta) {
         funcion = "listar";
@@ -23,7 +25,9 @@ $(document).ready(function () {
                     `;
             });
             $('#alumnos').html(template);
+            localStorage.setItem('alumnos',response);
         });
+
     }
 
     $(document).on('keyup', '#search', function () {
@@ -151,4 +155,15 @@ $(document).ready(function () {
             $('#cursos').html(template);
         });
     }
+
+    $(document).on('click', '#reporteG', (e) => {
+        let funcion = 'reporte_AlumnosG',
+        datos = localStorage.getItem('alumnos');
+        $.post('../helpers/reportes.php', { funcion,datos  }, (response) => {
+           
+        });
+        e.preventDefault();
+
+
+    });
 })

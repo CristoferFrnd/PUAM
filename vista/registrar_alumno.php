@@ -185,6 +185,8 @@ if ($_SESSION['us_tipo'] == 1) {
                         <div class="container-btn-add">
                             <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
                             <i class="fa fa-search lupa" aria-hidden="true"></i>
+                            <div  style="padding-left: 20px"><button class="btn btn-primary" id="reporteG"><i class="fas fa-file-pdf"></i> Reporte</button></div>
+                            
 
                         </div>
                         <table id="tabla" class="table table-striped table-bordered table-responsive" style="height:500px">

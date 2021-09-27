@@ -1,12 +1,15 @@
+
 $(document).ready(function () {
+    
     listar_alumnos();
     listar_cursos();
     datos_alumno();
+    
 
     function listar_alumnos(consulta) {
         funcion = "listar";
         $.post('../controlador/alumnoController.php', { consulta, funcion }, (response) => {
-
+            localStorage.setItem('alumnos', response);
             const ALUMNOS = JSON.parse(response);
             let template = ``;
             ALUMNOS.forEach(alumno => {
@@ -136,6 +139,27 @@ $(document).ready(function () {
         const ID = $(ELEMENTO).attr('us_id');
         $('#id_del_us').val(ID);
         $('#msg').html(`<p>Esta seguro de eliminar al alumno/a ${alumno}? Esta acción no se puede revertir.</p>`)
+    });
+
+    $(document).on('click', '#reporteG', (e) => {
+        funcion = 'reporFG';
+        datos = localStorage.getItem('alumnos');
+        
+
+       
+
+        $.post('../helpers/pdfRepor.php', { funcion, datos }, (response) => {
+            var pdf = JSON.parse(response);
+            console.log(pdf);
+
+            // let pdfWindow = window.open("")
+            // pdfWindow.document.write(
+            // "<iframe width='100%' height='100%' src='"+pdf+"'></iframe>");
+
+
+            
+        });
+        e.preventDefault();
     });
 
     function listar_cursos() {

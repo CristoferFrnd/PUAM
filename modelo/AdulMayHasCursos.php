@@ -11,17 +11,16 @@ class AdulMayHasCursos
     }
 
 
-    function crear($curso,$tutor,$estado,$fecha,$adulMay)
+    function crear($tutor,$estado,$fecha,$adulMay)
     {
         if (!empty($this->objetos)) {
             echo 'noAdd';
         } else {
-            $sql = "    INSERT INTO adultoMay_has_cursos(cursos_id_crs, tutores_id_tutor, estado_AdultoMay, fechaIngreso_curso, adultoMay_id)
-                        VALUES(:curso,:tutor,:estado,:fecha,:adulMay)
+            $sql = "    INSERT INTO adultoMay_has_cursos(tutores_id_tutor, estado_AdultoMay, fechaIngreso_curso, adultoMay_id)
+                        VALUES(:tutor,:estado,:fecha,:adulMay)
             ";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(
-                ':curso' => $curso,
                 ':tutor'    => $tutor,
                 ':estado'    => $estado,
                 ':fecha'    => $fecha,

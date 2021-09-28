@@ -34,7 +34,7 @@ class AdulMay
                 ':celular'    => $celular,
                 ':telefono'    => $telefonoC,
                 ':correo'    => $correo
-                
+
             ));
             $this->objetos = $query->fetchall();
             echo 'add';
@@ -43,20 +43,20 @@ class AdulMay
 
     function editar($cedula, $nombre, $telefonoC, $celular, $correo)
     {
-            $sql = "    UPDATE  adultoMay SET id_adMay = :cedula, nombre_adMay = :nombre, telefonoC_AdMay = :telefono, celular_AdMay = :celular correoE_AdMay = :correo
+        $sql = "    UPDATE  adultoMay SET id_adMay = :cedula, nombre_adMay = :nombre, telefonoC_AdMay = :telefono, celular_AdMay = :celular correoE_AdMay = :correo
                         WHERE id_usuario = :id
             ";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(
-                ':cedula' => $cedula,
-                ':nombre'    => $nombre,
-                ':celular'    => $celular,
-                ':telefono'    => $telefonoC,
-                ':correo'    => $correo
-            ));
-            $this->objetos = $query->fetchall();
-            echo 'edit';
-        }
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+            ':cedula' => $cedula,
+            ':nombre'    => $nombre,
+            ':celular'    => $celular,
+            ':telefono'    => $telefonoC,
+            ':correo'    => $correo
+        ));
+        $this->objetos = $query->fetchall();
+        echo 'edit';
+    }
 
     function buscar()
     {
@@ -84,9 +84,9 @@ class AdulMay
         }
     }
 
-    function act_estado($id,$estado)
+    function act_estado($id, $estado)
     {
-        if($estado == 0){
+        if ($estado == 0) {
             $sql = "UPDATE adultoMay SET activ_AdMay = 1
             WHERE id_adMay = :id";
         } else {
@@ -106,27 +106,27 @@ class AdulMay
         $sql = "SELECT * FROM adultoMay
                     WHERE id_adMay = :id
                     ";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(
-                ':id' => $id
-            ));
-            $this->objetos = $query->fetchall();
-            return $this->objetos;
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+            ':id' => $id
+        ));
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
     }
 
     function buscar_crs_adulMay($id)
     {
-        $sql = "SELECT nombre_crs,nombre_usuario,fechaIngreso_curso FROM adultoMay_has_cursos 
-                JOIN curso ON cursos_id_crs = id_crs
+        $sql = "SELECT nombre_crs,nombre_usuario,fechaIngreso_curso FROM adultoMay_has_cursos
                 JOIN usuario ON tutores_id_tutor = id_usuario
+                JOIN curso ON cursos_id_crs = id_crs
                 WHERE adultoMay_id =:id;
                     ";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(
-                ':id' => $id
-            ));
-            $this->objetos = $query->fetchall();
-            return $this->objetos;
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+            ':id' => $id
+        ));
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
     }
 
     function eliminar($id)
@@ -134,13 +134,11 @@ class AdulMay
         $sql = "DELETE FROM adultoMay
                 WHERE id_adMay = :id
         ";
-        $query=$this->acceso->prepare($sql);
-        if(!empty($query->execute(array(':id' => $id)))){
+        $query = $this->acceso->prepare($sql);
+        if (!empty($query->execute(array(':id' => $id)))) {
             echo 'delete';
-        }
-        else{
+        } else {
             echo 'noDelete';
         }
     }
 }
-

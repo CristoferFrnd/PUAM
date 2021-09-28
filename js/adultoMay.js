@@ -134,15 +134,14 @@ $(document).ready(function () {
         $ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
         $Btn = $(this)[0].activeElement;
         id = $($ELEMENTO).attr('data-id');
-        console.log(id);
 
         funcion = 'buscar_crs';
         TABLA = document.getElementById('lista_Crs');
         $.post('../controlador/adultoMayController.php', { funcion, id }, (response) => {
+            console.log(response);
             const CURSOS = JSON.parse(response);
             let template = ``;
             CURSOS.forEach(curso => {
-                console.log(curso)
                 TABLA.innerHTML += `
                 <tr>
                     <td>${curso.nombreC}</td>
@@ -187,7 +186,7 @@ $(document).ready(function () {
                 tutor = document.getElementById(curso).value;
                 estado = 1;
                 fecha = FechaHoy();
-                $.post('../controlador/adultoMayhasCrsController.php', { funcion, curso, tutor, estado, fecha, adulMay }, (response) => {
+                $.post('../controlador/adultoMayhasCrsController.php', { funcion, tutor, estado, fecha, adulMay }, (response) => {
                     alert("Participante matriculado con éxito");
 
                 });

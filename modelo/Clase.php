@@ -151,6 +151,18 @@ class Clase
         }
     }
 
+    function buscar_clase_crs($id_curso){
+
+        $sql = "SELECT * FROM clase WHERE cursos_id_crs =:id_curso";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(
+                ':id_curso' => $id_curso
+            ));
+            $this->objetos = $query->fetchall();
+            return $this->objetos;
+
+    }
+
     function eliminar($id){
         $sql = "DELETE FROM clase
                 WHERE id_clase=:id

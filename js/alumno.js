@@ -4,6 +4,7 @@ $(document).ready(function () {
     listar_alumnos();
     listar_cursos();
     datos_alumno();
+    listar_alumnos_curso()
 
 
     function listar_alumnos(consulta) {
@@ -172,4 +173,29 @@ $(document).ready(function () {
             $('#cursos').html(template);
         });
     }
+
+    function listar_alumnos_curso() {
+        funcion = "buscar_us_crs";
+        id =5;
+        $.post('../controlador/alumnoController.php', { id, funcion }, (response) => {
+            const ALUMNOS = JSON.parse(response);
+            console.log(ALUMNOS);
+            let template = ``;
+            ALUMNOS.forEach(alumno => {
+                template += `
+                    <tr us_id="${alumno.id_usuario}">
+                        <td>${alumno.id_usuario}</td>
+                        <td>${alumno.nombre}</td>
+                        <td>${alumno.correo}</td>
+                        <td>${alumno.tel}</td>
+                        <td>${alumno.horasR}</td>
+                    </tr>
+                    `;
+            });
+            $('#alumnosCrs').html(template);
+        });
+    }
+
+
+
 })

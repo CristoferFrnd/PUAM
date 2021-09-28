@@ -150,7 +150,6 @@ $(document).ready(function () {
                     clearInterval(loop);  
                     funcion = 'elimDoc';
                     $.post('../helpers/pdfRepor.php', { funcion, NAME }, (response) => {
-                        console.log(response);
                     });
                 }
             }, 1000); 

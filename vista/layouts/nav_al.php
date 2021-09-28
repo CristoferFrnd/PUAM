@@ -5,7 +5,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top bw d-flex">
         <div>
-            <img class="img-logo" src="../img/logo.png" width="200" height="auto">
+            <img class="img-logo" src="../assets/img/logo.png" width="200" height="auto">
         </div>
         <div>
             <a class="navbar-brand" href="editar_datos.php"><?php echo $_SESSION['nombre_us'] ?></a>

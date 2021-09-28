@@ -1,10 +1,10 @@
 
 $(document).ready(function () {
-    
+
     listar_alumnos();
     listar_cursos();
     datos_alumno();
-    
+
 
     function listar_alumnos(consulta) {
         funcion = "listar";
@@ -49,18 +49,18 @@ $(document).ready(function () {
 
         funcion = 'registrar';
         $.post('../controlador/alumnoController.php', { funcion, nombre, contrasena, cedula, correo, telefono, horasR, curso }, (response) => {
-            if(response == 'add'){
+            if (response == 'add') {
                 alert("Tutor Agregado con Éxito");
                 $.post('../helpers/recuperar.php', { funcion, correo }, (response) => {
-                    console.log(response);
+
                 });
-        
-            }else{
+
+            } else {
                 alert("Error al Agregar Tutor");
             }
-            
+
             $('#form-registar-alumno').trigger('reset');
-            
+
         });
 
         listar_alumnos();
@@ -94,7 +94,6 @@ $(document).ready(function () {
         const ID = $(ELEMENTO).attr('us_id');
         $.post('../controlador/alumnoController.php', { funcion, ID }, (response) => {
             const ALUMNO = JSON.parse(response);
-            console.log(response);
             $('#nombreE').val(ALUMNO.nombre);
             $('#apellidosE').val(ALUMNO.apellidos);
             $('#correoE').val(ALUMNO.correo);
@@ -111,7 +110,6 @@ $(document).ready(function () {
         funcion = "buscar_us_id";
         ID = $('#id_us').val();
         $.post('../controlador/alumnoController.php', { ID, funcion }, (response) => {
-            console.log(response);
             const ALUMNO = JSON.parse(response);
             $('#nombre').val(ALUMNO.nombre);
             $('#correo').val(ALUMNO.correo);
@@ -127,7 +125,6 @@ $(document).ready(function () {
         funcion = 'eliminar';
         const ID = $('#id_del_us').val();
         $.post('../controlador/alumnoController.php', { funcion, ID }, (response) => {
-            console.log(response);
             listar_alumnos();
         });
         e.preventDefault();
@@ -144,20 +141,21 @@ $(document).ready(function () {
     $(document).on('click', '#reporteG', (e) => {
         funcion = 'reporFG';
         datos = localStorage.getItem('alumnos');
-        
-
-       
 
         $.post('../helpers/pdfRepor.php', { funcion, datos }, (response) => {
-            var pdf = JSON.parse(response);
-            console.log(pdf);
+            const NAME = JSON.parse(response);
+            var ventana = window.open(NAME, '_blank');
+            var loop = setInterval(function() {   
+                if(ventana.closed) {  
+                    clearInterval(loop);  
+                    funcion = 'elimDoc';
+                    $.post('../helpers/pdfRepor.php', { funcion, NAME }, (response) => {
+                        console.log(response);
+                    });
+                }
+            }, 1000); 
 
-            // let pdfWindow = window.open("")
-            // pdfWindow.document.write(
-            // "<iframe width='100%' height='100%' src='"+pdf+"'></iframe>");
 
-
-            
         });
         e.preventDefault();
     });

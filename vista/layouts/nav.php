@@ -5,7 +5,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
         <div>
-            <img class="img-logo" src="../img/logo.png" width="200" height="auto">
+            <img class="img-logo" src="../assets/img/logo.png" width="200" height="auto">
         </div>
         <a class="navbar-brand" href="editar_datos.php"><?php echo $_SESSION['nombre_us'] ?></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

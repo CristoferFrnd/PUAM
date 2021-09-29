@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    listar_cursos();
+    //listar_cursos();
 
-    function listar_cursos(consulta) {
+    function listar_cursos() {
         funcion = "listar";
         $.post('../controlador/cursoController.php', { funcion }, (response) => {
 
@@ -22,39 +22,8 @@ $(document).ready(function () {
         });
     }
 
-    function llenar_tutores() {
-
-        let lista = document.querySelectorAll("select");
-
-        lista.forEach(combo => {
-            id = combo.getAttribute("id");
-
-            var length = combo.options.length;
-
-            for (i = length - 1; i >= 0; i--) {
-                combo.options[i] = null;
-            }
-
-            funcion = 'buscar_crs_est';
-
-            $.post('../controlador/alumnoController.php', { funcion, id }, (response) => {
-                const ALUMNOS = JSON.parse(response);
-
-
-                ALUMNOS.forEach(alumno => {
-                    let option = document.createElement('option');
-                    option.value = alumno.id_usuario;
-                    option.text = alumno.nombre;
-                    combo.appendChild(option);
-                });
-            });
-
-
-        })
-    }
-
     $(document).on('click', '.btn-getId', (e) => {
 
-        llenar_tutores();
+        
     });
 })

@@ -24,6 +24,21 @@ if ($_POST['funcion'] == 'listar') {
     echo $jsonString;
 }
 
+if ($_POST['funcion'] == 'listar_no_mat') {
+    $id = $_POST['id'];
+    $curso->buscar_no_mat($id);
+    $json = array();
+    foreach ($curso->objetos as $objeto) {
+        $json[] = array(
+            'id_crs' => $objeto->id_crs,
+            'nombre_crs' => $objeto->nombre_crs,
+            'facultad_crs' => $objeto->facultad_crs           
+        );
+    }
+    $jsonString = json_encode($json);
+    echo $jsonString;
+}
+
 if ($_POST['funcion'] == 'buscar_id') {
     $id = $_POST['ID'];
     $curso->buscar_curso_id($id);

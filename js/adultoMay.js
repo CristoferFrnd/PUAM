@@ -1,7 +1,5 @@
 $(document).ready(function () {
-    console.log($('#us_tipo').val() == 2);
     if ($('#us_tipo').val() == 2) {
-        console.log("ingreso");
         listar_adultoMays_al();
     }
 
@@ -138,7 +136,6 @@ $(document).ready(function () {
         funcion = 'buscar_crs';
         TABLA = document.getElementById('lista_Crs');
         $.post('../controlador/adultoMayController.php', { funcion, id }, (response) => {
-            console.log(response);
             const CURSOS = JSON.parse(response);
             let template = ``;
             CURSOS.forEach(curso => {
@@ -172,8 +169,57 @@ $(document).ready(function () {
         $BtnMat = $(this)[0].activeElement;
         estadoMat = $($ELEMENTOMAT).attr('data-estado');
         adulMay = $($ELEMENTOMAT).attr('data-id');
-
+        listar_cursos_no_mat(adulMay);
     });
+
+    function listar_cursos_no_mat(id) {
+        funcion = "listar_no_mat";
+        $.post('../controlador/cursoController.php', { id, funcion }, (response) => {
+            const CURSOS = JSON.parse(response);
+            let template = ``;
+            CURSOS.forEach(curso => {
+                template += `
+                    <tr data-id=${curso.id_crs}>
+                        <td><input type="checkbox" id="check${curso.id_crs}"/></td>
+                        <td>${curso.nombre_crs}</td>
+                        <td>
+                        <select class="form-select form-select-m form-control" id="${curso.id_crs}"/>
+                        </td>
+                    </tr>
+                    `;
+            });
+            $('#matr_Crs').html(template);
+            llenar_tutores();
+        });
+    }
+
+    function llenar_tutores() {
+        let lista = document.querySelectorAll("select");
+
+        lista.forEach(combo => {
+            id = combo.getAttribute("id");
+
+            var length = combo.options.length;
+
+            for (i = length - 1; i >= 0; i--) {
+                combo.options[i] = null;
+            }
+
+            funcion = 'buscar_crs_est';
+
+            $.post('../controlador/alumnoController.php', { funcion, id }, (response) => {
+                const ALUMNOS = JSON.parse(response);
+                ALUMNOS.forEach(alumno => {
+                    let option = document.createElement('option');
+                    option.value = alumno.id_usuario;
+                    option.text = alumno.nombre;
+                    combo.appendChild(option);
+                });
+            });
+        })
+    }
+
+
 
     $(document).on('click', '.btn-aux', (e) => {
 
@@ -201,7 +247,7 @@ $(document).ready(function () {
 function FechaHoy() {
     var today = new Date();
     var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
+    var mm = today.getMonth() + 1;
     var yyyy = today.getFullYear();
 
     return yyyy + '-' + mm + '-' + dd;

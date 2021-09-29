@@ -12,17 +12,17 @@ class Curso
 
     function crear($nombre_crs, $facultad_crs)
     {
-            //Inserción de datos
-            $sql = "    INSERT INTO curso(nombre_crs,facultad_crs)
+        //Inserción de datos
+        $sql = "    INSERT INTO curso(nombre_crs,facultad_crs)
                         VALUES(:nombre_crs, :facultad_crs)
             ";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(
-                ':nombre_crs'    => $nombre_crs,
-                ':facultad_crs'    => $facultad_crs,
-                
-            ));
-            $this->objetos = $query->fetchall();        
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+            ':nombre_crs'    => $nombre_crs,
+            ':facultad_crs'    => $facultad_crs,
+
+        ));
+        $this->objetos = $query->fetchall();
     }
 
     function buscar()
@@ -49,29 +49,44 @@ class Curso
         }
     }
 
-    function buscar_curso_id($id){
+    function buscar_no_mat($id)
+    {
+        $sql = "SELECT * FROM curso
+                    WHERE id_crs  NOT IN (
+                    SELECT cursos_id_crs AS nombre_crs FROM adultoMay_has_cursos  
+                    JOIN usuario ON tutores_id_tutor = id_usuario
+                    WHERE adultoMay_id = :id)            
+                    ";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+            ':id' => $id
+        ));
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+    }
+
+    function buscar_curso_id($id)
+    {
         $sql = "SELECT * FROM curso
         WHERE id_crs = :id
                     ";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(
-                ':id' => $id
-            ));
-            $this->objetos = $query->fetchall();
-            return $this->objetos;
-
-            
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+            ':id' => $id
+        ));
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
     }
 
-    function eliminar($id){
+    function eliminar($id)
+    {
         $sql = "DELETE FROM curso
                 WHERE id_crs=:id
         ";
-        $query=$this->acceso->prepare($sql);
-        if(!empty($query->execute(array(':id' => $id)))){
+        $query = $this->acceso->prepare($sql);
+        if (!empty($query->execute(array(':id' => $id)))) {
             echo 'delete';
-        }
-        else{
+        } else {
             echo 'noDelete';
         }
     }

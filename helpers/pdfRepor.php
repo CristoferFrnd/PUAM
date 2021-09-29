@@ -1,24 +1,129 @@
 <?php
 require('../vendor/setasign/fpdf/fpdf.php');
 
+class PDF extends FPDF
+{
+    // Cabecera de página
+    function Header()
+    {
+        // Logo PUAM
+        $this->Image('../assets/img/logo.png', 6, 4, 22);
+        // Arial bold 15
+        $this->SetFont('Arial', 'B', 15);
+        // Salto de línea
+        $this->Ln(20);
+        // Movernos a la derecha
+        $this->Cell(80);
+        // Título
+        $this->Cell(30, 10, 'Reporte Estudiantes (Facilitadores)', 0, 0,'C');
+        // Logo Uce
+        $this->Image('../assets/img/uce.png', 180, 4, 22);
+        // Salto de línea
+        $this->Ln(20);
+    }
+
+    // Pie de página
+    function Footer()
+    {
+        // Posición: a 1,5 cm del final
+        $this->SetY(-15);
+        // Arial italic 8
+        $this->SetFont('Arial', 'I', 8);
+        // Número de página
+        $this->Cell(0, 10, 'Page ' . $this->PageNo(), 0, 0, 'C');
+    }
+
+    // Tabla
+    function ImprovedTableP($header, $data)
+{
+    // Anchuras de las columnas
+    $w = array(18, 55, 45, 18, 10, 40);
+    // Cabeceras
+    for($i=0;$i<count($header);$i++)
+        $this->Cell($w[$i],7,$header[$i],1,0,'C');
+    $this->Ln();
+    // Datos
+    foreach($data as $row)
+    {
+        $this->Cell($w[0],6,$row->{'id_usuario'},'LR');
+        $this->Cell($w[1],6,utf8_decode($row->{'nombre'}));
+        $this->Cell($w[2],6,$row->{'correo'},'LR');
+        $this->Cell($w[3],6,$row->{'tel'},'LR');
+        $this->Cell($w[4],6,$row->{'horasR'},'LR');
+        $this->Cell($w[5],6,utf8_decode($row->{'curso'}), 'LR');
+        $this->Ln();
+    }
+    // Línea de cierre
+    $this->Cell(array_sum($w),0,'','T');
+}
+
+function ImprovedTableC($header, $data)
+{
+    // Anchuras de las columnas
+    $w = array(18, 55, 18, 60, 15, 15);
+    // Cabeceras
+    for($i=0;$i<count($header);$i++)
+        $this->Cell($w[$i],7,$header[$i],1,0,'C');
+    $this->Ln();
+    // Datos
+    foreach($data as $row)
+    {
+        $this->Cell($w[0],6,$row->{'fecha_clase'},'LR');
+        $this->Cell($w[1],6,utf8_decode($row->{'nombre_adMay'}));
+        $this->Cell($w[2],6,$row->{'id_adMay'},'LR');
+        if(strlen(utf8_decode($row->{'tema_clase'})) > 40){
+            $this->Cell($w[3],6,substr(utf8_decode($row->{'tema_clase'}),0,39));
+        }
+        else{
+            $this->Cell($w[3],6,utf8_decode($row->{'tema_clase'}));
+        }
+        
+        $this->Cell($w[4],6,$row->{'descripcion_tipoClase'},'LR');
+        $this->Cell($w[5],6,$row->{'duracion_clase'}, 'LR');
+        $this->Ln();
+    }
+    // Línea de cierre
+    $this->Cell(array_sum($w),0,'','T');
+}
+}
+
 if ($_POST['funcion'] == 'reporFG') {
 
-    $datos= json_decode($_POST['datos'] );
+    $datos = json_decode($_POST['datos']);
+    
 
     $name = generar(15);
     $name = $name . '.pdf';
 
-    $pdf = new FPDF();
+    $pdf = new PDF();
     $pdf->AddPage();
-    $pdf->SetFont('Arial', 'B', 16);
-    foreach ($datos as $dato) {
-        $pdf->Cell(40, 10, );
-        $pdf->Cell(60,10,$dato ->{'id_usuario'},0,1,'C');
-
-    }
-    $return = $pdf->Output($name,'F');
+    $pdf->SetFont('Arial', 'B', 8, true);
+    // foreach ($datos as $dato) {
+    //     $pdf->Cell(40, 10,);
+    //     $pdf->Cell(60, 10, $dato->{'id_usuario'}, 0, 1, 'C');
+    // }
+    $header = array('N. Cedula', 'Nombre', 'Correo', 'Telefono', 'Horas', 'Curso'); 
+    $pdf->ImprovedTableP($header, $datos);
+    $return = $pdf->Output($name, 'F');
     $return = base64_encode($return);
-    echo json_encode('../helpers/'.$name);
+    echo json_encode('../helpers/' . $name);
+}
+
+if ($_POST['funcion'] == 'reporC') {
+
+    $datos = json_decode($_POST['datos']);
+    $name = generar(15);
+    $name = $name . '.pdf';
+
+    $pdf = new PDF();
+    $pdf->AddPage();
+    $pdf->SetFont('Arial', 'B', 8, true);
+
+    $header = array('Fecha', 'Participante', utf8_decode('Cédula P'), 'Tema', 'Clase', utf8_decode('Duración')); 
+    $pdf->ImprovedTableC($header, $datos);
+    $return = $pdf->Output($name, 'F');
+    $return = base64_encode($return);
+    echo json_encode('../helpers/' . $name);
 }
 
 if ($_POST['funcion'] == 'elimDoc') {

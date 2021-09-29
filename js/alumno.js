@@ -142,9 +142,7 @@ $(document).ready(function () {
     $(document).on('click', '#reporteG', (e) => {
         funcion = 'reporFG';
         datos = localStorage.getItem('alumnos');
-
         $.post('../helpers/pdfRepor.php', { funcion, datos }, (response) => {
-            console.log(response);
             const NAME = JSON.parse(response);
             var ventana = window.open(NAME, '_blank');
             var loop = setInterval(function() {   
@@ -178,7 +176,6 @@ $(document).ready(function () {
         id =5;
         $.post('../controlador/alumnoController.php', { id, funcion }, (response) => {
             const ALUMNOS = JSON.parse(response);
-           
             let template = ``;
             ALUMNOS.forEach(alumno => {
                 template += `

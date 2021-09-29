@@ -24,14 +24,18 @@ if ($_SESSION['us_tipo'] == 2) {
                 <div class="card card-success animate__animated animate__bounceInRight">
                     <div class="titulo-tabla">
                         <h3>LISTADO DE CLASES</h3>
+
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarClaseModal"><i class="fas fa-user-plus"> AGREGAR</i></button>
                     </div>
                     <div class="card-body">
                         <div class="container-btn-add">
                             <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search2">
                             <i class="fa fa-search lupa" aria-hidden="true"></i>
-
+                            <div style="padding-left: 20px">
+                                <button type="button" class="btn btn-primary" id="reporteC"><i class="fas fa-file-pdf"></i> Reporte</button>
+                            </div>
                         </div>
+
                         <table id="tabla-clases" class="table table-striped table-bordered table-responsive" style="width:100%; height:500px">
                             <thead>
                                 <tr>
@@ -102,7 +106,7 @@ if ($_SESSION['us_tipo'] == 2) {
 
                     <div class="form-row img-responsive">
                         <label for="img">Evidencia </label>
-                        <img src="../img/reunion.jpg" class="img-fluid " alt="Eniun" id="img">
+                        <img src="" class="img-fluid" style="width:100%" alt="Eniun" id="img">
                     </div>
                 </div>
 

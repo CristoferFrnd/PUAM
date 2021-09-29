@@ -54,6 +54,7 @@ $(document).ready(function () {
     function listar_clases_al(id, consulta) {
         funcion = "buscar_clase_alumno";
         $.post('../controlador/claseController.php', { id, funcion, consulta }, (response) => {
+            localStorage.setItem('clases', response);
             const CLASES = JSON.parse(response);
             let template = ``;
             CLASES.forEach(clase => {
@@ -109,7 +110,6 @@ $(document).ready(function () {
         funcion = "buscar_am_al";
         ID = $('#us_id').val();
         $.post('../controlador/claseController.php', { funcion, ID }, (response) => {
-            console.log(response);
             const AMPORAL = JSON.parse(response);
             let template = ``;
             AMPORAL.forEach(amxal => {
@@ -162,7 +162,6 @@ $(document).ready(function () {
     $(document).on('click', '#prueba', (e) => {
         ID = $('#us_id').val();
         funcion = 'adul_std';
-        console.log(ID, funcion);
         $.post('../controlador/adultoMayhasCrsController.php', { ID, funcion }, (response) => {
             console.log(response);
         });
@@ -180,9 +179,26 @@ $(document).ready(function () {
             $('#tema').val(CLASE.tema_clase);
             $('#tutor').val(CLASE.tutor);
             $('#adulM').val(CLASE.nombre_adMay);
-            //console.log(response);
         });
     }
+
+    $(document).on('click', '#reporteC', (e) => {
+        funcion = 'reporC';
+        datos = localStorage.getItem('clases');
+        $.post('../helpers/pdfRepor.php', { funcion, datos }, (response) => {
+            const NAME = JSON.parse(response);
+            var ventana = window.open(NAME, '_blank');
+            var loop = setInterval(function() {   
+                if(ventana.closed) {  
+                    clearInterval(loop);  
+                    funcion = 'elimDoc';
+                    $.post('../helpers/pdfRepor.php', { funcion, NAME }, (response) => {
+                    });
+                }
+            }, 1000); 
+        });
+        e.preventDefault();
+    });
 
 })
 

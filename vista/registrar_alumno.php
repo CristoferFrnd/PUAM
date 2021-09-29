@@ -20,7 +20,7 @@ if ($_SESSION['us_tipo'] == 1) {
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Editar Tutor</h5>
+                    <h5 class="modal-title">Editar Estudiante (Facilitador)</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -77,7 +77,7 @@ if ($_SESSION['us_tipo'] == 1) {
                                 <input type="text" class="form-control" id="telE" placeholder="Telefono" required="true">
                             </div>
 
-                            
+
 
                             <div class="col-md-2"></div>
                         </div>
@@ -101,7 +101,7 @@ if ($_SESSION['us_tipo'] == 1) {
 
                 <div class="card card-success animate__animated animate__bounceInRight">
                     <div class="titulo-tabla">
-                        <h3>LISTADO DE TUTORES</h3>
+                        <h3>LISTADO DE ESTUDIANTES (FACILITADORES)</h3>
                     </div>
 
                     <div class="card-body">
@@ -109,8 +109,8 @@ if ($_SESSION['us_tipo'] == 1) {
                             <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
                             <i class="fa fa-search lupa" aria-hidden="true"></i>
                             <div style="padding-left: 20px">
-                            <button type="button" class="btn btn-primary" id="reporteG"><i class="fas fa-file-pdf"></i> Reporte</button></div>
-
+                                <button type="button" class="btn btn-primary" id="reporteG"><i class="fas fa-file-pdf"></i> Reporte</button>
+                            </div>
                         </div>
                         <table id="tabla" class="table table-striped table-bordered table-responsive" style="height:500px">
                             <thead>

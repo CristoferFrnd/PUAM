@@ -83,7 +83,7 @@ if ($_SESSION['us_tipo'] == 1) {
                                             <th>Curso</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="matr_Crs"></tbody>
+                                    <tbody id="cursos"></tbody>
                                 </table>
                             </div>
                         </div>

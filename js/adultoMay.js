@@ -121,13 +121,6 @@ $(document).ready(function () {
         id = $($ELEMENTO).attr('data-id');
     });
 
-    $(document).on('click', '.conf_estado', (e) => {
-        $ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
-        $Btn = $(this)[0].activeElement;
-        estado = $($ELEMENTO).attr('data-estado');
-        id = $($ELEMENTO).attr('data-id');
-    });
-
     $(document).on('click', '.conf_cambio', (e) => {
         funcion = 'actualizar-estado';
         $.post('../controlador/adultoMayController.php', { funcion, id, estado }, (response) => {

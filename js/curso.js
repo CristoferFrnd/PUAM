@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    //listar_cursos();
+    listar_cursos();
 
     function listar_cursos() {
         funcion = "listar";
@@ -16,7 +16,7 @@ $(document).ready(function () {
                     </tr>
                     `;
             });
-            $('#matr_Crs').html(template);
+            $('#cursos').html(template);
         });
     }
 })

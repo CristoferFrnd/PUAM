@@ -6,7 +6,7 @@ if ($_POST['funcion'] == 'reporFG') {
     $datos= json_decode($_POST['datos'] );
 
     $name = generar(15);
-    $name = '../assets/files/' . $name . '.pdf';
+    $name = $name . '.pdf';
 
     $pdf = new FPDF();
     $pdf->AddPage();
@@ -16,9 +16,9 @@ if ($_POST['funcion'] == 'reporFG') {
         $pdf->Cell(60,10,$dato ->{'id_usuario'},0,1,'C');
 
     }
-    $return = $pdf->Output($name, 'F');
-    //$return = base64_encode($return);
-    echo json_encode($name);
+    $return = $pdf->Output($name,'F');
+    $return = base64_encode($return);
+    echo json_encode('../helpers/'.$name);
 }
 
 if ($_POST['funcion'] == 'elimDoc') {

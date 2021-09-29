@@ -83,25 +83,46 @@ $(document).ready(function () {
         }
     })
 
-    $('#form-registrar-am').submit(e => {
-        let cedula = $('#cedula').val();
-        let nombre = $('#nombre').val();
-        let telefono = $('#telefono').val();
-        let celular = $('#celular').val();
-        let correo = $('#correo').val();
+    // $('#form-registrar-am').submit(e => {
+    //     let cedula = $('#cedula').val();
+    //     let nombre = $('#nombre').val();
+    //     let telefono = $('#telefono').val();
+    //     let celular = $('#celular').val();
+    //     let correo = $('#correo').val();
+        
+    //     let lista = document.querySelectorAll('input[type="checkbox"]');
+    //     lista.forEach(selector => {
+    //         if (selector.checked) {
+    //             funcion = 'registrar';
+    //             curso = selector.getAttribute("id").substr(5);
+    //             console.log(cedula);
+    //             console.log(curso);
+                
+    //             $.post('../controlador/tempController.php', { funcion,cedula,id_curso }, (response) => {
+    //                 alert("Participante redirigido a los cursos seleccionados");
 
+    //             });
+    //         }
+    //     })
 
-        funcion = 'registrar';
-        $.post('../controlador/adultoMayController.php', { funcion, cedula, nombre, telefono, celular, correo }, (response) => {
-            alert("Participante Registrado con Éxito");
-            $('#form-registrar-am').trigger('reset');
-            location.href = '../vista/registrar_am.php'
+    //     funcion = 'registrar';
+    //     $.post('../controlador/adultoMayController.php', { funcion, cedula, nombre, telefono, celular, correo }, (response) => {
+    //         alert("Participante Registrado con Éxito");
+    //         $('#form-registrar-am').trigger('reset');
+    //         location.href = '../vista/registrar_am.php'
 
-        });
+    //     });
 
-        e.preventDefault();
+    //     e.preventDefault();
+    // });
+
+    $(document).on('click', '.conf_estado', (e) => {
+        $ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
+        $Btn = $(this)[0].activeElement;
+        estado = $($ELEMENTO).attr('data-estado');
+        id = $($ELEMENTO).attr('data-id');
     });
-
+    
     $(document).on('click', '.conf_estado', (e) => {
         $ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
         $Btn = $(this)[0].activeElement;
@@ -175,25 +196,39 @@ $(document).ready(function () {
 
     });
 
-    $(document).on('click', '.btn-aux', (e) => {
+    $(document).on('click', '#ingresar', (e) => {
+        let cedula = $('#cedula').val();
+        let nombre = $('#nombre').val();
+        let telefono = $('#telefono').val();
+        let celular = $('#celular').val();
+        let correo = $('#correo').val();
+        
+        funcion = 'registrar';
 
+        $.post('../controlador/adultoMayController.php', { funcion, cedula, nombre, telefono, celular, correo }, (response) => {
+            alert("Participante Registrado con Éxito");
+            //$('#form-registrar-am').trigger('reset');
+            //location.href = '../vista/registrar_am.php'
+
+        });
 
         let lista = document.querySelectorAll('input[type="checkbox"]');
         lista.forEach(selector => {
             if (selector.checked) {
                 funcion = 'registrar';
-                curso = selector.getAttribute("id").substr(5);
-                tutor = document.getElementById(curso).value;
-                estado = 1;
-                fecha = FechaHoy();
-                $.post('../controlador/adultoMayhasCrsController.php', { funcion, tutor, estado, fecha, adulMay }, (response) => {
-                    alert("Participante matriculado con éxito");
+                id_curso = selector.getAttribute("id").substr(5);
+                console.log(cedula);
+                console.log(id_curso);
+                
+                 $.post('../controlador/tempController.php', { funcion,cedula,id_curso }, (response) => {
+                     alert("Participante redirigido a los cursos seleccionados");
 
-                });
+                 });
             }
         })
 
-
+        $('#form-registrar-am').trigger('reset');
+        location.href = '../vista/registrar_am.php'
     });
 
 })

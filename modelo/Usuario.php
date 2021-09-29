@@ -166,6 +166,21 @@ class Usuario
             return $this->objetos;
     }
 
+    function buscar_us_crs($id)
+    {
+        $sql = "SELECT id_usuario,nombre_usuario, correoIns_usuario,horasNecesarias_usuario, 
+                horasRealizadas_usuario, tel_usuario, nombre_crs
+                FROM usuario JOIN curso on cursos_id_crs=id_crs
+                WHERE estado_usuario = 1 
+                AND cursos_id_crs =:id
+                    ";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(
+                ':id' => "$id"
+            ));
+            $this->objetos = $query->fetchall();
+            return $this->objetos;
+    }
 
     
     function eliminar($id)

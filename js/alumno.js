@@ -4,6 +4,7 @@ $(document).ready(function () {
     listar_alumnos();
     listar_cursos();
     datos_alumno();
+    listar_alumnos_curso()
 
 
     function listar_alumnos(consulta) {
@@ -143,6 +144,7 @@ $(document).ready(function () {
         datos = localStorage.getItem('alumnos');
 
         $.post('../helpers/pdfRepor.php', { funcion, datos }, (response) => {
+            console.log(response);
             const NAME = JSON.parse(response);
             var ventana = window.open(NAME, '_blank');
             var loop = setInterval(function() {   
@@ -153,8 +155,6 @@ $(document).ready(function () {
                     });
                 }
             }, 1000); 
-
-
         });
         e.preventDefault();
     });
@@ -172,4 +172,30 @@ $(document).ready(function () {
             $('#cursos').html(template);
         });
     }
+
+    function listar_alumnos_curso() {
+        funcion = "buscar_us_crs";
+        id =5;
+        $.post('../controlador/alumnoController.php', { id, funcion }, (response) => {
+            const ALUMNOS = JSON.parse(response);
+           
+            let template = ``;
+            ALUMNOS.forEach(alumno => {
+                template += `
+                    <tr us_id="${alumno.id_usuario}">
+                        <td>${alumno.id_usuario}</td>
+                        <td>${alumno.nombre}</td>
+                        <td>${alumno.correo}</td>
+                        <td>${alumno.tel}</td>
+                        <td>${alumno.horasR}</td>
+                        <td><button type='button' class='editar-alumno btn btn-primary' data-toggle='modal' data-target='#exampleModal'><i class="fas fa-edit"></i></button></td>
+                    </tr>
+                    `;
+            });
+            $('#alumnosCrs').html(template);
+        });
+    }
+
+
+
 })

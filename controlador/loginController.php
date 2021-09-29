@@ -15,6 +15,9 @@ if (!empty($_SESSION['us_tipo'])) {
         case 2:
             header('Location: ../vista/registrar_clase.php');
             break;
+        case 3: 
+            header('Location: ../vista/buscador_clase_tutor.php');
+            break;
 
         default:
             # code...

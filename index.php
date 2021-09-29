@@ -23,7 +23,7 @@ if (!empty($_SESSION['us_tipo'])) {
     <body>
         <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
             <div class="card">
-                <img src="img/logoP.png" alt="" class="img-login">
+                <img src="assets/img/logoP.png" alt="" class="img-login">
                 <div class="card-body">
                     <form id="form-login">
                         <div class="form-group">

@@ -34,6 +34,9 @@ if ($_SESSION['us_tipo'] == 2) {
                             <div style="padding-left: 20px">
                                 <button type="button" class="btn btn-primary" id="reporteC"><i class="fas fa-file-pdf"></i> Reporte</button>
                             </div>
+                            <div style="padding-left: 20px">
+                                <button type="button" class="btn btn-danger" id="certificado"><i class="fas fa-file-pdf"></i> Generar Certificado</button>
+                            </div>
                         </div>
 
                         <table id="tabla-clases" class="table table-striped table-bordered table-responsive" style="width:100%; height:500px">

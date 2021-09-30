@@ -200,6 +200,31 @@ $(document).ready(function () {
         e.preventDefault();
     });
 
+    $(document).on('click', '#certificado', (e) => {
+        funcion = 'buscar_us_id';
+        ID = $('#us_id').val();
+
+        $.post('../controlador/alumnoController.php', { funcion, ID }, (response) => {
+            datos = response;
+            funcion = 'certificado';
+            $.post('../helpers/pdfCert.php', { funcion, datos }, (response) => {
+                const NAME = JSON.parse(response);
+                var ventana = window.open(NAME, '_blank');
+                var loop = setInterval(function() {   
+                    if(ventana.closed) {  
+                        clearInterval(loop);  
+                        funcion = 'elimDoc';
+                        $.post('../helpers/pdfCert.php', { funcion, NAME }, (response) => {
+                        });
+                    }
+                }, 1000); 
+            });
+        });
+        
+        
+        e.preventDefault();
+    });
+
 })
 
 

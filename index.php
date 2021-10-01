@@ -21,10 +21,13 @@ if (!empty($_SESSION['us_tipo'])) {
 ?>
 
     <body>
+
         <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
             <div class="card">
-                <img src="assets/img/logoP.png" alt="" class="img-login">
+                <img src="assets/img/logoP.png" alt="" class="img-fluid img-login">
+
                 <div class="card-body">
+
                     <form id="form-login">
                         <div class="form-group">
                             <label for="user">Usuario</label>
@@ -33,7 +36,7 @@ if (!empty($_SESSION['us_tipo'])) {
                         <div class="form-group">
                             <label for="pass">Contraseña</label>
                             <input type="password" id="pass" class="form-control">
-                            <span id="avisoD" class="text-danger text-bold" >text</span>
+                            <span id="avisoD" class="text-danger text-bold">text</span>
                         </div>
                         <div class="form-group ">
                             <input type="submit" class="btn btn-primary" value="Ingresar">
@@ -42,6 +45,7 @@ if (!empty($_SESSION['us_tipo'])) {
                 </div>
             </div>
         </div>
+        
     </body>
     <footer class="main-footer">
         <div class="fixed-bottom text-center text-light">

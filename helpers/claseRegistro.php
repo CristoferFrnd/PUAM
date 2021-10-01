@@ -1,7 +1,9 @@
 <?php
 include '../modelo/Clase.php';
+//include '../modelo/Usuario.php';
 session_start();
 $clase = new Clase();
+//$usuario = new Usuario();
 
 if (isset($_POST["submit"])) {
     $check = getimagesize($_FILES["image"]["tmp_name"]);
@@ -30,6 +32,9 @@ if (isset($_POST["submit"])) {
         
         echo $fecha."\n".$duracion."\n".$adulM."\n".$tema."\n".$tutor."\n".$curso."\n".$tipo;
         $clase->crear($fecha, $duracion, $imgContent, $adulM, $tema, $tutor, $curso, $tipo);
+        $clase->agregarHoras($tutor,$duracion);
+
+
         header('Location: ../vista/registrar_clase.php');
     }
 }

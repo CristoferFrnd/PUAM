@@ -163,6 +163,21 @@ class Clase
 
     }
 
+    function agregarHoras($id_usuario, $duracion)
+    {
+            //Inserción de datos
+            $sql = "UPDATE usuario SET horasRealizadas_usuario = horasRealizadas_usuario + :duracion 
+                    WHERE id_usuario = :id_usuario
+            ";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(
+                ':duracion' => $duracion,
+                ':id_usuario'  => $id_usuario,
+            ));
+            $this->objetos = $query->fetchall();
+        
+    }
+
     function eliminar($id){
         $sql = "DELETE FROM clase
                 WHERE id_clase=:id

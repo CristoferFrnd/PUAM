@@ -5,7 +5,7 @@ if ($_SESSION['us_tipo'] == 1) {
     include_once 'layouts/header.php';
 ?>
 
-    <title>Alumnos Registrados</title>
+    <title>Clases</title>
     <?php
     include_once 'layouts/nav.php';
     ?>

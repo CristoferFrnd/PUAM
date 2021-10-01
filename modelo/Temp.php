@@ -49,12 +49,31 @@ class Temp
         }
     }
 
-    function eliminar($id){
+    function listar_crs($id_crs)
+    {
+        
+            $sql = "SELECT id_adulMay,nombre_adMay 
+            FROM temp JOIN adultoMay ON id_adulMay = id_adMay
+            where id_curso =:id_crs;
+                    ";
+            $query = $this->acceso->prepare($sql);
+            $query->execute(array(
+                ':id_crs' => $id_crs,
+            ));
+            $this->objetos = $query->fetchall();
+            return $this->objetos;
+    }
+
+    function eliminar($id,$curso){
         $sql = "DELETE FROM temp
-                WHERE id_curso=:id
+                WHERE id_adulMay = :id
+                AND id_curso = :curso
         ";
         $query=$this->acceso->prepare($sql);
-        if(!empty($query->execute(array(':id' => $id)))){
+        if(!empty($query->execute(array(
+            ':id' => $id,
+            ':curso' => $curso,        
+        )))){
             echo 'delete';
         }
         else{

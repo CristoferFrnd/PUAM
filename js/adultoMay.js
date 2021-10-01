@@ -6,6 +6,7 @@ $(document).ready(function () {
 
     listar_adultoMays();
     listar_adultoMaysTemp();
+    listar_adultoMaysCRS();
 
 
 
@@ -35,6 +36,26 @@ $(document).ready(function () {
                     `;
             });
             $('#adultoMay_tab').html(template);
+        });
+    }
+
+    function listar_adultoMaysCRS(consulta) {
+        funcion = "listar";
+        $.post('../controlador/adultoMayController.php', { consulta, funcion }, (response) => {
+            const ADULTOMAYS = JSON.parse(response);
+            let template = ``;
+            ADULTOMAYS.forEach(adultomay => {
+                template += `
+                    <tr data-estado="${adultomay.estado}" data-id="${adultomay.id_adulMay}">
+                    <td>${adultomay.id_adulMay}</td>
+                    <td>${adultomay.nombre}</td>
+                    <td>${adultomay.telefono}</td>
+                    <td>${adultomay.celular}</td>
+                    <td>${adultomay.correo}</td>              
+                    </tr>
+                    `;
+            });
+            $('#adultoMay_tabCrs').html(template);
         });
     }
 

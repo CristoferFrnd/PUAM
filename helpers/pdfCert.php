@@ -56,7 +56,7 @@ if ($_POST['funcion'] == 'certificado') {
     // Salto de línea
     $pdf->Ln(20);
     $pdf->SetFont('Arial','', 12);
-    $pdf->MultiCell(0, 7, utf8_decode("Mediante la presente certifico, que la estudiante $estudiante con cédula de identidad $cedula, perteneciente a la Carrera de Ingeniería informática de la Facultad de Ingeniería y Ciencias Aplicadas, ha concluido satisfactoriamente sus prácticas de vinculación, realizadas en el Programa Universitario del Adulto Mayor, donde cumplió  las $horas horas  de vinculación semestre mayo 2021 - septiembre 2021. las cuales fueron ejecutadas en las planificaciones y evaluaciones del proyecto presentado en la Dirección de Vinculación con la Sociedad."));
+    $pdf->MultiCell(0, 7, utf8_decode("Mediante la presente certifico, que el estudiante $estudiante con cédula de identidad $cedula, perteneciente a la Carrera de Ingeniería informática de la Facultad de Ingeniería y Ciencias Aplicadas, ha concluido satisfactoriamente sus prácticas de vinculación, realizadas en el Programa Universitario del Adulto Mayor, donde cumplió  las $horas horas  de vinculación semestre mayo 2021 - septiembre 2021. las cuales fueron ejecutadas en las planificaciones y evaluaciones del proyecto presentado en la Dirección de Vinculación con la Sociedad."));
  // Salto de línea
     $pdf->Ln(14);
     setlocale(LC_TIME,"es_ES");

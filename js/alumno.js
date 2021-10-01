@@ -3,7 +3,12 @@ $(document).ready(function () {
     listar_cursos();
     datos_alumno();
     listar_alumnos_curso();
-    listar_alumnos_fin();
+    if ($('#us_tipo').val() == 3) {
+        listar_alumnos();
+
+    } else{
+        listar_alumnos_fin();
+    }
 
 
     function listar_alumnos(consulta) {

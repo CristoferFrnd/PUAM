@@ -47,13 +47,3 @@ body {
   height: auto;
   padding-top: 10px;
 }
-
-.table-responsive {
-  display: inline-table;
-}
-
-@media (max-width: 990px) {
-  .table-responsive {
-    display: block;
-  }
-}

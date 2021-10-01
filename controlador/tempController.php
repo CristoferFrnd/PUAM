@@ -30,7 +30,8 @@ if ($_POST['funcion'] == 'listar_crs') {
     foreach ($temp->objetos as $objeto) {
         $json[] = array(
             'id_adulMay' => $objeto->id_adulmay,
-            'nombre' => $objeto->nombre_admay,     
+            'nombre' => $objeto->nombre_admay,  
+            'id_curso' => $objeto->id_curso,  
         );
     }
     $jsonString = json_encode($json);
@@ -38,7 +39,8 @@ if ($_POST['funcion'] == 'listar_crs') {
 }
 
 if ($_POST['funcion'] == 'eliminar') 
-{
+{   
+    $curso=$_POST['id_curso']; 
     $id = $_POST['adulMay'];
-    $temp->eliminar($id,$_SESSION['id_curso']);
+    $temp->eliminar($id,$curso);
 }

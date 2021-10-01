@@ -1,7 +1,7 @@
 $(document).ready(function () {
     if ($('#us_tipo').val() == 2) {
         listar_adultoMays_al();
-        
+
     }
 
     listar_adultoMays();
@@ -73,13 +73,13 @@ $(document).ready(function () {
 
     function listar_adultoMaysTemp() {
         funcion = "listar_crs";
-        $.post('../controlador/tempController.php', {funcion }, (response) => {
+        $.post('../controlador/tempController.php', { funcion }, (response) => {
             const ADULTOMAYS = JSON.parse(response);
-            console.log(ADULTOMAYS);
             let template = ``;
-            ADULTOMAYS.forEach(adultomay => {
-                template += `
-                    <tr data-id="${adultomay.id_adulMay}">
+            if (ADULTOMAYS.length > 0) {
+                ADULTOMAYS.forEach(adultomay => {
+                    template += `
+                    <tr data-id="${adultomay.id_adulMay}" data-id-curso="${adultomay.id_curso}">
                     <td>${adultomay.id_adulMay}</td>
                     <td>${adultomay.nombre}</td>             
                     <td><select class="form-control" id="s${adultomay.id_adulMay}"></button></td>
@@ -87,7 +87,12 @@ $(document).ready(function () {
                     <td><button class="form-control btn-primary btn-matricular" id="b${adultomay.id_adulMay}">Matricular</button></td>
                     </tr>
                     `;
-            });
+                });
+            }
+            else{
+                console.log('ingreso');
+                template +=`<tr><td>Sin participantes para matricular</td></tr>`
+            }
             $('#lista_estudiantes').html(template);
         });
 
@@ -179,27 +184,27 @@ $(document).ready(function () {
         $ELEMENTOMAT = $(this)[0].activeElement.parentElement.parentElement;
         $BtnMat = $(this)[0].activeElement;
         adulMay = $($ELEMENTOMAT).attr('data-id');
-
-        elemTut = document.getElementById("s"+adulMay)
+        id_curso = $($ELEMENTOMAT).attr('data-id-curso');
+        elemTut = document.getElementById("s" + adulMay)
         tutor = elemTut.value;
         fecha = FechaHoy();
         estado = 1;
 
         funcion = 'registrar';
-        $.post('../controlador/adultoMayhasCrsController.php', { funcion, tutor,estado,fecha,adulMay }, (response) => {
+        $.post('../controlador/adultoMayhasCrsController.php', { funcion, tutor, estado, fecha, adulMay }, (response) => {
             if (response == 'add') {
                 alert("Participante matriculado con Éxito");
-            
+
             } else {
                 alert("No se pudo matricular al participante");
             }
         });
 
         funcion = 'eliminar';
-        $.post('../controlador/tempController.php', { funcion,adulMay }, (response) => {
-            
-        });	
-        $('#lista_estudiantes').trigger('reset');
+        $.post('../controlador/tempController.php', { funcion, adulMay, id_curso }, (response) => {
+        });
+
+        listar_adultoMaysTemp();
     });
 
 
@@ -224,11 +229,11 @@ $(document).ready(function () {
                     `;
             });
             $('#matr_Crs').html(template);
-            
+
         });
     }
 
-    
+
 
     // function listar_adulMAy_pendientes(id) {
     //     funcion = "listar";
@@ -275,8 +280,8 @@ $(document).ready(function () {
                 id_curso = selector.getAttribute("id").substr(5);
                 console.log(cedula);
                 console.log(id_curso);
-
                 $.post('../controlador/tempController.php', { funcion, cedula, id_curso }, (response) => {
+                    console.log(response);
                     alert("Participante redirigido a los cursos seleccionados");
 
                 });
@@ -284,18 +289,16 @@ $(document).ready(function () {
         })
 
         $('#form-registrar-am').trigger('reset');
-        location.href = '../vista/registrar_am.php'
+        //location.href = '../vista/registrar_am.php'
     });
 
 })
 function llenar_tutores() {
     let listaT = document.querySelectorAll('select');
-    console.log(listaT);
     funcion = 'buscar_crs_est';
-    $.post('../controlador/alumnoController.php', {funcion}, (response) => {
+    $.post('../controlador/alumnoController.php', { funcion }, (response) => {
 
         const ALUMNOS = JSON.parse(response);
-        console.log(ALUMNOS);
         listaT.forEach(combo => {
             id = combo.getAttribute("id");
 
@@ -303,13 +306,13 @@ function llenar_tutores() {
                 let option = document.createElement('option');
                 option.value = alumno.id_usuario;
                 option.text = alumno.nombre;
-                combo.appendChild(option);        
+                combo.appendChild(option);
             });
         });
-       
+
     });
 }
-window.addEventListener('load',llenar_tutores());
+window.addEventListener('load', llenar_tutores());
 function FechaHoy() {
     var today = new Date();
     var dd = today.getDate();

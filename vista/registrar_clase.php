@@ -32,10 +32,7 @@ if ($_SESSION['us_tipo'] == 2) {
                             <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search2">
                             <i class="fa fa-search lupa" aria-hidden="true"></i>
                             <div style="padding-left: 20px">
-                                <button type="button" class="btn btn-primary" id="reporteC"><i class="fas fa-file-pdf"></i> Reporte</button>
-                            </div>
-                            <div style="padding-left: 20px">
-                                <button type="button" class="btn btn-danger" id="certificado"><i class="fas fa-file-pdf"></i> Generar Certificado</button>
+                                <button type="button" class="btn btn-primary" id="reporteC"><i class="fas fa-file-pdf"></i> Informe</button>
                             </div>
                         </div>
 

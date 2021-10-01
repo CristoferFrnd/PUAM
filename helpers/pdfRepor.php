@@ -91,7 +91,6 @@ if ($_POST['funcion'] == 'reporFG') {
 
     $datos = json_decode($_POST['datos']);
     
-
     $name = generar(15);
     $name = $name . '.pdf';
 

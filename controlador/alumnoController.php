@@ -22,6 +22,25 @@ if ($_POST['funcion'] == 'listar')
     echo $jsonString;  
 }
 
+if ($_POST['funcion'] == 'listarFin') 
+{
+    $usuario->buscarFin();
+    $json = array();
+    foreach ($usuario->objetos as $objeto) {
+        $json[] = array(
+            'id_usuario' => $objeto->id_usuario,
+            'nombre' => $objeto->nombre_usuario,
+            'correo' => $objeto->correoins_usuario,
+            'horasN' => $objeto->horasnecesarias_usuario,
+            'horasR' => $objeto->horasrealizadas_usuario,
+            'curso'  => $objeto->nombre_crs,
+            'tel'  => $objeto->tel_usuario
+        );
+    }
+    $jsonString= json_encode($json);
+    echo $jsonString;  
+}
+
 if ($_POST['funcion'] == 'registrar') 
 {
     $nombre = $_POST['nombre'];

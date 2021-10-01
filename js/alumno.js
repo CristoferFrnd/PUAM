@@ -1,10 +1,9 @@
 
 $(document).ready(function () {
-
-    listar_alumnos();
     listar_cursos();
     datos_alumno();
-    listar_alumnos_curso()
+    listar_alumnos_curso();
+    listar_alumnos_fin();
 
 
     function listar_alumnos(consulta) {
@@ -27,6 +26,33 @@ $(document).ready(function () {
                     `;
             });
             $('#alumnos').html(template);
+        });
+    }
+
+    function listar_alumnos_fin() {
+        funcion = "listarFin";
+        $.post('../controlador/alumnoController.php', { funcion }, (response) => {
+            const ALUMNOS = JSON.parse(response);
+            let template = ``;
+            $tablaFin = document.getElementById('tablaFin');
+            if (ALUMNOS.length > 0) {
+                $tablaFin.style.display = 'block';
+                ALUMNOS.forEach(alumno => {
+                    template += `
+                    <tr us_id="${alumno.id_usuario}" us_nombre="${alumno.nombre}" us_horasR="${alumno.horasR}" class="bg-success">
+                        <td>${alumno.id_usuario}</td>
+                        <td>${alumno.nombre}</td>
+                        <td>${alumno.correo}</td>
+                        <td>${alumno.tel}</td>
+                        <td>${alumno.horasR}</td>
+                        <td>${alumno.curso}</td>
+                        <td><button type='button' class='genCert btn btn-danger'><i class="fas fa-file-pdf"></i></button></td>
+                    </tr>
+                    `;
+                });
+                $('#alumnosFin').html(template);
+            }
+            listar_alumnos();
         });
     }
 
@@ -107,6 +133,27 @@ $(document).ready(function () {
 
     });
 
+    $(document).on('click', '.genCert', (e) => {
+        funcion = 'certificado';
+        const ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
+        const ID = $(ELEMENTO).attr('us_id');
+        const NOMBRE = $(ELEMENTO).attr('us_nombre');
+        const HORASR = $(ELEMENTO).attr('horasR');
+        $.post('../helpers/pdfCert.php', { funcion, ID, NOMBRE , HORASR}, (response) => {
+            const NAME = JSON.parse(response);
+            var ventana = window.open(NAME, '_blank');
+            var loop = setInterval(function () {
+                if (ventana.closed) {
+                    clearInterval(loop);
+                    funcion = 'elimDoc';
+                    $.post('../helpers/pdfRepor.php', { funcion, NAME }, (response) => {
+                    });
+                }
+            }, 1000);
+        });
+
+    });
+
     function datos_alumno() {
         funcion = "buscar_us_id";
         ID = $('#id_us').val();
@@ -145,14 +192,14 @@ $(document).ready(function () {
         $.post('../helpers/pdfRepor.php', { funcion, datos }, (response) => {
             const NAME = JSON.parse(response);
             var ventana = window.open(NAME, '_blank');
-            var loop = setInterval(function() {   
-                if(ventana.closed) {  
-                    clearInterval(loop);  
+            var loop = setInterval(function () {
+                if (ventana.closed) {
+                    clearInterval(loop);
                     funcion = 'elimDoc';
                     $.post('../helpers/pdfRepor.php', { funcion, NAME }, (response) => {
                     });
                 }
-            }, 1000); 
+            }, 1000);
         });
         e.preventDefault();
     });
@@ -173,7 +220,7 @@ $(document).ready(function () {
 
     function listar_alumnos_curso() {
         funcion = "buscar_us_crs";
-        id =5;
+        id = 5;
         $.post('../controlador/alumnoController.php', { id, funcion }, (response) => {
             const ALUMNOS = JSON.parse(response);
             let template = ``;

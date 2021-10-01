@@ -38,7 +38,7 @@ class Usuario
                 ':telefono'    => $telefono,
                 ':horasN'    => 160,
                 ':us_tipo'    => 2
-                
+
             ));
             $this->objetos = $query->fetchall();
             echo 'add';
@@ -47,19 +47,19 @@ class Usuario
 
     function editar($id_us, $nombre, $contrasena, $correo)
     {
-            $sql = "    UPDATE  Usuario SET nombre_usuario = :nombre, correoIns_usuario = :correo, contras_usuario = :contrasena
+        $sql = "    UPDATE  Usuario SET nombre_usuario = :nombre, correoIns_usuario = :correo, contras_usuario = :contrasena
                         WHERE id_usuario = :id
             ";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(
-                ':nombre'    => $nombre,
-                ':contrasena' => $contrasena,
-                ':correo' => $correo,
-                ':id'    => $id_us
-                
-            ));
-            $this->objetos = $query->fetchall();
-            echo 'edit';
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+            ':nombre'    => $nombre,
+            ':contrasena' => $contrasena,
+            ':correo' => $correo,
+            ':id'    => $id_us
+
+        ));
+        $this->objetos = $query->fetchall();
+        echo 'edit';
     }
 
     function buscar()
@@ -95,6 +95,21 @@ class Usuario
         }
     }
 
+    function buscarFin()
+    {
+        $sql = "SELECT id_usuario, nombre_usuario, correoIns_usuario, horasNecesarias_usuario, horasRealizadas_usuario, nombre_crs, tel_usuario FROM usuario
+                    JOIN curso on cursos_id_crs=id_crs
+                    WHERE horasRealizadas_usuario = 160
+                    AND tipoUsuario_id_tipoUsuario = 2
+                    ORDER BY nombre_usuario ASC
+                    LIMIT 25                
+                    ";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+    }
+
     function loguearse($us, $pass)
     {
         $sql = "  SELECT * 
@@ -108,10 +123,9 @@ class Usuario
         foreach ($objetos as $objeto) {
             $contrasena_actual = $objeto->contras_usuario;
         }
-            if ($pass == $contrasena_actual) {
-                return "logueado";
-            }
-        
+        if ($pass == $contrasena_actual) {
+            return "logueado";
+        }
     }
 
     function obtenerDatosLogueo($user)
@@ -145,12 +159,12 @@ class Usuario
                 JOIN curso on cursos_id_crs=id_crs
                     WHERE id_usuario = :id
                     ";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(
-                ':id' => "$id"
-            ));
-            $this->objetos = $query->fetchall();
-            return $this->objetos;
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+            ':id' => "$id"
+        ));
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
     }
 
     function buscar_crs_est($id)
@@ -158,12 +172,12 @@ class Usuario
         $sql = "SELECT id_usuario, nombre_usuario FROM usuario
                 WHERE cursos_id_crs=:id
                     ";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(
-                ':id' => $id
-            ));
-            $this->objetos = $query->fetchall();
-            return $this->objetos;
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+            ':id' => $id
+        ));
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
     }
 
     function buscar_us_crs($id)
@@ -174,27 +188,25 @@ class Usuario
                 WHERE estado_usuario = 1 
                 AND cursos_id_crs =:id
                     ";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(
-                ':id' => "$id"
-            ));
-            $this->objetos = $query->fetchall();
-            return $this->objetos;
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+            ':id' => "$id"
+        ));
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
     }
 
-    
+
     function eliminar($id)
     {
         $sql = "DELETE FROM usuario
                 WHERE id_usuario=:id
         ";
-        $query=$this->acceso->prepare($sql);
-        if(!empty($query->execute(array(':id' => $id)))){
+        $query = $this->acceso->prepare($sql);
+        if (!empty($query->execute(array(':id' => $id)))) {
             echo 'delete';
-        }
-        else{
+        } else {
             echo 'noDelete';
         }
     }
 }
-

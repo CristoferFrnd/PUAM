@@ -1,6 +1,6 @@
 
 $(document).ready(function () {
-    listar_cursos();
+    
     datos_alumno();
     listar_alumnos_curso();
     if ($('#us_tipo').val() == 3) {
@@ -9,7 +9,7 @@ $(document).ready(function () {
     } else {
         listar_alumnos_fin();
     }
-
+    listar_cursos();
 
     function listar_alumnos(consulta) {
         funcion = "listar";

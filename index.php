@@ -49,21 +49,8 @@ if (!empty($_SESSION['us_tipo'])) {
 
         <div class="page">
             <div class="container">
-                <div class="left">
-                    <div class="login">
-                        <h1>UCE</h1>
-                        <h3>Desarrolladores</h3>
-                        <ul>
-                            <li>Sofía Alemán</li>
-                            <li>Cristian Pujota</li>
-                        </ul>
-                        <h3>Tutores</h3>
-                        <ul>
-                            <li>Santiago Morales</li>
-                            <li>Alicia Andrade</li>
-                        </ul>
-                    </div>
-
+                <div class="left"> 
+                    <img src="assets/img/loginC.JPG" class="img-fluid"/>
                 </div>
                 <div class="right">
                     <div style="width: 100%;">

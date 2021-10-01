@@ -12,17 +12,23 @@ class Temp
 
     function crear($id_adulMay, $id_curso)
     {
-            //Inserción de datos
-            $sql = "    INSERT INTO temp(id_adulMay,id_curso)
+        //Inserción de datos
+        $sql = "    INSERT INTO temp(id_adulMay,id_curso)
                         VALUES(:id_adulMay, :id_curso)
             ";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(
-                ':id_adulMay'    => $id_adulMay,
-                ':id_curso'    => $id_curso,
-                
-            ));
-            $this->objetos = $query->fetchall();        
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+            ':id_adulMay'    => $id_adulMay,
+            ':id_curso'    => $id_curso,
+
+        ));
+        $this->objetos = $query->fetchall();
+        if (!empty($this->objetos)) {
+            echo 'noAdd';
+        }
+        else {
+            echo 'add';
+        }
     }
 
     function buscar()
@@ -49,17 +55,35 @@ class Temp
         }
     }
 
-    function eliminar($id){
+    function listar_crs($id_crs)
+    {
+
+        $sql = "SELECT id_adulMay,nombre_adMay, id_curso
+            FROM temp JOIN adultoMay ON id_adulMay = id_adMay
+            where id_curso =:id_crs;
+                    ";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+            ':id_crs' => $id_crs,
+        ));
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+    }
+
+    function eliminar($id, $curso)
+    {
         $sql = "DELETE FROM temp
-                WHERE id_curso=:id
+                WHERE id_adulMay = :id
+                AND id_curso = :curso
         ";
-        $query=$this->acceso->prepare($sql);
-        if(!empty($query->execute(array(':id' => $id)))){
-            echo 'delete';
-        }
-        else{
+        $query = $this->acceso->prepare($sql);
+        if (!empty($query->execute(array(
+            ':id' => $id,
+            ':curso' => $curso,
+        )))) {
+            echo $curso;
+        } else {
             echo 'noDelete';
         }
     }
-
 }

@@ -262,7 +262,6 @@ if ($_SESSION['us_tipo'] == 1) {
                                     <th>Estado</th>
                                     <th>Editar</th>
                                     <th>Cursos</th>
-                                    <th>Matricular</th>
                                 </tr>
                             </thead>
                             <tbody id="adultoMay_tab">

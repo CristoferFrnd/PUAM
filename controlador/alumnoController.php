@@ -1,7 +1,8 @@
 <?php
 include '../modelo/Usuario.php';
-$usuario = new Usuario();
 session_start();
+$usuario = new Usuario();
+
 
 if ($_POST['funcion'] == 'listar') 
 {
@@ -92,7 +93,7 @@ if ($_POST['funcion'] == 'buscar_us_id')
 
 if ($_POST['funcion'] == 'buscar_crs_est') 
 {
-    $id=$_POST['id'];
+    $id=1;
     $usuario->buscar_crs_est($id);
     $json = array();
     foreach ($usuario->objetos as $objeto) {
@@ -123,3 +124,11 @@ if ($_POST['funcion'] == 'buscar_us_crs')
     $jsonString = json_encode($json);
     echo $jsonString;
 }
+
+if ($_POST['funcion'] == 'agregar_horas') 
+{
+    $id_usuario = $_POST['id_usuario'];
+    $duracion = $_POST['duracion'];
+    $usuario->agregarHoras($id_us, $duracion);
+}
+

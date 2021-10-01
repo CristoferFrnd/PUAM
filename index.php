@@ -87,6 +87,7 @@ if (!empty($_SESSION['us_tipo'])) {
                 </div>
             </div>
         </div>
+        
     </body>
     <footer class="main-footer">
         <div class="fixed-bottom text-center text-light">

@@ -73,6 +73,7 @@ class Usuario
             OR id_usuario LIKE :consulta
             OR nombre_crs LIKE :consulta
             AND tipoUsuario_id_tipoUsuario = 2
+            AND estado_usuario = 1
                         ";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(
@@ -85,6 +86,7 @@ class Usuario
                     JOIN curso on cursos_id_crs=id_crs
                     WHERE nombre_usuario NOT LIKE ''
                     AND tipoUsuario_id_tipoUsuario = 2
+                    AND estado_usuario = 1
                     ORDER BY nombre_usuario ASC
                     LIMIT 25                
                     ";
@@ -101,6 +103,7 @@ class Usuario
                     JOIN curso on cursos_id_crs=id_crs
                     WHERE horasRealizadas_usuario = 160
                     AND tipoUsuario_id_tipoUsuario = 2
+                    AND estado_usuario = 1
                     ORDER BY nombre_usuario ASC
                     LIMIT 25                
                     ";
@@ -196,23 +199,32 @@ class Usuario
         return $this->objetos;
     }
 
-
-    
     function agregarHoras($id_usuario, $duracion)
     {
-            //Inserción de datos
-            $sql = "UPDATE usuario SET horasRealizadas_usuario = horasRealizadas_usuario + :duracion 
+        //Inserción de datos
+        $sql = "UPDATE usuario SET horasRealizadas_usuario = horasRealizadas_usuario + :duracion 
                     WHERE id_usuario = :id_usuario
             ";
-            $query = $this->acceso->prepare($sql);
-            $query->execute(array(
-                ':duracion' => $duracion,
-                ':id_usuario'  => $id_usuario,
-            ));
-            $this->objetos = $query->fetchall();
-        
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+            ':duracion' => $duracion,
+            ':id_usuario'  => $id_usuario,
+        ));
+        $this->objetos = $query->fetchall();
     }
-    
+
+    function act_estado($id)
+    {
+        $sql = "UPDATE usuario SET estado_usuario = 0
+            WHERE id_usuario = :id";
+        $query = $this->acceso->prepare($sql);
+        $query->execute(array(
+            ':id' => $id
+        ));
+        $this->objetos = $query->fetchall();
+        echo "actualizado";
+    }
+
     function eliminar($id)
     {
         $sql = "DELETE FROM usuario

@@ -64,6 +64,12 @@ if ($_POST['funcion'] == 'editar')
     $usuario->editar($id_us, $nombre, $contrasena, $correo);
 }
 
+if ($_POST['funcion'] == 'usuario_estado') 
+{
+    $id_us = $_POST['ID'];
+    $usuario->act_estado($id_us);
+}
+
 if ($_POST['funcion'] == 'eliminar') 
 {
     $id_us = $_POST['id_us'];

@@ -6,7 +6,7 @@ $(document).ready(function () {
     if ($('#us_tipo').val() == 3) {
         listar_alumnos();
 
-    } else{
+    } else {
         listar_alumnos_fin();
     }
 
@@ -57,6 +57,10 @@ $(document).ready(function () {
                 });
                 $('#alumnosFin').html(template);
             }
+            else {
+                $tablaFin.style.display = 'none';
+            }
+
             listar_alumnos();
         });
     }
@@ -139,12 +143,19 @@ $(document).ready(function () {
     });
 
     $(document).on('click', '.genCert', (e) => {
-        funcion = 'certificado';
+        funcion = 'usuario_estado';
         const ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
         const ID = $(ELEMENTO).attr('us_id');
         const NOMBRE = $(ELEMENTO).attr('us_nombre');
         const HORASR = $(ELEMENTO).attr('horasR');
-        $.post('../helpers/pdfCert.php', { funcion, ID, NOMBRE , HORASR}, (response) => {
+
+        $.post('../controlador/alumnoController.php', { funcion, ID }, (response) => {
+            console.log(response);
+            listar_alumnos_fin();
+        })
+
+        funcion = 'certificado';
+        $.post('../helpers/pdfCert.php', { funcion, ID, NOMBRE, HORASR }, (response) => {
             const NAME = JSON.parse(response);
             var ventana = window.open(NAME, '_blank');
             var loop = setInterval(function () {

@@ -4,46 +4,27 @@ session_start();
 $usuario = new Usuario();
 
 
-if ($_POST['funcion'] == 'listar') 
-{
+if ($_POST['funcion'] == 'listar') {
     $usuario->buscar();
     $json = array();
     foreach ($usuario->objetos as $objeto) {
-        $json[] = array(
-            'id_usuario' => $objeto->id_usuario,
-            'nombre' => $objeto->nombre_usuario,
-            'correo' => $objeto->correoins_usuario,
-            'horasN' => $objeto->horasnecesarias_usuario,
-            'horasR' => $objeto->horasrealizadas_usuario,
-            'curso'  => $objeto->nombre_crs,
-            'tel'  => $objeto->tel_usuario
-        );
+        $json['data'][] = $objeto;
     }
-    $jsonString= json_encode($json);
-    echo $jsonString;  
+    $jsonString = json_encode($json);
+    echo $jsonString;
 }
 
-if ($_POST['funcion'] == 'listarFin') 
-{
+if ($_POST['funcion'] == 'listarFin') {
     $usuario->buscarFin();
     $json = array();
     foreach ($usuario->objetos as $objeto) {
-        $json[] = array(
-            'id_usuario' => $objeto->id_usuario,
-            'nombre' => $objeto->nombre_usuario,
-            'correo' => $objeto->correoins_usuario,
-            'horasN' => $objeto->horasnecesarias_usuario,
-            'horasR' => $objeto->horasrealizadas_usuario,
-            'curso'  => $objeto->nombre_crs,
-            'tel'  => $objeto->tel_usuario
-        );
+        $json['data'][] = $objeto;
     }
-    $jsonString= json_encode($json);
-    echo $jsonString;  
+    $jsonString = json_encode($json);
+    echo $jsonString;
 }
 
-if ($_POST['funcion'] == 'registrar') 
-{
+if ($_POST['funcion'] == 'registrar') {
     $nombre = $_POST['nombre'];
     $contrasena = $_POST['contrasena'];
     $cedula = $_POST['cedula'];
@@ -55,8 +36,7 @@ if ($_POST['funcion'] == 'registrar')
     $usuario->crear($nombre, $contrasena, $cedula, $correo, $horasR, $curso, $telefono);
 }
 
-if ($_POST['funcion'] == 'editar') 
-{
+if ($_POST['funcion'] == 'editar') {
     $nombre = $_POST['nombre'];
     $contrasena = $_POST['contrasena'];
     $id_us = $_POST['id_us'];
@@ -64,21 +44,18 @@ if ($_POST['funcion'] == 'editar')
     $usuario->editar($id_us, $nombre, $contrasena, $correo);
 }
 
-if ($_POST['funcion'] == 'usuario_estado') 
-{
+if ($_POST['funcion'] == 'usuario_estado') {
     $id_us = $_POST['ID'];
     $usuario->act_estado($id_us);
 }
 
-if ($_POST['funcion'] == 'eliminar') 
-{
+if ($_POST['funcion'] == 'eliminar') {
     $id_us = $_POST['id_us'];
     $usuario->eliminar($id_us);
 }
 
-if ($_POST['funcion'] == 'buscar_us_id') 
-{
-    $id=$_POST['ID'];
+if ($_POST['funcion'] == 'buscar_us_id') {
+    $id = $_POST['ID'];
     $usuario->buscar_us_id($id);
     $json = array();
     foreach ($usuario->objetos as $objeto) {
@@ -97,44 +74,40 @@ if ($_POST['funcion'] == 'buscar_us_id')
     echo $jsonString;
 }
 
-if ($_POST['funcion'] == 'buscar_crs_est') 
-{
-    $id=1;
+if ($_POST['funcion'] == 'buscar_crs_est') {
+    $id = 1;
     $usuario->buscar_crs_est($id);
     $json = array();
     foreach ($usuario->objetos as $objeto) {
         $json[] = array(
             'id_usuario' => $objeto->id_usuario,
-            'nombre' => $objeto->nombre_usuario,       
+            'nombre' => $objeto->nombre_usuario,
         );
     }
     $jsonString = json_encode($json);
     echo $jsonString;
 }
 
-if ($_POST['funcion'] == 'buscar_us_crs') 
-{
-    $id=$_SESSION['curso_id'];
+if ($_POST['funcion'] == 'buscar_us_crs') {
+    $id = $_SESSION['curso_id'];
     $usuario->buscar_us_crs($id);
     $json = array();
     foreach ($usuario->objetos as $objeto) {
         $json[] = array(
             'id_usuario' => $objeto->id_usuario,
-            'nombre' => $objeto->nombre_usuario,  
-            'correo' => $objeto->correoins_usuario,  
+            'nombre' => $objeto->nombre_usuario,
+            'correo' => $objeto->correoins_usuario,
             'horasN' => $objeto->horasnecesarias_usuario,
-            'horasR' => $objeto->horasrealizadas_usuario,   
-            'tel' => $objeto->tel_usuario, 
+            'horasR' => $objeto->horasrealizadas_usuario,
+            'tel' => $objeto->tel_usuario,
         );
     }
     $jsonString = json_encode($json);
     echo $jsonString;
 }
 
-if ($_POST['funcion'] == 'agregar_horas') 
-{
+if ($_POST['funcion'] == 'agregar_horas') {
     $id_usuario = $_POST['id_usuario'];
     $duracion = $_POST['duracion'];
     $usuario->agregarHoras($id_us, $duracion);
 }
-

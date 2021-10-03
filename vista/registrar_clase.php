@@ -28,26 +28,25 @@ if ($_SESSION['us_tipo'] == 2) {
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#agregarClaseModal"><i class="fas fa-user-plus"> AGREGAR</i></button>
                     </div>
                     <div class="card-body">
-                        <div class="container-btn-add">
-                            <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search2">
-                            <i class="fa fa-search lupa" aria-hidden="true"></i>
-                            <div style="padding-left: 20px">
+                        <div class="container-btn-add justify-content-start">
+                            <div>
                                 <button type="button" class="btn btn-primary" id="reporteC"><i class="fas fa-file-pdf"></i> Informe</button>
                             </div>
                         </div>
 
-                        <table id="tabla-clases" class="table table-striped table-bordered table-responsive" style="width:100%; height:500px">
+                        <table id="example" class="display table table-hover text-nowrap table-responsive-lg" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Fecha</th>
                                     <th>Participante</th>
+                                    <th>Tutor</th>
                                     <th>Curso</th>
-                                    <th>Tema</th>
                                     <th>Tipo de Clase</th>
                                     <th>Detalle</th>
                                 </tr>
                             </thead>
-                            <tbody id="clases_alumno">
+                            <tbody>
+
                             </tbody>
                         </table>
                     </div>

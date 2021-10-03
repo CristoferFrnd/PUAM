@@ -16,7 +16,7 @@ if ($_SESSION['us_tipo'] == 3) {
 
 <body>
     <input type="text" id="us_tipo" value="<?php echo $_SESSION['us_tipo']; ?>" hidden="true">
-    <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalEdit" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -181,13 +181,11 @@ if ($_SESSION['us_tipo'] == 3) {
 
                     <div class="card-body">
                         <div class="container-btn-add">
-                            <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
-                            <i class="fa fa-search lupa" aria-hidden="true"></i>
-                            <div style="padding-left: 20px">
+                            <div>
                                 <button type="button" class="btn btn-primary" id="reporteG"><i class="fas fa-file-pdf"></i> Reporte</button>
                             </div>
                         </div>
-                        <table id="tabla" class="table table-striped table-bordered table-responsive-lg" style="height:500px">
+                        <table id="tEst" class="display table-sm table-hover text-nowrap table-responsive-lg" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>N. Cedula</th>
@@ -196,12 +194,14 @@ if ($_SESSION['us_tipo'] == 3) {
                                     <th>Telefono</th>
                                     <th>H Totales</th>
                                     <th>Curso</th>
-
+                                    <th>Editar</th>
                                 </tr>
                             </thead>
-                            <tbody id="alumnosCrs">
+                            <tbody>
                             </tbody>
                         </table>
+
+
                     </div>
                     <div class="card-footer">
                     </div>

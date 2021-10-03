@@ -18,7 +18,6 @@ if ($_SESSION['us_tipo'] == 3) {
 
     <!-- TABLITA MATRICULAR-->
     <div class="content-wrapper container top">
-        <br>
         <section>
             <div class="container-fluid">
                 <div class="card card-success animate__animated animate__bounceInRight">
@@ -32,51 +31,14 @@ if ($_SESSION['us_tipo'] == 3) {
 
                         </div>
                         <table id="tabla" class="display table table-hover text-nowrap" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th>Cédula</th>
-                                <th>Nombre</th>
-                                <th>Tutor</th>
-                            </tr>
-                        </thead>
-                        <tbody id="lista_estudiantes"></tbody>
-                    </table>
-                    </div>
-                    <div class="card-footer">
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-    </div>
-    <!-- TABLITA PARTICIPANTES-->
-    <div class="content-wrapper container top">
-        <br>
-        <section>
-            <div class="container-fluid">
-                <div class="card card-success animate__animated animate__bounceInRight">
-                    <div class="titulo-tabla">
-                        <h3>LISTADO DE PARTICIPANTES</h3>
-                    </div>
-                    <div class="card-body">
-                        <div class="container-btn-add">
-                            <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search1">
-                            <i class="fa fa-search lupa" aria-hidden="true"></i>
-
-                        </div>
-                        <table id="tabla" class="table table-striped table-bordered table-responsive" style="height: 500px">
                             <thead>
                                 <tr>
-                                    <th>N. Cedula</th>
+                                    <th>Cédula</th>
                                     <th>Nombre</th>
-                                    <th>Teléfono</th>
-                                    <th>Celular</th>
-                                    <th>Correo</th>
+                                    <th>Tutor</th>
                                 </tr>
                             </thead>
-                            <tbody id="adultoMay_tabCrs">
-                            </tbody>
+                            <tbody id="lista_estudiantes"></tbody>
                         </table>
                     </div>
                     <div class="card-footer">
@@ -86,8 +48,40 @@ if ($_SESSION['us_tipo'] == 3) {
             </div>
         </section>
 
-    </div>
 
+        <!-- TABLITA PARTICIPANTES-->
+        <br>
+        <section>
+            <div class="container-fluid">
+                <div class="card card-success animate__animated animate__bounceInRight">
+                    <div class="titulo-tabla">
+                        <h3>LISTADO DE PARTICIPANTES</h3>
+                    </div>
+                    <div class="card-body">
+
+                        <table id="tPart" class="display table table-hover text-nowrap table-responsive-lg" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>N. Cedula</th>
+                                    <th>Nombre</th>
+                                    <th>Teléfono</th>
+                                    <th>Celular</th>
+                                    <th>Correo</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
 
 </body>
 <?php

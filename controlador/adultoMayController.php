@@ -6,17 +6,10 @@ if ($_POST['funcion'] == 'listar') {
     $adulMay->buscar();
     $json = array();
     foreach ($adulMay->objetos as $objeto) {
-        $json[] = array(
-            'id_adulMay' => $objeto->id_admay,
-            'nombre' => $objeto->nombre_admay,
-            'telefono' => $objeto->telefonoc_admay,
-            'celular' => $objeto->celular_admay,
-            'correo' => $objeto->correoe_admay,
-            'estado' => $objeto->activ_admay
-        );
+        $json['data'][] = $objeto;
     }
-    $jsonString= json_encode($json);
-    echo $jsonString;  
+    $jsonString = json_encode($json);
+    echo $jsonString;
 }
 
 if ($_POST['funcion'] == 'registrar') {
@@ -25,7 +18,7 @@ if ($_POST['funcion'] == 'registrar') {
     $telefono = $_POST['telefono'];
     $celular = $_POST['celular'];
     $correo = $_POST['correo'];
-    
+
     $adulMay->crear($cedula, $nombre, $telefono, $celular, $correo);
 }
 
@@ -44,7 +37,7 @@ if ($_POST['funcion'] == 'eliminar') {
 }
 
 if ($_POST['funcion'] == 'buscar_us_id') {
-    $id=$_POST['id_us'];
+    $id = $_POST['id_us'];
     $adulMay->buscar_am_id($id);
     $json = array();
     foreach ($adulMay->objetos as $objeto) {
@@ -62,7 +55,7 @@ if ($_POST['funcion'] == 'buscar_us_id') {
 
 if ($_POST['funcion'] == 'buscar_crs') {
 
-    $id=$_POST['id'];
+    $id = $_POST['id'];
     $adulMay->buscar_crs_adulMay($id);
     $json = array();
 
@@ -83,5 +76,3 @@ if ($_POST['funcion'] == 'actualizar-estado') {
     $adulMay->act_estado($id, $estado);
     echo 'actualizado';
 }
-
-

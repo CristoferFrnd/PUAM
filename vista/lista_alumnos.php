@@ -97,14 +97,14 @@ if ($_SESSION['us_tipo'] == 1) {
     <div class="content-wrapper container top">
         <br>
         <section>
-            <div class="card card-success animate__animated animate__bounceInRight" id="tablaFin" style="display: none;">
+            <div class="card card-success animate__animated animate__bounceInRight" id="contTF" style="display: none;">
 
                 <div class="card-body">
                     <div class="container-btn-add">
                         <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
                         <i class="fa fa-search lupa" aria-hidden="true"></i>
                     </div>
-                    <table class="table table-striped table-bordered table-responsive-lg">
+                    <table id="tEstFin" class="display table-sm table-hover text-nowrap table-responsive-lg" style="width:100%">
                         <thead>
                             <tr>
                                 <th>N. Cedula</th>
@@ -114,10 +114,9 @@ if ($_SESSION['us_tipo'] == 1) {
                                 <th>H Totales</th>
                                 <th>Curso</th>
                                 <th>Certificado</th>
-
                             </tr>
                         </thead>
-                        <tbody id="alumnosFin">
+                        <tbody>
                         </tbody>
                     </table>
                 </div>
@@ -135,13 +134,11 @@ if ($_SESSION['us_tipo'] == 1) {
 
                 <div class="card-body">
                     <div class="container-btn-add">
-                        <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
-                        <i class="fa fa-search lupa" aria-hidden="true"></i>
-                        <div style="padding-left: 20px">
+                        <div>
                             <button type="button" class="btn btn-primary" id="reporteG"><i class="fas fa-file-pdf"></i> Reporte</button>
                         </div>
                     </div>
-                    <table id="tabla" class="table table-striped table-bordered table-responsive-lg" style="height:500px">
+                    <table id="tEst" class="display table-sm table-hover text-nowrap table-responsive-lg" style="width:100%">
                         <thead>
                             <tr>
                                 <th>N. Cedula</th>
@@ -150,10 +147,9 @@ if ($_SESSION['us_tipo'] == 1) {
                                 <th>Telefono</th>
                                 <th>H Totales</th>
                                 <th>Curso</th>
-
                             </tr>
                         </thead>
-                        <tbody id="alumnos">
+                        <tbody>
                         </tbody>
                     </table>
                 </div>

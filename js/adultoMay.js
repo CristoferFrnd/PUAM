@@ -2,40 +2,89 @@ $(document).ready(function () {
     if ($('#us_tipo').val() == 2) {
         listar_adultoMays_al();
 
+    } else {
+        if ($('#us_tipo').val() == 1) {
+            listar_adultoMaysAdmin();
+        }
+        else {
+            listar_adultoMays();
+            listar_adultoMaysTemp();
+            listar_adultoMaysCRS();
+        }
     }
-
-    listar_adultoMays();
-    listar_adultoMaysTemp();
-    listar_adultoMaysCRS();
 
 
 
     function listar_adultoMays(consulta) {
         funcion = "listar";
-        $.post('../controlador/adultoMayController.php', { consulta, funcion }, (response) => {
-            const ADULTOMAYS = JSON.parse(response);
-            let template = ``;
-            ADULTOMAYS.forEach(adultomay => {
-                let estado = 'Inactivo';
-                let color = 'btn-danger';
-                if (adultomay.estado == '1') {
-                    estado = 'Activo';
-                    color = 'btn-success';
+        $('#tPart').DataTable({
+            "ajax": {
+                "url": "../controlador/adultoMayController.php",
+                "method": "POST",
+                "data": {
+                    funcion: funcion,
                 }
-                template += `
-                    <tr data-estado="${adultomay.estado}" data-id="${adultomay.id_adulMay}">
-                    <td>${adultomay.id_adulMay}</td>
-                    <td>${adultomay.nombre}</td>
-                    <td>${adultomay.telefono}</td>
-                    <td>${adultomay.celular}</td>
-                    <td>${adultomay.correo}</td>              
-                    <td><button type='button' class='conf_estado btn ${color}' data-toggle='modal' data-target='#estadoM'>${estado}</button></td>
-                    <td><button type='button' class='editar-alumno btn btn-primary' data-toggle='modal' data-target='#modalEditar'><i class="fas fa-edit"></i></button></td>
-                    <td><button type='button' class='lis_cursos btn btn-primary' data-toggle='modal' data-target='#verCrs'><i class="fas fa-bars"></i></button></td>
-                    </tr>
-                    `;
-            });
-            $('#adultoMay_tab').html(template);
+            },
+            "columns": [
+                { "data": "id_admay" },
+                { "data": "nombre_admay" },
+                { "data": "celular_admay" },
+                { "data": "telefonoc_admay" },
+                { "data": "correoe_admay" },
+                { "defaultContent": `<button type='button' class='btn' disabled></button>` }
+            ],
+            "createdRow": function (row, data, index) {
+                let button = $(row)[0].children[5].children[0];
+                if (data.activ_admay == '1') {
+                    button.textContent = 'Activo';
+                    button.className = 'btn btn-success';
+
+                }
+                else {
+                    button.textContent = 'Inactivo';
+                    button.className = 'btn btn-danger';
+
+                }
+
+            }
+        });
+    }
+
+    function listar_adultoMaysAdmin() {
+        funcion = "listar";
+        $('#tPartAdmin').DataTable({
+            "ajax": {
+                "url": "../controlador/adultoMayController.php",
+                "method": "POST",
+                "data": {
+                    funcion: funcion,
+                }
+            },
+            "columns": [
+                { "data": "id_admay" },
+                { "data": "nombre_admay" },
+                { "data": "celular_admay" },
+                { "data": "telefonoc_admay" },
+                { "data": "correoe_admay" },
+                { "defaultContent": `<button type='button' class='btn' data-toggle='modal' data-target='#estadoM'></button>` },
+                { "defaultContent": `<button type='button' class='lis_cursos btn btn-primary' data-toggle='modal' data-target='#verCrs'><i class="fas fa-bars"></i></button>` },
+                { "defaultContent": `<button type='button' class='editar-alumno btn btn-primary' data-toggle='modal' data-target='#modalEditar'><i class="fas fa-edit"></i></button>` }
+            ],
+            "createdRow": function (row, data, index) {
+                $(row).attr('data-id', data.id_admay);
+                $(row).attr('data-estado', data.activ_admay);
+                let button = $(row)[0].children[5].children[0];
+                if (data.activ_admay == '1') {
+                    button.textContent = 'Activo';
+                    button.className = 'btn btn-success conf_estado';
+
+                }
+                else {
+                    button.textContent = 'Inactivo';
+                    button.className = 'btn btn-danger conf_estado';
+                }
+
+            }
         });
     }
 
@@ -59,36 +108,40 @@ $(document).ready(function () {
         });
     }
 
-    function listar_adultoMays_al(consulta) {
+    function listar_adultoMays_al() {
         const ID = $('#us_id').val();
         funcion = "buscar_am_al";
-        $.post('../controlador/claseController.php', { ID, consulta, funcion }, (response) => {
-            console.log(response);
-            const ADULTOMAYS = JSON.parse(response);
-            if (ADULTOMAYS.length == 0) {
-                alert("No Tienes Alumnos Registrados para tu Curso")
-            }
-            let template = ``;
-            ADULTOMAYS.forEach(adultomay => {
-                let estado = 'Inactivo';
-                let color = 'btn-danger';
-                if (adultomay.activ_admay == '1') {
-                    estado = 'Activo';
-                    color = 'btn-success';
+        $('#alParti').DataTable({
+            "ajax": {
+                "url": "../controlador/claseController.php",
+                "method": "POST",
+                "data": {
+                    funcion: funcion,
+                    ID: ID,
                 }
-                template += `
-                    <tr data-estado="${adultomay.estado}" data-id="${adultomay.id_adMay}">
-                    <td>${adultomay.id_adMay}</td>
-                    <td>${adultomay.nombre_admay}</td>
-                    <td>${adultomay.telefonoc_admay}</td>
-                    <td>${adultomay.celular_admay}</td>
-                    <td>${adultomay.correoe_admay}</td>              
-                    <td><button type='button' class='conf_estado btn ${color}' data-toggle='modal' data-target='#estadoM' disabled>${estado}</button></td>
-                    </tr>
-                    `;
-            });
+            },
+            "columns": [
+                { "data": "id_admay" },
+                { "data": "nombre_admay" },
+                { "data": "celular_admay" },
+                { "data": "telefonoc_admay" },
+                { "data": "correoe_admay" },
+                { "defaultContent": `<button type='button' class='btn' disabled></button>` }
+            ],
+            "createdRow": function (row, data, index) {
+                let button = $(row)[0].children[5].children[0];
+                if (data.activ_admay == '1') {
+                    button.textContent = 'Activo';
+                    button.className = 'btn btn-success';
 
-            $('#adultoMay_tab_al').html(template);
+                }
+                else {
+                    button.textContent = 'Inactivo';
+                    button.className = 'btn btn-danger';
+
+                }
+
+            }
         });
     }
 
@@ -110,24 +163,13 @@ $(document).ready(function () {
                     `;
                 });
             }
-            else{
-                console.log('ingreso');
-                template +=`<tr><td>Sin participantes para matricular</td></tr>`
+            else {
+                template += `<tr><td>Sin participantes para matricular</td></tr>`
             }
             $('#lista_estudiantes').html(template);
         });
 
     }
-
-    $(document).on('keyup', '#search1', function () {
-        console.log('prueba')
-        let valor = $(this).val();
-        if (valor != '') {
-            listar_adultoMays(valor);
-        } else {
-            listar_adultoMays();
-        }
-    })
 
     $(document).on('click', '.conf_estado', (e) => {
         $ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
@@ -176,17 +218,6 @@ $(document).ready(function () {
                 </tr>
                 `;
             })
-
-            // CURSOS.forEach(curso => {
-            //     console.log(curso)
-            //     template += `
-            //         <tr>
-            //         <td>${curso.nombreC}</td>
-            //         <td>${curso.nombreP}</td>
-            //         <td>${curso.fechaI}</td>
-            //         </tr>
-            //         `;
-            // });
         });
 
         $('#lista_Crs').html(template);
@@ -253,30 +284,6 @@ $(document).ready(function () {
 
         });
     }
-
-
-
-    // function listar_adulMAy_pendientes(id) {
-    //     funcion = "listar";
-    //     $.post('../controlador/tempController.php', { }, (response) => {
-    //         const CURSOS = JSON.parse(response);
-    //         console.log(CURSOS);
-    //         let template = ``;
-    //         CURSOS.forEach(curso => {
-    //             template += `
-    //                 <tr>
-    //                     <td>${curso.id}</td>
-    //                     <td>${curso.nombre_crs}</td>
-    //                     <td>
-    //                     <select class="form-select form-select-m form-control" id="${curso.id_crs}"/>
-    //                     </td>
-    //                 </tr>
-    //                 `;
-    //         });
-    //         $('#matr_Crs').html(template);
-    //         llenar_tutores();
-    //     });
-    // }
 
     $(document).on('click', '#ingresar', (e) => {
         let cedula = $('#cedula').val();

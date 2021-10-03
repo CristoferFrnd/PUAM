@@ -25,7 +25,7 @@ if ($_SESSION['us_tipo'] == 1) {
                                     <th>Tutor</th>
                                     <th>Curso</th>
                                     <th>Tipo de Clase</th>
-                                    <!-- <th>Detalle</th> -->
+                                    <th>Detalle</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,7 +41,7 @@ if ($_SESSION['us_tipo'] == 1) {
         </section>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
+    <div class="modal fade" tabindex="-1" role="dialog" id="modalDetalle" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">

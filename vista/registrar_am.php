@@ -16,6 +16,7 @@ if ($_SESSION['us_tipo'] == 1) {
 
 <body>
 
+    <input type="text" id="us_tipo" value="<?php echo $_SESSION['us_tipo']; ?>" hidden="true">
 
     <!-- modal Agregar Adulto Mayor -->
     <div class="modal fade" tabindex="-1" role="dialog" id="exampleModal" aria-hidden="true">
@@ -246,12 +247,8 @@ if ($_SESSION['us_tipo'] == 1) {
                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-user-plus"></i> AGREGAR</button>
                     </div>
                     <div class="card-body">
-                        <div class="container-btn-add">
-                            <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search1">
-                            <i class="fa fa-search lupa" aria-hidden="true"></i>
-
-                        </div>
-                        <table id="tabla" class="table table-striped table-bordered table-responsive-lg" style="height: 500px;">
+                    
+                        <table id="tPartAdmin" class="display table table-hover text-nowrap table-responsive-lg" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>N. Cedula</th>
@@ -260,11 +257,12 @@ if ($_SESSION['us_tipo'] == 1) {
                                     <th>Celular</th>
                                     <th>Correo</th>
                                     <th>Estado</th>
-                                    <th>Editar</th>
                                     <th>Cursos</th>
+                                    <th>Editar</th>
                                 </tr>
                             </thead>
-                            <tbody id="adultoMay_tab">
+                            <tbody>
+
                             </tbody>
                         </table>
                     </div>

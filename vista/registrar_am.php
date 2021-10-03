@@ -10,7 +10,7 @@ if ($_SESSION['us_tipo'] == 1) {
     include_once 'layouts/nav.php';
 } else {
     echo '<link rel="stylesheet" href="../css/css/bootstrap.min.css">
-    <link type="text/css" href="../css/login.css" rel="stylesheet">';
+    <link type="text/css" href="../css/styles.css" rel="stylesheet">';
 }
 ?>
 
@@ -251,7 +251,7 @@ if ($_SESSION['us_tipo'] == 1) {
                             <i class="fa fa-search lupa" aria-hidden="true"></i>
 
                         </div>
-                        <table id="tabla" class="table table-striped table-bordered table-responsive" style="height: 500px">
+                        <table id="tabla" class="table table-striped table-bordered table-responsive-lg" style="height: 500px;">
                             <thead>
                                 <tr>
                                     <th>N. Cedula</th>

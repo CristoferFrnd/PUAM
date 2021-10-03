@@ -104,7 +104,7 @@ if ($_SESSION['us_tipo'] == 1) {
                         <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
                         <i class="fa fa-search lupa" aria-hidden="true"></i>
                     </div>
-                    <table class="table table-striped table-bordered table-responsive">
+                    <table class="table table-striped table-bordered table-responsive-lg">
                         <thead>
                             <tr>
                                 <th>N. Cedula</th>
@@ -141,7 +141,7 @@ if ($_SESSION['us_tipo'] == 1) {
                             <button type="button" class="btn btn-primary" id="reporteG"><i class="fas fa-file-pdf"></i> Reporte</button>
                         </div>
                     </div>
-                    <table id="tabla" class="table table-striped table-bordered table-responsive" style="height:500px">
+                    <table id="tabla" class="table table-striped table-bordered table-responsive-lg" style="height:500px">
                         <thead>
                             <tr>
                                 <th>N. Cedula</th>

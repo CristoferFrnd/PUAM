@@ -5,41 +5,48 @@ $(document).ready(function () {
     if ($('#us_tipo').val() == 2) {
         listar_clases_al($('#us_id').val());
     } else {
-        listar_clases();
+        //listar_clases();
     }
-    //datos_alumno();
+
+    funcion = "listar";
+    $('#example').DataTable( {
+        "ajax": {
+            "url": "../controlador/claseController.php",
+            "method": "POST",
+            "data": {
+                funcion: funcion,
+            }
+        },
+        "columns": [
+            { "data": "fecha_clase" },
+            { "data": "nombre_admay" },
+            { "data": "tutor" },
+            { "data": "nombre_crs" },
+            { "data": "descripcion_tipoclase" }
+        ]
+    } );
 
     function listar_clases(consulta, aux) {
         funcion = "listar";
-        // if (aux == "next") {
-        //     rowsInit = $('#rows').val();
-        //     rows = parseInt(rowsInit) + 50;
-        //     $('#rows').val(rows);
-        // }
-        // else {
-        //     rows = $('#rows').val();
-        //     rowsInit = parseInt(rows) - 6;
-        //     rows = parseInt(rows) - 3;
-        //     $('#rows').val(rows);
-
-        // }
+        
         $.post('../controlador/claseController.php', { consulta, funcion }, (response) => {
-            const CLASES = JSON.parse(response);
-            let template = ``;
-            CLASES.forEach(clase => {
-                template += `
-                    <tr data-id="${clase.id_clase}">
-                    <td>${clase.fecha_clase}</td>
-                    <td>${clase.nombre_adMay}</td>
-                    <td>${clase.tutor}</td>
-                    <td>${clase.nombre_crs}</td>
-                    <td>${clase.descripcion_tipoClase}</td>
-                    <td><button class='verdetalle btn btn-primary' data-toggle='modal' data-target='#exampleModal'>Ver detalle</button></td>
+            console.log(JSON.parse(response));
+            // const CLASES = JSON.parse(response);
+            // let template = ``;
+            // CLASES.forEach(clase => {
+            //     template += `
+            //         <tr data-id="${clase.id_clase}">
+            //         <td>${clase.fecha_clase}</td>
+            //         <td>${clase.nombre_adMay}</td>
+            //         <td>${clase.tutor}</td>
+            //         <td>${clase.nombre_crs}</td>
+            //         <td>${clase.descripcion_tipoClase}</td>
+            //         <td><button class='verdetalle btn btn-primary' data-toggle='modal' data-target='#exampleModal'>Ver detalle</button></td>
                     
-                </tr>
-                    `;
-            });
-            $('#clases').html(template);
+            //     </tr>
+            //         `;
+            // });
+            // $('#clases').html(template);
         });
     }
 

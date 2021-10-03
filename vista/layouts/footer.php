@@ -14,10 +14,9 @@
 <script src="../js/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/datatables.min.js"></script>
 
 <script src="https://kit.fontawesome.com/78519a9d7d.js" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-
-</body>
 
 </html>

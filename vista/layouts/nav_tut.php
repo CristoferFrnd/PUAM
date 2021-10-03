@@ -1,6 +1,7 @@
 <!-- Tell the browser to be responsive to screen width -->
 <link rel="stylesheet" href="../css/css/bootstrap.min.css">
 <link type="text/css" href="../css/styles.css" rel="stylesheet">
+<link type="text/css" href="../css/css/datatables.css" rel="stylesheet">
 
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">

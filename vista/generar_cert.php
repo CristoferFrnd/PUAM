@@ -20,12 +20,10 @@ if ($_SESSION['us_tipo'] == 1) {
         <br>
         <section>
             <div class="card card-success animate__animated animate__bounceInRight" id="contTF" style="display: none;">
-
-                <div class="card-body">
-                    <div class="container-btn-add">
-                        <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
-                        <i class="fa fa-search lupa" aria-hidden="true"></i>
+            <div class="titulo-tabla">
+                        <h3>FACILITADORES CON HORAS COMPLETADAS</h3>
                     </div>
+                <div class="card-body">
                     <table id="tEstFin" class="display table-sm table-hover text-nowrap table-responsive-lg" style="width:100%">
                         <thead>
                             <tr>

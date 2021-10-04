@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
 
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light nav-styles">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light nav-styles fixed-top">
         <div>
             <img class="img-logo" src="../assets/img/logo.png" width="200" height="auto">
         </div>
@@ -46,4 +46,4 @@
         </div>
     </nav>
 
-   </header>
+</header>

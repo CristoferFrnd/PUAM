@@ -1,8 +1,8 @@
 $(document).ready(function () {
     $('#curso').val($('#us_curso').val());
-    listar_tclase();
-    listar_am_al();
     if ($('#us_tipo').val() == 2) {
+        listar_tclase();
+        listar_am_al();
         listar_clases_al($('#us_id').val());
     } else {
         listar_clases();
@@ -97,7 +97,7 @@ $(document).ready(function () {
         $.post('../controlador/claseController.php', { funcion, ID }, (response) => {
             const AMPORAL = JSON.parse(response);
             let template = ``;
-            AMPORAL.forEach(amxal => {
+            AMPORAL.data.forEach(amxal => {
                 template += `
                         <option value="${amxal.id_adMay}">${amxal.nombre_admay}</option>
                     `;

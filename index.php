@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700&display=swap" rel="stylesheet">
     <link type="text/css" href="./css/css/all.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@ if (!empty($_SESSION['us_tipo'])) {
         <div class="container login-container">
             <div class="row">
                 <div class="col-md-4 login-form-1">
-                    <img src="assets/img/logoP.png" class="img-fluid" />
+                    <img src="assets/img/logop.png" class="img-fluid" />
                     <form class="form" id="form-login">
                         <div class="form-group">
                             <label for="email">Correo</label>
@@ -76,19 +76,31 @@ if (!empty($_SESSION['us_tipo'])) {
             </div>
         </div>
         <div class="container login-container2">
-            <p align="center" class="titulo"><strong>Sistema desarrollado por la facultad de Ingeniería y Ciencias Aplicadas</strong></p>
-            <p align="center" class=><strong>Carrera de Ingeniería Informática</strong></p>
-            <div class="row justify-content-md-center">
-                <div class="col-md-4 login-form-1">
-                <p align="left" style="margin-top:0px;margin-bottom:0px"><strong>Desarrolladores:</strong></p>
-                <p align="center" style="margin-top:0px;margin-bottom:0px">- Sofía Alemán</p>
-                <p align="center" style="margin-top:0px;margin-bottom:0px">- Cristian Pujota</p>
+            <div class="row">
+
+
+                <div class="col-md-8 login-form-1">
+                    <p align="center" class="titulo"><strong>Sistema desarrollado por la facultad de Ingeniería y Ciencias Aplicadas</strong></p>
+                    <p align="center" class=><strong>Carrera de Ingeniería Informática</strong></p>
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-4 login-form-1">
+                            <p align="left" style="margin-top:0px;margin-bottom:0px"><strong>Desarrolladores:</strong></p>
+                            <p align="center" style="margin-top:0px;margin-bottom:0px">- Sofía Alemán</p>
+                            <p align="center" style="margin-top:0px;margin-bottom:0px">- Cristian Pujota</p>
+                        </div>
+                        <div class="col-md-4 login-form-1">
+                            <p align="left" style="margin-top:0px;margin-bottom:0px"><strong>Tutores:</strong></p>
+                            <p align="center" style="margin-top:0px;margin-bottom:0px">- Alicia Andrade PhD</p>
+                            <p align="center" style="margin-top:0px;margin-bottom:0px">- Santiago Morales PhD</p>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="col-md-4 login-form-1">
-                <p align="left" style="margin-top:0px;margin-bottom:0px"><strong>Tutores:</strong></p>
-                <p align="center" style="margin-top:0px;margin-bottom:0px">- Alicia Andrade PhD</p>
-                <p align="center" style="margin-top:0px;margin-bottom:0px">- Santiago Morales PhD</p>
+                   <img class="img-fluid" src="assets/img/PUAM.jpeg"/> 
+                    
                 </div>
+
             </div>
 
         </div>

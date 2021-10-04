@@ -10,6 +10,8 @@ $(document).ready(function () {
             listar_adultoMays();
             listar_adultoMaysTemp();
             listar_adultoMaysCRS();
+            llenar_tutores();
+            
         }
     }
 
@@ -106,6 +108,7 @@ $(document).ready(function () {
             });
             $('#adultoMay_tabCrs').html(template);
         });
+        
     }
 
     function listar_adultoMays_al() {
@@ -320,26 +323,31 @@ $(document).ready(function () {
         //location.href = '../vista/registrar_am.php'
     });
 
-})
-function llenar_tutores() {
-    let listaT = document.querySelectorAll('select');
-    funcion = 'buscar_crs_est';
-    $.post('../controlador/alumnoController.php', { funcion }, (response) => {
-
-        const ALUMNOS = JSON.parse(response);
-        listaT.forEach(combo => {
-            id = combo.getAttribute("id");
-
-            ALUMNOS.forEach(alumno => {
-                let option = document.createElement('option');
-                option.value = alumno.id_usuario;
-                option.text = alumno.nombre;
-                combo.appendChild(option);
+    function llenar_tutores() {
+        let listaT = document.querySelectorAll('select');
+        funcion = 'buscar_crs_est';
+        $.post('../controlador/alumnoController.php', { funcion }, (response) => {
+    
+            const ALUMNOS = JSON.parse(response);
+            listaT.forEach(combo => {
+                id = combo.getAttribute("id");
+    
+                ALUMNOS.forEach(alumno => {
+                    let option = document.createElement('option');
+                    option.value = alumno.id_usuario;
+                    option.text = alumno.nombre;
+                    combo.appendChild(option);
+                });
             });
+    
         });
+    }
 
-    });
-}
+})
+
+
+
+
 window.addEventListener('load', llenar_tutores());
 function FechaHoy() {
     var today = new Date();

@@ -96,6 +96,7 @@ $(document).ready(function () {
         ID = $('#us_id').val();
         $.post('../controlador/claseController.php', { funcion, ID }, (response) => {
             const AMPORAL = JSON.parse(response);
+            console.log(AMPORAL);
             let template = ``;
             AMPORAL.forEach(amxal => {
                 template += `

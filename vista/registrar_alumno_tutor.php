@@ -218,4 +218,3 @@ include_once 'layouts/footer.php';
 ?>
 
 <script src="../js/alumno.js"></script>
-<script src="../js/curso.js"></script>

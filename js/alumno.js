@@ -1,11 +1,10 @@
 $(document).ready(function () {
 
-    datos_alumno();
-    listar_alumnos_curso();
     if ($('#us_tipo').val() == 3) {
         listar_alumnos();
-
+        
     } else {
+        listar_alumnos_curso();
         listar_alumnosAdmin();
         listar_alumnos_fin();
     }

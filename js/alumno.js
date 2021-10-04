@@ -168,11 +168,38 @@ $(document).ready(function () {
 
     $(document).on('click', '.genCert', (e) => {
         funcion = 'usuario_estado';
-        const ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
-        const ID = $(ELEMENTO).attr('data-us-id');
-        const NOMBRE = $(ELEMENTO).attr('data-us-nombre');
-        const HORASR = $(ELEMENTO).attr('data-us-horasR');
+        ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
+        ID = $(ELEMENTO).attr('data-us-id');
+        NOMBRE = $(ELEMENTO).attr('data-us-nombre');
+        HORASR = $(ELEMENTO).attr('data-us-horasR');
 
+        mensaje = "¿Desea generar el certificado de "+ NOMBRE + " por " + HORASR +" horas?";
+        document.getElementById("msgConf").innerHTML = mensaje;
+        $("#certConf").modal("show");
+
+
+
+        // $.post('../controlador/alumnoController.php', { funcion, ID }, (response) => {
+        //     listar_alumnos_fin();
+        // })
+
+        // funcion = 'certificado';
+        // $.post('../helpers/pdfCert.php', { funcion, ID, NOMBRE, HORASR }, (response) => {
+        //     const NAME = JSON.parse(response);
+        //     var ventana = window.open(NAME, '_blank');
+        //     var loop = setInterval(function () {
+        //         if (ventana.closed) {
+        //             clearInterval(loop);
+        //             funcion = 'elimDoc';
+        //             $.post('../helpers/pdfRepor.php', { funcion, NAME }, (response) => {
+        //             });
+        //         }
+        //     }, 1000);
+        // });
+
+    });
+
+    $(document).on('click', '#confirmar_cert', (e) => {
         $.post('../controlador/alumnoController.php', { funcion, ID }, (response) => {
             listar_alumnos_fin();
         })
@@ -192,7 +219,6 @@ $(document).ready(function () {
         });
 
     });
-
     function datos_alumno() {
         funcion = "buscar_us_id";
         ID = $('#id_us').val();

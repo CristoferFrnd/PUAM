@@ -97,35 +97,6 @@ if ($_SESSION['us_tipo'] == 1) {
     <div class="content-wrapper container top">
         <br>
         <section>
-            <div class="card card-success animate__animated animate__bounceInRight" id="tablaFin" style="display: none;">
-
-                <div class="card-body">
-                    <div class="container-btn-add">
-                        <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
-                        <i class="fa fa-search lupa" aria-hidden="true"></i>
-                    </div>
-                    <table class="table table-striped table-bordered table-responsive">
-                        <thead>
-                            <tr>
-                                <th>N. Cedula</th>
-                                <th>Nombre</th>
-                                <th>Correo</th>
-                                <th>Telefono</th>
-                                <th>H Totales</th>
-                                <th>Curso</th>
-                                <th>Certificado</th>
-
-                            </tr>
-                        </thead>
-                        <tbody id="alumnosFin">
-                        </tbody>
-                    </table>
-                </div>
-                <div class="card-footer">
-                </div>
-
-            </div>
-            <br>
 
 
             <div class="card card-success animate__animated animate__bounceInRight">
@@ -135,13 +106,11 @@ if ($_SESSION['us_tipo'] == 1) {
 
                 <div class="card-body">
                     <div class="container-btn-add">
-                        <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search">
-                        <i class="fa fa-search lupa" aria-hidden="true"></i>
-                        <div style="padding-left: 20px">
+                        <div>
                             <button type="button" class="btn btn-primary" id="reporteG"><i class="fas fa-file-pdf"></i> Reporte</button>
                         </div>
                     </div>
-                    <table id="tabla" class="table table-striped table-bordered table-responsive" style="height:500px">
+                    <table id="tEst" class="display table-sm table-hover text-nowrap table-responsive-lg" style="width:100%">
                         <thead>
                             <tr>
                                 <th>N. Cedula</th>
@@ -150,10 +119,9 @@ if ($_SESSION['us_tipo'] == 1) {
                                 <th>Telefono</th>
                                 <th>H Totales</th>
                                 <th>Curso</th>
-
                             </tr>
                         </thead>
-                        <tbody id="alumnos">
+                        <tbody>
                         </tbody>
                     </table>
                 </div>
@@ -164,6 +132,23 @@ if ($_SESSION['us_tipo'] == 1) {
     </div>
     </section>
 
+        <!-- modal confirmar generación certificado -->
+        <div class="modal fade" id="certConf" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header" id="mensajeConf">
+                    Confirmación
+                </div>
+                <div id="msgConf" class="modal-body">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" id="confirmar_cert" class="btn btn-danger" data-dismiss="modal">Si</button>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
 </body>

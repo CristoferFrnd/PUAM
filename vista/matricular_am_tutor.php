@@ -18,30 +18,27 @@ if ($_SESSION['us_tipo'] == 3) {
 
     <!-- TABLITA MATRICULAR-->
     <div class="content-wrapper container top">
-        <!-- TABLITA PARTICIPANTES-->
-        <br>
         <section>
             <div class="container-fluid">
                 <div class="card card-success animate__animated animate__bounceInRight">
                     <div class="titulo-tabla">
-                        <h3>LISTADO DE PARTICIPANTES</h3>
+                        <h3>PARTICIPANTES POR MATRICULAR</h3>
                     </div>
                     <div class="card-body">
+                        <div class="container-btn-add">
+                            <input class="form-control mr-sm-2 col-md-4" type="search" placeholder="Search" aria-label="Search" id="search1">
+                            <i class="fa fa-search lupa" aria-hidden="true"></i>
 
-                        <table id="tPart" class="display table table-hover text-nowrap table-responsive-lg" style="width:100%">
+                        </div>
+                        <table id="tabla" class="display table table-hover text-nowrap" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>N. Cedula</th>
+                                    <th>Cédula</th>
                                     <th>Nombre</th>
-                                    <th>Teléfono</th>
-                                    <th>Celular</th>
-                                    <th>Correo</th>
-                                    <th>Estado</th>
+                                    <th>Tutor</th>
                                 </tr>
                             </thead>
-                            <tbody>
-
-                            </tbody>
+                            <tbody id="lista_estudiantes"></tbody>
                         </table>
                     </div>
                     <div class="card-footer">

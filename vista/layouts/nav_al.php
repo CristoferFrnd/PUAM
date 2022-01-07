@@ -1,6 +1,10 @@
 <!-- Tell the browser to be responsive to screen width -->
 <link rel="stylesheet" href="../css/css/bootstrap.min.css">
 <link type="text/css" href="../css/styles.css" rel="stylesheet">
+<link type="text/css" href="../css/css/datatables.css" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
 
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top bw d-flex">

@@ -1,76 +1,61 @@
 $(document).ready(function () {
     $('#curso').val($('#us_curso').val());
-    listar_tclase();
-    listar_am_al();
     if ($('#us_tipo').val() == 2) {
+        listar_tclase();
+        listar_am_al();
         listar_clases_al($('#us_id').val());
     } else {
         listar_clases();
     }
-    //datos_alumno();
 
-    function listar_clases(consulta, aux) {
+    function listar_clases() {
         funcion = "listar";
-        // if (aux == "next") {
-        //     rowsInit = $('#rows').val();
-        //     rows = parseInt(rowsInit) + 50;
-        //     $('#rows').val(rows);
-        // }
-        // else {
-        //     rows = $('#rows').val();
-        //     rowsInit = parseInt(rows) - 6;
-        //     rows = parseInt(rows) - 3;
-        //     $('#rows').val(rows);
-
-        // }
-        $.post('../controlador/claseController.php', { consulta, funcion }, (response) => {
-            const CLASES = JSON.parse(response);
-            let template = ``;
-            CLASES.forEach(clase => {
-                template += `
-                    <tr data-id="${clase.id_clase}">
-                    <td>${clase.fecha_clase}</td>
-                    <td>${clase.nombre_adMay}</td>
-                    <td>${clase.tutor}</td>
-                    <td>${clase.nombre_crs}</td>
-                    <td>${clase.descripcion_tipoClase}</td>
-                    <td><button class='verdetalle btn btn-primary' data-toggle='modal' data-target='#exampleModal'>Ver detalle</button></td>
-                    
-                </tr>
-                    `;
-            });
-            $('#clases').html(template);
+        $('#example').DataTable({
+            "ajax": {
+                "url": "../controlador/claseController.php",
+                "method": "POST",
+                "data": {
+                    funcion: funcion,
+                }
+            },
+            "columns": [
+                { "data": "fecha_clase" },
+                { "data": "nombre_admay" },
+                { "data": "tutor" },
+                { "data": "nombre_crs" },
+                { "data": "descripcion_tipoclase" },
+                { "defaultContent": `<button class='verdetalle btn btn-primary' data-toggle='modal' data-target='#modalDetalle'><i class="fas fa-bars"></i></button>` }
+            ],
+            "createdRow": function (row, data, index) {
+                $(row).attr('data-id', data.id_clase);
+            }
         });
     }
 
-    $(document).on('click', '#next', (e) => {
-        listar_clases(null, "next");
-    });
-
-    $(document).on('click', '#prev', (e) => {
-        listar_clases(null, 'prev');
-    });
-
-    function listar_clases_al(id, consulta) {
+    function listar_clases_al(id) {
         funcion = "buscar_clase_alumno";
-        $.post('../controlador/claseController.php', { id, funcion, consulta }, (response) => {
-            localStorage.setItem('clases', response);
-            const CLASES = JSON.parse(response);
-            let template = ``;
-            CLASES.forEach(clase => {
-                template += `
-                <tr data-id="${clase.id_clase}">
-                    <td>${clase.fecha_clase}</td>
-                    <td>${clase.nombre_adMay}</td>
-                    <td>${clase.nombre_crs}</td>
-                    <td>${clase.tema_clase}</td>
-                    <td>${clase.descripcion_tipoClase}</td>
-                    <td><button class='verdetalle btn btn-primary' data-toggle='modal' data-target='#modalDetalle'>Ver detalle</button></td>
-                </tr>
-                    `;
-            });
-            $('#clases_alumno').html(template);
+        $('#example').DataTable({
+            "ajax": {
+                "url": "../controlador/claseController.php",
+                "method": "POST",
+                "data": {
+                    funcion: funcion,
+                    id: id
+                }
+            },
+            "columns": [
+                { "data": "fecha_clase" },
+                { "data": "nombre_admay" },
+                { "data": "tutor" },
+                { "data": "nombre_crs" },
+                { "data": "descripcion_tipoclase" },
+                { "defaultContent": `<button class='verdetalle btn btn-primary' data-toggle='modal' data-target='#modalDetalle'><i class="fas fa-bars"></i></button>` }
+            ],
+            "createdRow": function (row, data, index) {
+                $(row).attr('data-id', data.id_clase);
+            }
         });
+
     }
 
     $(document).on('keyup', '#search', function () {
@@ -94,7 +79,7 @@ $(document).ready(function () {
     function listar_tclase() {
         funcion = "buscar_tclase";
         $.post('../controlador/claseController.php', { funcion }, (response) => {
-            
+
             const TCLASES = JSON.parse(response);
             let template = ``;
             TCLASES.forEach(tclase => {
@@ -110,18 +95,17 @@ $(document).ready(function () {
         funcion = "buscar_am_al";
         ID = $('#us_id').val();
         $.post('../controlador/claseController.php', { funcion, ID }, (response) => {
+            console.log(response);
             const AMPORAL = JSON.parse(response);
             let template = ``;
-            AMPORAL.forEach(amxal => {
+            AMPORAL.data.forEach(amxal => {
                 template += `
-                        <option value="${amxal.id_adMay}">${amxal.nombre_admay}</option>
+                        <option value="${amxal.id_admay}">${amxal.nombre_admay}</option>
                     `;
             });
             $('#ad_al').html(template);
         });
     }
-
-
 
     $(document).on('click', '.verdetalle', (e) => {
         const ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
@@ -136,7 +120,7 @@ $(document).ready(function () {
             $('#tutorD').val(CLASE[0].tutor);
             $('#adulMD').val(CLASE[0].nombre_adMay);
             let $img = document.getElementById('img');
-            $img.setAttribute('src',CLASE[0].evidencia);
+            $img.setAttribute('src', CLASE[0].evidencia);
         });
 
     });
@@ -158,7 +142,7 @@ $(document).ready(function () {
     //     });
 
     // });
- 
+
     $(document).on('click', '#prueba', (e) => {
         ID = $('#us_id').val();
         funcion = 'adul_std';
@@ -183,19 +167,24 @@ $(document).ready(function () {
     }
 
     $(document).on('click', '#reporteC', (e) => {
-        funcion = 'reporC';
-        datos = localStorage.getItem('clases');
-        $.post('../helpers/pdfRepor.php', { funcion, datos }, (response) => {
-            const NAME = JSON.parse(response);
-            var ventana = window.open(NAME, '_blank');
-            var loop = setInterval(function() {   
-                if(ventana.closed) {  
-                    clearInterval(loop);  
-                    funcion = 'elimDoc';
-                    $.post('../helpers/pdfRepor.php', { funcion, NAME }, (response) => {
-                    });
-                }
-            }, 1000); 
+        id = $('#us_id').val();
+        funcion = "buscar_clase_alumno";
+        $.post('../controlador/claseController.php', { funcion, id }, (response) => {
+            console.log(response);
+            funcion = 'reporC';
+            datos = response;
+            $.post('../helpers/pdfRepor.php', { funcion, datos }, (response) => {
+                const NAME = JSON.parse(response);
+                var ventana = window.open(NAME, '_blank');
+                var loop = setInterval(function () {
+                    if (ventana.closed) {
+                        clearInterval(loop);
+                        funcion = 'elimDoc';
+                        $.post('../helpers/pdfRepor.php', { funcion, NAME }, (response) => {
+                        });
+                    }
+                }, 1000);
+            });
         });
         e.preventDefault();
     });
@@ -210,18 +199,18 @@ $(document).ready(function () {
             $.post('../helpers/pdfCert.php', { funcion, datos }, (response) => {
                 const NAME = JSON.parse(response);
                 var ventana = window.open(NAME, '_blank');
-                var loop = setInterval(function() {   
-                    if(ventana.closed) {  
-                        clearInterval(loop);  
+                var loop = setInterval(function () {
+                    if (ventana.closed) {
+                        clearInterval(loop);
                         funcion = 'elimDoc';
                         $.post('../helpers/pdfCert.php', { funcion, NAME }, (response) => {
                         });
                     }
-                }, 1000); 
+                }, 1000);
             });
         });
-        
-        
+
+
         e.preventDefault();
     });
 

@@ -1,10 +1,7 @@
 <?php
-include_once '../modelo/Usuario.php';
 session_start();
-$user = $_POST['user'];
-$pass = $_POST['pass'];
+include_once '../modelo/Usuario.php';
 $usuario = new Usuario();
-
 
 if (!empty($_SESSION['us_tipo'])) {
     switch ($_SESSION['us_tipo']) {
@@ -25,6 +22,9 @@ if (!empty($_SESSION['us_tipo'])) {
     }
 } else {
     
+    $user = $_POST['user'];
+    $pass = $_POST['pass'];
+    
     if (!empty($usuario->loguearse($user, $pass)=="logueado")) {
         $usuario->obtenerDatosLogueo($user);
         foreach ($usuario->objetos as $objeto) {
@@ -37,12 +37,15 @@ if (!empty($_SESSION['us_tipo'])) {
         }
         switch ($_SESSION['us_tipo']) {
             case 1:
-                header('Location: ../vista/buscador_clase.php');
-                break;
+            header('Location: ../vista/buscador_clase.php');
+            break;
 
-            case 2:
-                header('Location: ../vista/registrar_clase.php');
-                break;
+        case 2:
+            header('Location: ../vista/registrar_clase.php');
+            break;
+        case 3: 
+            header('Location: ../vista/buscador_clase_tutor.php');
+            break;
 
             default:
                 # code...
@@ -52,3 +55,4 @@ if (!empty($_SESSION['us_tipo'])) {
         echo "nologin";
     }
 }
+?>

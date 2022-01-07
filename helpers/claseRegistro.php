@@ -1,7 +1,7 @@
 <?php
+session_start();
 include '../modelo/Clase.php';
 //include '../modelo/Usuario.php';
-session_start();
 $clase = new Clase();
 //$usuario = new Usuario();
 
@@ -22,18 +22,8 @@ if (isset($_POST["submit"])) {
         $tipo = $_POST['tclases'];
         $curso = $_POST['us_curso_id'];
 
-        // $fecha = '2021-08-30';
-        // $duracion = 2;
-        // $adulM = '3456789';
-        // $tema = 'prueba';
-        // $tutor = '1798765432';
-        // $curso = 1;
-        // $tipo = 1;
-        
-        echo $fecha."\n".$duracion."\n".$adulM."\n".$tema."\n".$tutor."\n".$curso."\n".$tipo;
         $clase->crear($fecha, $duracion, $imgContent, $adulM, $tema, $tutor, $curso, $tipo);
         $clase->agregarHoras($tutor,$duracion);
-
 
         header('Location: ../vista/registrar_clase.php');
     }

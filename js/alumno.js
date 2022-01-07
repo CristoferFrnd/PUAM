@@ -1,68 +1,91 @@
-
 $(document).ready(function () {
-    listar_cursos();
-    datos_alumno();
-    listar_alumnos_curso();
+
     if ($('#us_tipo').val() == 3) {
         listar_alumnos();
-
+        
     } else {
+        listar_alumnos_curso();
+        listar_alumnosAdmin();
         listar_alumnos_fin();
     }
 
+    listar_cursos();
 
-    function listar_alumnos(consulta) {
+    function listar_alumnos() {
         funcion = "listar";
-        $.post('../controlador/alumnoController.php', { consulta, funcion }, (response) => {
-            localStorage.setItem('alumnos', response);
-            const ALUMNOS = JSON.parse(response);
-            let template = ``;
-            ALUMNOS.forEach(alumno => {
-                template += `
-                    <tr us_id="${alumno.id_usuario}">
-                        <td>${alumno.id_usuario}</td>
-                        <td>${alumno.nombre}</td>
-                        <td>${alumno.correo}</td>
-                        <td>${alumno.tel}</td>
-                        <td>${alumno.horasR}</td>
-                        <td>${alumno.curso}</td>
-                        <td><button type='button' class='editar-alumno btn btn-primary' data-toggle='modal' data-target='#exampleModal'><i class="fas fa-edit"></i></button></td>
-                    </tr>
-                    `;
-            });
-            $('#alumnos').html(template);
+        $('#tEst').DataTable({
+            "ajax": {
+                "url": "../controlador/alumnoController.php",
+                "method": "POST",
+                "data": {
+                    funcion: funcion,
+                }
+            },
+            "columns": [
+                { "data": "id_usuario" },
+                { "data": "nombre_usuario" },
+                { "data": "correoins_usuario" },
+                { "data": "tel_usuario" },
+                { "data": "horasrealizadas_usuario" },
+                { "data": "nombre_crs" },
+                { "defaultContent": `<button class='editar-alumno btn btn-primary' data-toggle='modal' data-target='#modalEdit'><i class="fas fa-bars"></i></button>` }
+            ],
+            "createdRow": function (row, data, index) {
+                $(row).attr('data-us-id', data.id_usuario);
+            }
+        });
+    }
+
+    function listar_alumnosAdmin() {
+        funcion = "listar";
+        $('#tEst').DataTable({
+            "ajax": {
+                "url": "../controlador/alumnoController.php",
+                "method": "POST",
+                "data": {
+                    funcion: funcion,
+                }
+            },
+            "columns": [
+                { "data": "id_usuario" },
+                { "data": "nombre_usuario" },
+                { "data": "correoins_usuario" },
+                { "data": "tel_usuario" },
+                { "data": "horasrealizadas_usuario" },
+                { "data": "nombre_crs" }],
+            "createdRow": function (row, data, index) {
+                $(row).attr('data-us-id', data.id_usuario);
+            }
         });
     }
 
     function listar_alumnos_fin() {
         funcion = "listarFin";
-        $.post('../controlador/alumnoController.php', { funcion }, (response) => {
-            const ALUMNOS = JSON.parse(response);
-            let template = ``;
-            $tablaFin = document.getElementById('tablaFin');
-            if (ALUMNOS.length > 0) {
-                $tablaFin.style.display = 'block';
-                ALUMNOS.forEach(alumno => {
-                    template += `
-                    <tr us_id="${alumno.id_usuario}" us_nombre="${alumno.nombre}" us_horasR="${alumno.horasR}" class="bg-success">
-                        <td>${alumno.id_usuario}</td>
-                        <td>${alumno.nombre}</td>
-                        <td>${alumno.correo}</td>
-                        <td>${alumno.tel}</td>
-                        <td>${alumno.horasR}</td>
-                        <td>${alumno.curso}</td>
-                        <td><button type='button' class='genCert btn btn-danger'><i class="fas fa-file-pdf"></i></button></td>
-                    </tr>
-                    `;
-                });
-                $('#alumnosFin').html(template);
+        $('#tEstFin').DataTable({
+            "ajax": {
+                "url": "../controlador/alumnoController.php",
+                "method": "POST",
+                "data": {
+                    funcion: funcion,
+                }
+            },
+            "columns": [
+                { "data": "id_usuario" },
+                { "data": "nombre_usuario" },
+                { "data": "correoins_usuario" },
+                { "data": "tel_usuario" },
+                { "data": "horasrealizadas_usuario" },
+                { "data": "nombre_crs" },
+                { "defaultContent": `<button type='button' class='genCert btn btn-danger'><i class="fas fa-file-pdf"></i></button>`}
+            ],
+            "createdRow": function (row, data, index) {
+                $(row).attr('data-us-id', data.id_usuario);
+                $(row).attr('data-us-nombre', data.nombre_usuario);
+                $(row).attr('data-us-horasR', data.horasrealizadas_usuario);
             }
-            else {
-                $tablaFin.style.display = 'none';
-            }
-
-            listar_alumnos();
         });
+        $ContTablaFin = document.getElementById('contTF');
+        $ContTablaFin.style.display = 'block';
     }
 
     $(document).on('keyup', '#search', function () {
@@ -127,7 +150,7 @@ $(document).ready(function () {
     $(document).on('click', '.editar-alumno', (e) => {
         funcion = 'buscar_us_id';
         const ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
-        const ID = $(ELEMENTO).attr('us_id');
+        const ID = $(ELEMENTO).attr('data-us-id');
         $.post('../controlador/alumnoController.php', { funcion, ID }, (response) => {
             const ALUMNO = JSON.parse(response);
             $('#nombreE').val(ALUMNO.nombre);
@@ -144,13 +167,39 @@ $(document).ready(function () {
 
     $(document).on('click', '.genCert', (e) => {
         funcion = 'usuario_estado';
-        const ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
-        const ID = $(ELEMENTO).attr('us_id');
-        const NOMBRE = $(ELEMENTO).attr('us_nombre');
-        const HORASR = $(ELEMENTO).attr('horasR');
+        ELEMENTO = $(this)[0].activeElement.parentElement.parentElement;
+        ID = $(ELEMENTO).attr('data-us-id');
+        NOMBRE = $(ELEMENTO).attr('data-us-nombre');
+        HORASR = $(ELEMENTO).attr('data-us-horasR');
 
+        mensaje = "¿Desea generar el certificado de "+ NOMBRE + " por " + HORASR +" horas?";
+        document.getElementById("msgConf").innerHTML = mensaje;
+        $("#certConf").modal("show");
+
+
+
+        // $.post('../controlador/alumnoController.php', { funcion, ID }, (response) => {
+        //     listar_alumnos_fin();
+        // })
+
+        // funcion = 'certificado';
+        // $.post('../helpers/pdfCert.php', { funcion, ID, NOMBRE, HORASR }, (response) => {
+        //     const NAME = JSON.parse(response);
+        //     var ventana = window.open(NAME, '_blank');
+        //     var loop = setInterval(function () {
+        //         if (ventana.closed) {
+        //             clearInterval(loop);
+        //             funcion = 'elimDoc';
+        //             $.post('../helpers/pdfRepor.php', { funcion, NAME }, (response) => {
+        //             });
+        //         }
+        //     }, 1000);
+        // });
+
+    });
+
+    $(document).on('click', '#confirmar_cert', (e) => {
         $.post('../controlador/alumnoController.php', { funcion, ID }, (response) => {
-            console.log(response);
             listar_alumnos_fin();
         })
 
@@ -169,7 +218,6 @@ $(document).ready(function () {
         });
 
     });
-
     function datos_alumno() {
         funcion = "buscar_us_id";
         ID = $('#id_us').val();
@@ -203,19 +251,22 @@ $(document).ready(function () {
     });
 
     $(document).on('click', '#reporteG', (e) => {
-        funcion = 'reporFG';
-        datos = localStorage.getItem('alumnos');
-        $.post('../helpers/pdfRepor.php', { funcion, datos }, (response) => {
-            const NAME = JSON.parse(response);
-            var ventana = window.open(NAME, '_blank');
-            var loop = setInterval(function () {
-                if (ventana.closed) {
-                    clearInterval(loop);
-                    funcion = 'elimDoc';
-                    $.post('../helpers/pdfRepor.php', { funcion, NAME }, (response) => {
-                    });
-                }
-            }, 1000);
+        funcion = 'listar'
+        $.post('../controlador/alumnoController.php', { funcion }, (response) => {
+            datos = response;
+            funcion = 'reporFG';
+            $.post('../helpers/pdfRepor.php', { funcion, datos }, (response) => {
+                const NAME = JSON.parse(response);
+                var ventana = window.open(NAME, '_blank');
+                var loop = setInterval(function () {
+                    if (ventana.closed) {
+                        clearInterval(loop);
+                        funcion = 'elimDoc';
+                        $.post('../helpers/pdfRepor.php', { funcion, NAME }, (response) => {
+                        });
+                    }
+                }, 1000);
+            });
         });
         e.preventDefault();
     });

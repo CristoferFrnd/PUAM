@@ -46,11 +46,11 @@ class PDF extends FPDF
     foreach($data as $row)
     {
         $this->Cell($w[0],6,$row->{'id_usuario'},'LR');
-        $this->Cell($w[1],6,utf8_decode($row->{'nombre'}));
-        $this->Cell($w[2],6,$row->{'correo'},'LR');
-        $this->Cell($w[3],6,$row->{'tel'},'LR');
-        $this->Cell($w[4],6,$row->{'horasR'},'LR');
-        $this->Cell($w[5],6,utf8_decode($row->{'curso'}), 'LR');
+        $this->Cell($w[1],6,utf8_decode($row->{'nombre_usuario'}));
+        $this->Cell($w[2],6,$row->{'correoins_usuario'},'LR');
+        $this->Cell($w[3],6,$row->{'tel_usuario'},'LR');
+        $this->Cell($w[4],6,$row->{'horasrealizadas_usuario'},'LR');
+        $this->Cell($w[5],6,utf8_decode($row->{'nombre_crs'}), 'LR');
         $this->Ln();
     }
     // Línea de cierre
@@ -69,8 +69,8 @@ function ImprovedTableC($header, $data)
     foreach($data as $row)
     {
         $this->Cell($w[0],6,$row->{'fecha_clase'},'LR');
-        $this->Cell($w[1],6,utf8_decode($row->{'nombre_adMay'}));
-        $this->Cell($w[2],6,$row->{'id_adMay'},'LR');
+        $this->Cell($w[1],6,utf8_decode($row->{'nombre_admay'}));
+        $this->Cell($w[2],6,$row->{'id_admay'},'LR');
         if(strlen(utf8_decode($row->{'tema_clase'})) > 40){
             $this->Cell($w[3],6,substr(utf8_decode($row->{'tema_clase'}),0,39));
         }
@@ -78,7 +78,7 @@ function ImprovedTableC($header, $data)
             $this->Cell($w[3],6,utf8_decode($row->{'tema_clase'}));
         }
         
-        $this->Cell($w[4],6,$row->{'descripcion_tipoClase'},'LR');
+        $this->Cell($w[4],6,$row->{'descripcion_tipoclase'},'LR');
         $this->Cell($w[5],6,$row->{'duracion_clase'}, 'LR');
         $this->Ln();
     }
@@ -102,7 +102,7 @@ if ($_POST['funcion'] == 'reporFG') {
     //     $pdf->Cell(60, 10, $dato->{'id_usuario'}, 0, 1, 'C');
     // }
     $header = array('N. Cedula', 'Nombre', 'Correo', 'Telefono', 'Horas', 'Curso'); 
-    $pdf->ImprovedTableP($header, $datos);
+    $pdf->ImprovedTableP($header, $datos->{'data'});
     $return = $pdf->Output($name, 'F');
     $return = base64_encode($return);
     echo json_encode('../helpers/' . $name);
@@ -119,7 +119,7 @@ if ($_POST['funcion'] == 'reporC') {
     $pdf->SetFont('Arial', 'B', 8, true);
 
     $header = array('Fecha', 'Participante', utf8_decode('Cédula P'), 'Tema', 'Clase', utf8_decode('Duración')); 
-    $pdf->ImprovedTableC($header, $datos);
+    $pdf->ImprovedTableC($header, $datos->{'data'});
     $return = $pdf->Output($name, 'F');
     $return = base64_encode($return);
     echo json_encode('../helpers/' . $name);

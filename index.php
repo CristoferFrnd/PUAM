@@ -5,18 +5,18 @@ if (!empty($_SESSION['us_tipo'])) {
 } else {
     session_destroy();
 ?>
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700&display=swap" rel="stylesheet">
-    <link type="text/css" href="./css/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./css/css/bootstrap.min.css">
-    <link type="text/css" href="./css/login2.css" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,700&display=swap" rel="stylesheet">
+        <link type="text/css" href="./css/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./css/css/bootstrap.min.css">
+        <link type="text/css" href="./css/login2.css" rel="stylesheet">
 
-</head>
+    </head>
 
     <body style="background-color: #024873">
         <div class="container login-container">
@@ -79,14 +79,14 @@ if (!empty($_SESSION['us_tipo'])) {
             <p align="center" class=><strong>Carrera de Ingeniería Informática</strong></p>
             <div class="row justify-content-md-center">
                 <div class="col-md-4 login-form-1">
-                <p align="left" style="margin-top:0px;margin-bottom:0px"><strong>Desarrolladores:</strong></p>
-                <p align="center" style="margin-top:0px;margin-bottom:0px">- Sofía Alemán</p>
-                <p align="center" style="margin-top:0px;margin-bottom:0px">- Cristian Pujota</p>
+                    <p align="left" style="margin-top:0px;margin-bottom:0px"><strong>Desarrolladores:</strong></p>
+                    <p align="center" style="margin-top:0px;margin-bottom:0px">- Sofía Alemán</p>
+                    <p align="center" style="margin-top:0px;margin-bottom:0px">- Cristian Pujota</p>
                 </div>
                 <div class="col-md-4 login-form-1">
-                <p align="left" style="margin-top:0px;margin-bottom:0px"><strong>Tutores:</strong></p>
-                <p align="center" style="margin-top:0px;margin-bottom:0px">- Alicia Andrade PhD</p>
-                <p align="center" style="margin-top:0px;margin-bottom:0px">- Santiago Morales PhD</p>
+                    <p align="left" style="margin-top:0px;margin-bottom:0px"><strong>Tutores:</strong></p>
+                    <p align="center" style="margin-top:0px;margin-bottom:0px">- Alicia Andrade PhD</p>
+                    <p align="center" style="margin-top:0px;margin-bottom:0px">- Santiago Morales PhD</p>
                 </div>
             </div>
 
@@ -108,7 +108,7 @@ if (!empty($_SESSION['us_tipo'])) {
     <script src="js/bootstrap.min.js"></script>
     <script src="js/login.js"></script>
 
-</html>
+    </html>
 
 <?php
 }

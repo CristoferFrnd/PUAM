@@ -13,6 +13,8 @@ $(document).ready(function () {
         }
     }
 
+
+
     function listar_adultoMays(consulta) {
         funcion = "listar";
         $('#tPart').DataTable({

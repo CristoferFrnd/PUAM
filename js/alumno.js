@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     if ($('#us_tipo').val() == 3) {
         listar_alumnos();
         
@@ -7,7 +8,7 @@ $(document).ready(function () {
         listar_alumnosAdmin();
         listar_alumnos_fin();
     }
-    
+
     listar_cursos();
 
     function listar_alumnos() {

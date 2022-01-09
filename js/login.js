@@ -4,8 +4,6 @@ $(document).ready(function () {
     $('#form-login').submit(e => {
         user = $('#user').val();
         pass = $('#pass').val();
-        funcion = 'registrar';
-        console.log(user, pass)
         $.post('controlador/loginController.php', { user, pass }, (response) => {
             if (response == 'nologin') {
                 $('#avisoD').show();

@@ -123,11 +123,15 @@ class Usuario
         $query = $this->acceso->prepare($sql);
         $query->execute(array(':n_usuario' => $us));
         $objetos = $query->fetchall();
-        foreach ($objetos as $objeto) {
-            $contrasena_actual = $objeto->contras_usuario;
-        }
-        if ($pass == $contrasena_actual) {
-            return "logueado";
+        if (!empty($objetos)) {
+            foreach ($objetos as $objeto) {
+                $contrasena_actual = $objeto->contras_usuario;
+            }
+            if ($pass == $contrasena_actual) {
+                return "logueado";
+            }
+        } else {
+            return null;
         }
     }
 
